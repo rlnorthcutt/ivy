@@ -2,10 +2,10 @@
  * Ivy Extra — optional polish for Ivy.css (CLASSLESS)
  * Version: 1.0.0-extra
  * URL: https://github.com/rlnorthcutt/ivy
- * Copyright (c) 2025 Ron Northcutt
  * License: MIT (https://opensource.org/licenses/MIT)
- *
- * Requires: ivy.css (CORE). Works great with Lattice.css for layout.
+ */
+ 
+ /** Requires: ivy.css (CORE). Works great with Lattice.css for layout.
  *
  * Scope (EXTRA):
  * - Buttons (semantic + a11y) with opt-in variants via [data-variant].
