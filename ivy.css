@@ -21,7 +21,7 @@
 :root{
   /* palette */
   --color-bg:#ffffff; --color-text:#1b1f23; --color-muted:#667085;
-  --color-link:#0a66c2; --color-border:#e5e7eb; --color-surface:#fafafa;
+  --color-link:#00CC66; --color-border:#e5e7eb; --color-surface:#fafafa;
 
   /* typography & rhythm */
   --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,
@@ -34,8 +34,8 @@
 }
 /* Dark scheme (minimal swaps) */
 @media (prefers-color-scheme:dark){
-  :root{--color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#98a2b3;
-        --color-link:#79b8ff; --color-border:#23262b; --color-surface:#111418;}
+  :root{--color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#888;
+        --color-link:#00CC66; --color-border:#23262b; --color-surface:#111418;}
 }
 
 @media (min-width: 576px) {
