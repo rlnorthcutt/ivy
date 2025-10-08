@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lattice + Ivy — Minimal CSS Utilities & Classless Theme</title>
+
+  <!-- Lattice: if dist/ is your site root, these files already exist -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rlnorthcutt/lattice/lattice.full.min.css">
+
+  <!-- Ivy (classless): if you deploy dist/ as Pages root, either copy ivy.css
+       & ivy.extra.css into dist/ during the build OR change these hrefs to
+       "../ivy.css" and "../ivy.extra.css" (depending on your structure). -->
+  <link rel="stylesheet" href="../dist/ivy.min.css" />
+  <link rel="stylesheet" href="../dist/ivy.extra.min.css" />
+
+  <meta name="description" content="Lattice: tiny layout utilities. Ivy: elegant classless CSS. Pair them for clean HTML + simple positioning." />
+  <style>
+    /* tiny polish for this landing page only (keeps libs unopinionated) */
+    header { padding: 3rem 0 2rem; }
+    .brand { letter-spacing: .5px; }
+    .hero { background: linear-gradient(180deg, rgba(0,0,0,.04), transparent); border-radius: .75rem; padding: 1.25rem 1rem; }
+    .demo-card { border:1px solid var(--color-border); border-radius:.5rem; padding:1rem; background: var(--color-bg); }
+    .kicker { font-size:.875rem; text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
+    .muted { color: var(--color-muted); } /* in case ivy.extra isn't loaded */
+    .center { text-align:center; }
+    .file-table td:nth-child(1), .file-table th:nth-child(1) { white-space: nowrap; }
+    footer { padding: 3rem 0 2rem; color: var(--color-muted); }
+  </style>
+</head>
+<body>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+  <header class="l-place-content">
+    <div class="hero">
+      <p class="kicker">CSS micro-stack</p>
+      <h1 class="brand">Ivy (classless) + Lattice (layout)</h1>
+      <p>Write clean, semantic HTML with <strong>Ivy</strong>. Add tiny, semantic positioning with <strong>Lattice</strong>. Sprinkle a few custom rules and ship.</p>
+      <p>
+        <a role="button" data-variant="primary" href="#quickstart">Get started</a>
+        <a role="button" data-variant="outline" href="https://github.com/rlnorthcutt" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </header>
+
+  <main id="content" class="l-place-content">
+    <article>
+
+      <!-- Features -->
+      <section aria-labelledby="features">
+        <h2 id="features">Why this stack?</h2>
+        <div class="grid sm-col-2 lg-col-3 gap-3">
+          <div class="demo-card">
+            <h3>Classless first</h3>
+            <p>Ivy styles semantic HTML (headings, forms, tables, media) with a small, elegant baseline.</p>
+          </div>
+          <div class="demo-card">
+            <h3>Tiny layout</h3>
+            <p>Lattice provides minimal, readable utilities for grids, spans, and placement. No framework lock-in.</p>
+          </div>
+          <div class="demo-card">
+            <h3>Composable</h3>
+            <p>Use Ivy alone for blogs & docs. Add Lattice when you need responsive structure or two-column layouts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Start -->
+      <section aria-labelledby="quickstart">
+        <h2 id="quickstart">Quick start</h2>
+        <p>Add Ivy (classless) and Lattice (layout) to your page:</p>
+<pre><code>&lt;!-- Classless theme --&gt;
+&lt;link rel="stylesheet" href="/path/to/ivy.css"&gt;
+&lt;!-- Optional polish --&gt;
+&lt;link rel="stylesheet" href="/path/to/ivy.extra.css"&gt;
+
+&lt;!-- Layout utilities --&gt;
+&lt;link rel="stylesheet" href="/path/to/lattice.min.css"&gt;
+&lt;!-- Optional full coverage (core + extra) --&gt;
+&lt;link rel="stylesheet" href="/path/to/lattice.full.min.css"&gt;</code></pre>
+        <p class="muted">Tip: Use <code>lattice.full.min.css</code> if you want one file; otherwise include just what you need.</p>
+      </section>
+
+      <!-- Minimal example -->
+      <section aria-labelledby="minimal">
+        <h2 id="minimal">Minimal example</h2>
+<pre><code>&lt;main class="l-place-content"&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Hello, Ivy&lt;/h1&gt;
+    &lt;p&gt;This is clean HTML with elegant defaults.&lt;/p&gt;
+    &lt;section class="grid sm-col-2 gap-3"&gt;
+      &lt;div class="demo-card"&gt;Card A&lt;/div&gt;
+      &lt;div class="demo-card"&gt;Card B&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+      </section>
+
+      <!-- Live demo grid -->
+      <section aria-labelledby="demo">
+        <h2 id="demo">Live layout demo (Lattice grid)</h2>
+        <div class="grid sm-col-2 lg-col-3 gap-3">
+          <article class="demo-card">
+            <h3>Article</h3>
+            <p>Semantic elements render nicely via Ivy. Add your content and go.</p>
+            <p><a href="#features">Learn more</a></p>
+          </article>
+          <article class="demo-card">
+            <h3>Card</h3>
+            <p>Cards are just articles with a border. No custom classes required.</p>
+            <p><a role="button" data-variant="outline" href="#files">See files</a></p>
+          </article>
+          <article class="demo-card" aria-busy="false">
+            <h3>Form</h3>
+            <form>
+              <p><label> Email<br /><input type="email" placeholder="you@example.com" /></label></p>
+              <p><button data-variant="primary" type="button">Subscribe</button></p>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <!-- Files -->
+      <section aria-labelledby="files">
+        <h2 id="files">Files & builds</h2>
+        <p>The CI builds minified files into <code>dist/</code>. Use a single file or compose them.</p>
+        <table class="file-table">
+          <thead><tr><th>File</th><th>What</th></tr></thead>
+          <tbody>
+            <tr><td><code>lattice.min.css</code></td><td>Lattice core (lean layout utilities)</td></tr>
+            <tr><td><code>lattice.extra.min.css</code></td><td>Extras for full coverage</td></tr>
+            <tr><td><code>lattice.full.min.css</code></td><td>Core + Extra in one file</td></tr>
+            <tr><td><code>ivy.css</code></td><td>Classless base (typography, forms, tables)</td></tr>
+            <tr><td><code>ivy.extra.css</code></td><td>Optional polish (buttons, dialog, tooltips…)</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">Note: If Pages serves <code>dist/</code> as root, copy <code>ivy*.css</code> into <code>dist/</code> or update paths.</p>
+      </section>
+
+      <!-- Demos -->
+      <section aria-labelledby="demos">
+        <h2 id="demos">Demos</h2>
+        <ul>
+          <li><a href="examples/ivy-core.html">Ivy — Core elements</a> (if published)</li>
+          <li><a href="examples/ivy-extra.html">Ivy — Extra patterns</a> (if published)</li>
+        </ul>
+        <p class="muted">If your Pages action uploads only <code>dist/</code>, add a step to copy <code>examples/</code> into <code>dist/examples/</code> at build time.</p>
+      </section>
+
+      <!-- Philosophy -->
+      <section aria-labelledby="philosophy">
+        <h2 id="philosophy">Philosophy</h2>
+        <ul>
+          <li><strong>Classless first:</strong> Author HTML, not frameworks.</li>
+          <li><strong>Utilities, not systems:</strong> Lattice adds just enough positioning.</li>
+          <li><strong>Small layers:</strong> Core → Extra → a pinch of custom CSS.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="l-place-content center">
+    <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+  </footer>
+</body>
+</html>

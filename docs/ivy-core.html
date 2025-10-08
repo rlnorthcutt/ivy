@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ivy (CORE) — Elements Showcase</title>
+
+  <!-- Adjust paths as needed -->
+  <link rel="stylesheet" href="../ivy.css" />
+
+  <style>
+    /* demo-only helper to separate sections */
+    section { padding: 1rem 0; border-top: 1px solid var(--color-border); }
+    section:first-of-type { border-top: 0; }
+  </style>
+</head>
+<body>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+  <header>
+    <h1>Ivy.css (CORE) — Classless Demo</h1>
+    <p class="muted">Minimal, elegant defaults for semantic HTML.</p>
+  </header>
+
+  <main id="content">
+    <article>
+      <section aria-labelledby="typo">
+        <h2 id="typo">Typography</h2>
+        <p>
+          Ivy provides a readable rhythm, a sane measure, and fluid headings.
+          Inline <strong>strong</strong>, <em>emphasis</em>, and
+          <a href="#">links</a> get clean defaults. <small>Small text looks like this.</small>
+        </p>
+        <h1>H1 heading</h1>
+        <h2>H2 heading</h2>
+        <h3>H3 heading</h3>
+        <h4>H4 heading</h4>
+        <h5>H5 heading</h5>
+        <h6>H6 heading</h6>
+        <hr />
+        <blockquote>
+          “Good design is as little design as possible.”
+        </blockquote>
+      </section>
+
+      <section aria-labelledby="lists">
+        <h2 id="lists">Lists</h2>
+        <ul>
+          <li>Unordered item one</li>
+          <li>Unordered item two</li>
+        </ul>
+        <ol>
+          <li>Ordered item one</li>
+          <li>Ordered item two</li>
+        </ol>
+        <dl>
+          <dt>Term</dt><dd>Definition text with natural spacing.</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="code">
+        <h2 id="code">Code &amp; Preformatted</h2>
+        <p>Inline <code>const x = 1;</code> code.</p>
+        <pre><code>// Preformatted block
+function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+        <p>Press <kbd>⌘</kbd> + <kbd>K</kbd> to search.</p>
+      </section>
+
+      <section aria-labelledby="media">
+        <h2 id="media">Media</h2>
+        <figure>
+          <img src="https://picsum.photos/960/540" alt="Random demo image" />
+          <figcaption>Fig. 1 — Responsive image with caption.</figcaption>
+        </figure>
+        <video controls width="480">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+      </section>
+
+      <section aria-labelledby="tables">
+        <h2 id="tables">Tables</h2>
+        <table>
+          <caption>Basic, readable table</caption>
+          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Paper</td><td>3</td><td>$6.00</td></tr>
+            <tr><td>Pens</td><td>2</td><td>$3.50</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="forms">
+        <h2 id="forms">Forms (minimal)</h2>
+        <form>
+          <fieldset>
+            <legend>Contact</legend>
+            <p><label> Name<br /><input type="text" placeholder="Jane Doe" /></label></p>
+            <p><label> Email<br /><input type="email" placeholder="jane@example.com" /></label></p>
+            <p><label> Topic<br />
+              <select>
+                <option>General</option><option>Support</option><option>Other</option>
+              </select>
+            </label></p>
+            <p><label> Message<br /><textarea placeholder="Write your message…"></textarea></label></p>
+            <p>
+              <button type="submit">Send</button>
+              <button type="reset">Reset</button>
+            </p>
+          </fieldset>
+        </form>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p class="muted">© 2025 Ivy — Classless core demo.</p>
+  </footer>
+</body>
+</html>

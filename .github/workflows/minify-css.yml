@@ -1,0 +1,71 @@
+name: Minify CSS and Deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'ivy.css'
+      - 'ivy.extra.css'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  minify-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Pin clean-css-cli for reproducible builds
+      - name: Install clean-css-cli
+        run: npm install -g clean-css-cli@5
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      # --- Build individual minified files (banners preserved via /*! ... */) ---
+      - name: Minify ivy.css
+        run: cleancss -o dist/ivy.min.css ivy.css
+
+      - name: Minify ivy.extra.css
+        run: cleancss -o dist/ivy.extra.min.css ivy.extra.css
+
+      # --- Build combined FULL (both non-minified and minified) ---
+      - name: Create non-minified full bundle
+        run: cat ivy.css ivy.extra.css > dist/ivy.full.css
+
+      - name: Minify full bundle
+        run: cleancss -o dist/ivy.full.min.css dist/ivy.full.css
+
+      # Optionally: generate source maps (uncomment if you want them)
+      # - name: Minify with source maps
+      #   run: cleancss --source-map --source-map-inline-sources -o dist/ivy.full.min.css dist/ivy.full.css
+
+      - name: Commit distribution files
+        run: |
+          set -e
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dist/
+          git diff --staged --quiet || git commit -m "Auto-build CSS dist [skip ci]"
+          git push
