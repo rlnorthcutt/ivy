@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s — %s" .Title .Site.Title }}{{ end }}{{ end }}</title>
+  {{ $ivy := resources.GetRemote "https://cdn.jsdelivr.net/gh/rlnorthcutt/ivy/dist/ivy.full.min.css" }}
+  {{ $lattice := resources.GetRemote "https://cdn.jsdelivr.net/gh/rlnorthcutt/lattice/dist/lattice.full.min.css" }}
+  <link rel="stylesheet" href="{{ $ivy.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $lattice.RelPermalink }}" />
+  {{ partial "page-styles.html" . }}
+  {{ block "head" . }}{{ end }}
+</head>
+<body>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+  {{ partial "site-header.html" . }}
+  {{- $mainClass := .Params.mainClass | default "l-place-content" -}}
+  {{- $trimmed := trim $mainClass " " -}}
+  <main id="content"{{ if $trimmed }} class="{{ $trimmed }}"{{ end }}>
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "site-footer.html" . }}
+  {{ block "body-end" . }}{{ end }}
+</body>
+</html>

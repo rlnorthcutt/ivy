@@ -1,0 +1,9 @@
+{{- $page := . -}}
+{{- if $page.IsHome -}}
+  {{ partial "styles/landing.html" $page }}
+{{- end -}}
+{{- with $page.Params.styles -}}
+  {{- range . -}}
+    {{ partial (printf "styles/%s.html" .) $page }}
+  {{- end -}}
+{{- end -}}

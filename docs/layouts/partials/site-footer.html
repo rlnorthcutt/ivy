@@ -1,0 +1,7 @@
+<footer class="l-place-content center">
+  {{ if .IsHome }}
+    <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+  {{ else }}
+    <p class="muted">{{ with .Params.footerText }}{{ . }}{{ else }}© 2025 Lattice &amp; Ivy • MIT License.{{ end }}</p>
+  {{ end }}
+</footer>

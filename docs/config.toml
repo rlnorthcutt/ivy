@@ -1,0 +1,4 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Lattice + Ivy — Minimal CSS Utilities & Classless Theme"
+uglyURLs = true

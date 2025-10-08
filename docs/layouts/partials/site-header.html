@@ -1,0 +1,16 @@
+<header class="l-place-content">
+  <div class="hero mx-auto center">
+    {{ if .IsHome }}
+      <p class="kicker">CSS micro-stack</p>
+      <h1 class="brand">Ivy (classless) + Lattice (layout)</h1>
+      <p>Write clean, semantic HTML with <strong>Ivy</strong>. Add tiny, semantic positioning with <strong>Lattice</strong>. Sprinkle a few custom rules and ship.</p>
+      <p>
+        <a role="button" data-variant="primary" href="#quickstart">Get started</a>
+        <a role="button" data-variant="outline" href="https://github.com/rlnorthcutt" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    {{ else }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.heroSubtitle }}<p class="muted">{{ . }}</p>{{ end }}
+    {{ end }}
+  </div>
+</header>

@@ -1,0 +1,31 @@
+{{ define "main" }}
+  <article>
+    {{ .Content }}
+  </article>
+{{ end }}
+
+{{ define "body-end" }}
+  <script>
+    const dlg = document.getElementById('demoDialog');
+    const openBtn = document.getElementById('openDialog');
+    const closeBtn = document.getElementById('closeDialog');
+    if (openBtn && dlg) {
+      openBtn.addEventListener('click', () => {
+        if (typeof dlg.showModal === 'function') {
+          dlg.showModal();
+        } else {
+          dlg.setAttribute('open', '');
+        }
+      });
+    }
+    if (closeBtn && dlg) {
+      closeBtn.addEventListener('click', () => {
+        if (typeof dlg.close === 'function') {
+          dlg.close();
+        } else {
+          dlg.removeAttribute('open');
+        }
+      });
+    }
+  </script>
+{{ end }}
