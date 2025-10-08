@@ -6,22 +6,22 @@
   <title>Lattice + Ivy — Minimal CSS Utilities & Classless Theme</title>
   <meta name="description" content="Lattice: tiny layout utilities. Ivy: elegant classless CSS. Pair them for clean HTML + simple positioning." />
   <meta name="keywords" content="CSS, utilities, classless, layout, design system" />
-  <link rel="stylesheet" href="ivy.full.min.css" />
-  <link rel="stylesheet" href="lattice.full.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../ivy.full.min.css" />
+  <link rel="stylesheet" href="../lattice.full.min.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
   <header class="l-place-content">
-    <div class="topbar" role="navigation" aria-label="Primary">
-      <ul class="site-nav px-5">
+    <nav role="navigation" aria-label="Primary">
+      <ul>
         <li><a href="./">Home</a></li>
         <li><a href="ivy-core.html">Ivy Core</a></li>
         <li><a href="ivy-extra.html">Ivy Extra</a></li>
         <li><dark-mode-toggle theme="auto"></dark-mode-toggle></li>
       </ul>
-    </div>
+    </nav>
     <div class="hero mx-auto center">
       <p class="kicker">CSS micro-stack</p>
       <h1 class="brand">Ivy (classless) + Lattice (layout)</h1>
@@ -152,6 +152,6 @@
   <footer class="l-place-content center">
     <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
   </footer>
-  <script type="module" src="dark-mode-toggle.js" defer></script>
+  <script type="module" src="../dark-mode-toggle.min.js" defer></script>
 </body>
 </html>
