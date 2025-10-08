@@ -8,3 +8,7 @@
     .center { text-align:center; }
     .file-table td:nth-child(1), .file-table th:nth-child(1) { white-space: nowrap; }
     footer { padding: 3rem 0 2rem; color: var(--color-muted); }
+
+    .demo-card { border:1px solid var(--color-border); border-radius:.5rem; padding:1rem; background: var(--color-bg); }
+        section { padding: 1rem 0; border-top: 1px solid var(--color-border); }
+    section:first-of-type { border-top: 0; }

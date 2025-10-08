@@ -77,7 +77,7 @@ p,ul,ol,dl,pre,table,blockquote,figure,section,article{margin:0 0 var(--m);}
 small{font-size:.875em; color:var(--color-muted);}
 strong,b{font-weight:600;} em,i{font-style:italic;}
 /* lists */
-ul,ol{padding-left:1.25em;} li+li{margin-top:.35em;}
+ul,ol{padding-left:1.25em;}
 /* horizontal rule */
 hr{border:0; height:1px; background:var(--color-border); margin:1.5rem 0;}
 /* blockquote */
