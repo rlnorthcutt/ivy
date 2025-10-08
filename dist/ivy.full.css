@@ -29,13 +29,29 @@
                "Segoe UI Emoji","Segoe UI Symbol";
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,
                "Liberation Mono","Courier New",monospace;
-  --base-size:16px; --lh:1.6; --measure:72ch; /* ideal reading width */
+  --base-size:16px; --font-size: 100%; --lh:1.6; --measure:80rem; /* ideal reading width */
   --radius:.375rem; --m:1rem; /* base spacing for Ivy (independent of Lattice) */
 }
 /* Dark scheme (minimal swaps) */
 @media (prefers-color-scheme:dark){
   :root{--color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#98a2b3;
         --color-link:#79b8ff; --color-border:#23262b; --color-surface:#111418;}
+}
+
+@media (min-width: 576px) {
+  :root,:host {--font-size: 106.25%;}
+}
+@media (min-width: 768px) {
+  :root,:host {--font-size: 112.5%;}
+}
+@media (min-width: 1024px) {
+  :root,:host {--font-size: 118.75%;}
+}
+@media (min-width: 1280px) {
+  :root,:host {--font-size: 125%;}
+}
+@media (min-width: 1536px) {
+  :root,:host {--font-size: 131.25%;}
 }
 
 /* ==========================================================================
@@ -58,7 +74,7 @@ h1{font-size:clamp(1.875rem,2vw+1rem,2.5rem);}
 h2{font-size:clamp(1.5rem,1.5vw+1rem,2rem);}
 h3{font-size:clamp(1.25rem,1vw+1rem,1.5rem);}
 h4{font-size:1.125rem;} h5{font-size:1rem;} h6{font-size:.875rem; color:var(--color-muted);}
-p,ul,ol,dl,pre,table,blockquote,figure{margin:0 0 var(--m);}
+p,ul,ol,dl,pre,table,blockquote,figure,section,article{margin:0 0 var(--m);}
 small{font-size:.875em; color:var(--color-muted);}
 strong,b{font-weight:600;} em,i{font-style:italic;}
 /* lists */
