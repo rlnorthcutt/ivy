@@ -37,7 +37,7 @@
   :root{--color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#888;
         --color-link:#00CC66; --color-border:#23262b; --color-surface:#111418;}
 }
-
+/* Responsive type scale (based on 16px root) */
 @media (min-width: 576px) {
   :root,:host {--font-size: 106.25%;}
 }
