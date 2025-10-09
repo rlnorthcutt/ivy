@@ -57,6 +57,9 @@ jobs:
       - name: Minify full bundle
         run: cleancss -o dist/ivy.full.min.css dist/ivy.full.css
 
+      - name: Copy minified full to docs
+        run cp dist/ivy.full.min.css docs/
+
       # Optionally: generate source maps (uncomment if you want them)
       # - name: Minify with source maps
       #   run: cleancss --source-map --source-map-inline-sources -o dist/ivy.full.min.css dist/ivy.full.css
