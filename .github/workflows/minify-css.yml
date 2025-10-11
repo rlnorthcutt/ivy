@@ -57,6 +57,9 @@ jobs:
       - name: Minify full bundle
         run: cleancss -o dist/ivy.full.min.css dist/ivy.full.css
 
+      - name: Copy minified full to dist
+        run: cp dist/ivy.full.min.css docs/
+
       - name: Copy minified full to docs
         run: cp dist/ivy.full.min.css docs/
 
