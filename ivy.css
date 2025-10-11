@@ -66,21 +66,13 @@ html{color-scheme:light;}
 }
 
 /* Responsive type scale (based on 16px root) */
-@media (min-width: 576px) {
-  :root,:host {--font-size: 106.25%;}
-}
-@media (min-width: 768px) {
-  :root,:host {--font-size: 112.5%;}
-}
-@media (min-width: 1024px) {
-  :root,:host {--font-size: 118.75%;}
-}
-@media (min-width: 1280px) {
-  :root,:host {--font-size: 125%;}
-}
-@media (min-width: 1536px) {
-  :root,:host {--font-size: 131.25%;}
-}
+@media (min-width: 576px)  { :root,:host { --font-size: 110%;    } } /* 17.6px */
+@media (min-width: 768px)  { :root,:host { --font-size: 115%;    } } /* 18.4px */
+@media (min-width: 1024px) { :root,:host { --font-size: 120%;    } } /* 19.2px */
+@media (min-width: 1280px) { :root,:host { --font-size: 130%;    } } /* 20.8px */
+@media (min-width: 1536px) { :root,:host { --font-size: 137.5%;  } } /* 22.0px */
+@media (min-width: 1920px) { :root,:host { --font-size: 143.75%; } } /* 23.0px */
+@media (min-width: 2560px) { :root,:host { --font-size: 150%;    } } /* 24.0px */
 
 /* ==========================================================================
    1) Document & base
