@@ -227,19 +227,21 @@ img[align=left]{float:left; margin:.25rem .75rem .5rem 0;}
 img[align=right]{float:right; margin:.25rem 0 .5rem .75rem;}
 /*!
  * Ivy Extra — optional polish for Ivy.css (CLASSLESS)
- * Version: 1.0.0-extra
+ * Version: 1.1.0-extra
  * URL: https://github.com/rlnorthcutt/ivy
  * License: MIT (https://opensource.org/licenses/MIT)
  */
- 
- /** Requires: ivy.css (CORE). Works great with Lattice.css for layout.
+
+/** Requires: ivy.css (CORE). Works great with Lattice.css for layout.
  *
  * Scope (EXTRA):
  * - Buttons (semantic + a11y) with opt-in variants via [data-variant].
  * - Details/summary, tooltips, dialog, progress, breadcrumbs.
  * - Advanced form touches: accent-color, switches, range, file button.
  * - Table striping (opt-in), small badges, busy/spinner helper.
- * Notes: classless first; no containers or layout. Keep overrides minimal.
+ * - NEW: card/box containers, callouts, button & input groups, compact/dense tables,
+ *        tiny utilities (divider, surface-*), dark/light friendly tweaks.
+ * Notes: classless first; no layout system here. Keep overrides minimal.
  */
 
 /* ==========================================================================
@@ -248,8 +250,11 @@ img[align=right]{float:right; margin:.25rem 0 .5rem .75rem;}
 :root{
   --surface-2:#f5f7fa; --surface-3:#eef2f7;
   --primary:var(--color-link); --on-primary:#ffffff;
-  --ring-color:color-mix(in oklab,var(--primary) 75%,#000 0%);
-  --ring:2px solid var(--ring-color);
+
+  /* Focus ring token; keep --ring for back-compat */
+  --focus-ring:2px solid color-mix(in oklab,var(--primary) 75%,#000 0%);
+  --ring:var(--focus-ring);
+
   --shadow-sm:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
   --shadow-md:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
 }
@@ -273,6 +278,9 @@ button:hover,[type=button]:hover,[type=submit]:hover,[type=reset]:hover,a[role=b
   background:var(--surface-3);}
 button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{
   transform:translateY(1px);}
+@media (prefers-reduced-motion:reduce){
+  button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{transform:none;}
+}
 button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,
 [type=reset]:focus-visible,a[role=button]:focus-visible{outline:var(--ring); outline-offset:2px;}
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{
@@ -303,14 +311,18 @@ details[open]{background:var(--surface-3);}
 details[open]>summary{margin-bottom:.5rem;}
 
 /* ==========================================================================
-   3) Tooltips — opt-in via [data-tooltip] and optional [data-placement]
+   3) Tooltips — opt-in via [data-tooltip] (dark/light aware)
    ========================================================================== */
 [data-tooltip]{position:relative;}
-[data-tooltip]::after{content:attr(data-tooltip); position:absolute; white-space:nowrap;
+[data-tooltip]::after{
+  content:attr(data-tooltip); position:absolute; white-space:nowrap;
   inset:auto auto calc(100% + .5rem) 50%; transform:translateX(-50%); pointer-events:none;
-  background:#111; color:#fff; padding:.35em .5em; border-radius:.35rem; font-size:.85em;
+  background:color-mix(in oklab,var(--color-text) 93%, transparent);
+  color:var(--color-bg);
+  padding:.35em .5em; border-radius:.35rem; font-size:.85em;
   opacity:0; translate:0 .25rem; transition:opacity .15s ease,translate .15s ease;
-  z-index:50;}
+  box-shadow:var(--shadow-sm); z-index:50;
+}
 [data-tooltip]:hover::after,[data-tooltip]:focus-within::after{opacity:1; translate:0 0;}
 /* placements: top (default), right, bottom, left */
 [data-placement=right]::after{inset:50% auto auto calc(100% + .5rem); transform:translateY(-50%);}
@@ -323,7 +335,10 @@ details[open]>summary{margin-bottom:.5rem;}
 dialog{border:1px solid var(--color-border); border-radius:.75rem; padding:0; margin:auto;
   background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
 dialog>article{padding:1rem 1.25rem;}
-dialog::backdrop{background:color-mix(in oklab,#000 60%,transparent); backdrop-filter:saturate(.9);}
+dialog::backdrop{
+  background:color-mix(in oklab,#000 55%,transparent);
+  backdrop-filter:saturate(.95) blur(1px);
+}
 
 /* ==========================================================================
    5) Progress — simple, theme-aware
@@ -337,8 +352,9 @@ progress::-moz-progress-bar{background:var(--primary);}
 /* ==========================================================================
    6) Tables (opt-in striping) — add data-striped to <table>
    ========================================================================== */
-table[data-striped] tbody tr:nth-child(odd){background:color-mix(in oklab,
-  var(--surface-2) 70%,transparent);}
+table[data-striped] tbody tr:nth-child(odd){
+  background:color-mix(in oklab, var(--surface-2) 70%, transparent);
+}
 tfoot td,tfoot th{color:var(--color-muted); font-weight:500;}
 
 /* ==========================================================================
@@ -357,8 +373,7 @@ input[role=switch]:checked{background:color-mix(in oklab,var(--primary) 40%,var(
 input[role=switch]:checked::after{left:calc(100% - 1.15rem);}
 input[role=switch]:focus-visible{outline:var(--ring); outline-offset:2px;}
 /* range */
-input[type=range]{appearance:none; width:100%; height:.25rem; border-radius:999px;
-  background:var(--surface-3);}
+input[type=range]{appearance:none; width:100%; height:.25rem; border-radius:999px; background:var(--surface-3);}
 input[type=range]::-webkit-slider-thumb{appearance:none; width:1rem; height:1rem; border-radius:50%;
   background:var(--primary); border:2px solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]::-moz-range-thumb{width:1rem; height:1rem; border-radius:50%;
@@ -386,9 +401,11 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
    9) Badges — tiny label chips (opt-in attribute)
    ========================================================================== */
 [aria-label][data-badge]{position:relative;}
-[aria-label][data-badge]::after{content:attr(data-badge); position:absolute; top:-.4em; right:-.4em;
+[aria-label][data-badge]::after{
+  content:attr(data-badge); position:absolute; top:-.4em; right:-.4em;
   font-size:.7em; line-height:1; background:var(--primary); color:var(--on-primary);
-  border-radius:999px; padding:.25em .45em; box-shadow:var(--shadow-sm);}
+  border-radius:999px; padding:.25em .45em; box-shadow:var(--shadow-sm);
+}
 
 /* ==========================================================================
    10) Busy/spinner — attribute-driven, no extra markup
@@ -396,12 +413,122 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
    ========================================================================== */
 @keyframes ivy-spin{to{transform:rotate(1turn);}}
 [aria-busy=true]{position:relative;}
-[aria-busy=true]::after{content:""; position:absolute; inset:auto .35rem .35rem auto; width:.9rem;
-  height:.9rem; border:2px solid color-mix(in oklab,var(--primary) 20%,transparent);
-  border-top-color:var(--primary); border-radius:50%; animation:ivy-spin .8s linear infinite;}
+[aria-busy=true]::after{
+  content:""; position:absolute; inset:auto .35rem .35rem auto; width:.9rem; height:.9rem;
+  border:2px solid color-mix(in oklab,var(--primary) 20%,transparent);
+  border-top-color:var(--primary); border-radius:50%; animation:ivy-spin .8s linear infinite;
+}
 
 /* ==========================================================================
    11) Small helpers — muted text and inline code tweak
    ========================================================================== */
 .muted{color:var(--color-muted) !important;}
 p>code{padding:.08em .3em;}
+
+/* ==========================================================================
+   12) Containers — card / box (dark-mode aware, scoped)
+   ========================================================================== */
+.card,.box{
+  background:var(--color-bg);
+  color:inherit;
+  border:1px solid var(--color-border);
+  border-radius:var(--radius);
+}
+.card{ box-shadow:var(--shadow-sm); }
+.card:hover{ box-shadow:var(--shadow-md); transition:box-shadow .15s ease; }
+
+.card,.box{ padding:1rem; }
+.card > header,.card > footer{
+  margin:-1rem; padding:.75rem 1rem; background:var(--surface-2);
+}
+.card > header{ border-bottom:1px solid var(--color-border);
+  border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
+.card > footer{ border-top:1px solid var(--color-border);
+  border-radius:0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px); }
+
+/* variants */
+.card[data-variant=soft],.box[data-variant=soft]{ background:var(--surface-2); }
+.card[data-variant=primary],.box[data-variant=primary]{
+  border-color: color-mix(in oklab,var(--primary) 45%, var(--color-border));
+  box-shadow: 0 0 0 1px color-mix(in oklab,var(--primary) 20%, transparent), var(--shadow-sm);
+}
+
+/* padding sizes */
+[data-padding=sm]{ padding:.65rem; }
+[data-padding=lg]{ padding:1.25rem; }
+
+/* ==========================================================================
+   13) Callouts — lightweight notices
+   ========================================================================== */
+.callout{
+  border:1px solid var(--color-border);
+  border-radius:var(--radius);
+  padding:.75rem 1rem;
+  background:var(--surface-2);
+}
+.callout > strong{ display:block; margin-bottom:.25rem; }
+
+.callout[data-tone=info]{
+  border-color: color-mix(in oklab, var(--color-link) 30%, var(--color-border));
+  background: color-mix(in oklab, var(--color-link) 7%, var(--surface-2));
+}
+.callout[data-tone=success]{
+  --ok:#22c55e;
+  border-color: color-mix(in oklab, var(--ok) 30%, var(--color-border));
+  background: color-mix(in oklab, var(--ok) 7%, var(--surface-2));
+}
+.callout[data-tone=warn]{
+  --warn:#f59e0b;
+  border-color: color-mix(in oklab, var(--warn) 30%, var(--color-border));
+  background: color-mix(in oklab, var(--warn) 7%, var(--surface-2));
+}
+.callout[data-tone=danger]{
+  --danger:#ef4444;
+  border-color: color-mix(in oklab, var(--danger) 30%, var(--color-border));
+  background: color-mix(in oklab, var(--danger) 7%, var(--surface-2));
+}
+
+/* ==========================================================================
+   14) Button groups — align & wrap
+   ========================================================================== */
+.btn-group{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.btn-group[data-align=center]{ justify-content:center; }
+.btn-group[data-align=end]{ justify-content:flex-end; }
+
+/* ==========================================================================
+   15) Input groups — prefix/suffix add-ons
+   ========================================================================== */
+.input-group{ display:flex; align-items:stretch; gap:0; }
+.input-group > *{ margin:0; }
+.input-group > :is(button,[type=button],[type=submit],[type=reset],.addon){
+  border-radius:0; border-right:0;
+}
+.input-group > :is(input,select,textarea){
+  border-radius:0; flex:1 1 auto;
+}
+.input-group > :first-child{
+  border-top-left-radius:var(--radius); border-bottom-left-radius:var(--radius);
+}
+.input-group > :last-child{
+  border-right:1px solid var(--color-border);
+  border-top-right-radius:var(--radius); border-bottom-right-radius:var(--radius);
+}
+.addon{
+  display:inline-flex; align-items:center; padding:.5em .7em;
+  background:var(--surface-2); border:1px solid var(--color-border); color:var(--color-muted);
+}
+
+/* ==========================================================================
+   16) Tables — compact/dense variants
+   ========================================================================== */
+table[data-compact] th, table[data-compact] td{ padding:.45rem .6rem; }
+table[data-dense]   th, table[data-dense]   td{ padding:.35rem .5rem; font-size:.95em; }
+
+/* ==========================================================================
+   17) Utility bridges (tiny, non-overlapping)
+   ========================================================================== */
+.divider{ height:1px; background:var(--color-border); margin:1rem 0; }
+.surface-2{ background:var(--surface-2); }
+.surface-3{ background:var(--surface-3); }
+/* muted links inside muted blocks */
+.muted a{ color: color-mix(in oklab, var(--color-link) 70%, var(--color-muted)); }
