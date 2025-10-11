@@ -433,18 +433,15 @@ p>code{padding:.08em .3em;}
   color:inherit;
   border:1px solid var(--color-border);
   border-radius:var(--radius);
+  padding: var(--m);
 }
 .card{ box-shadow:var(--shadow-sm); }
 .card:hover{ box-shadow:var(--shadow-md); transition:box-shadow .15s ease; }
 
-.card,.box{ padding:1rem; }
-.card > header,.card > footer{
-  margin:-1rem; padding:.75rem 1rem; background:var(--surface-2);
-}
-.card > header{ border-bottom:1px solid var(--color-border);
-  border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
-.card > footer{ border-top:1px solid var(--color-border);
-  border-radius:0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px); }
+.card>footer,.card>header { margin: calc(var(--m) * -1); margin-bottom: var(--m); padding: var(--m);}
+.card>header :is(h1, h2, h3, h4, h5, h6), .card>header :is(h1, h2, h3, h4, h5, h6)  {  margin:0;}
+.card>header { border-bottom: 1px solid var(--color-border); border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0}
+.card>footer {border-top: 1px solid var(--color-border);border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px)}
 
 /* variants */
 .card[data-variant=soft],.box[data-variant=soft]{ background:var(--surface-2); }
