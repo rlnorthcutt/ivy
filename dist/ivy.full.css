@@ -87,6 +87,8 @@ body{
 main,article,section,header,footer,aside,nav{display:block;}
 /* keep content readable by default; override with Lattice if needed */
 main,article{max-width:var(--measure); margin:0 auto; padding:0 var(--m);}
+header, footer { padding: calc(var(--m) * 2) 0;} 
+section { padding: var(--m) 0; }
 
 /* ==========================================================================
    2) Typography flow — headings, paragraphs, lists, hr, quotes
