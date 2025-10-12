@@ -194,11 +194,15 @@ button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disab
    - Selection tint, visually-hidden helpers, skip link, HC mode, print.
    ========================================================================== */
 ::selection{background:color-mix(in oklab,var(--color-link) 25%,transparent); color:inherit;}
-.sr-only{position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(1px,1px,1px,1px)!important; white-space:nowrap!important; border:0!important;}
-.sr-only-focusable:focus,.sr-only-focusable:active{position:static!important; width:auto!important; height:auto!important; margin:0!important; overflow:visible!important; clip:auto!important; white-space:inherit!important;}
-/* keyboard-accessible “skip to content” link (only visible on focus) */
-.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
-.skip-link:focus{left:auto; top:auto; padding:.4em .6em; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
+/* sr-only — visually hidden but available to screen readers (focusable) */
+.sr-only{position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important;overflow:hidden!important; clip:rect(1px,1px,1px,1px)!important; white-space:nowrap!important; border:0!important;}
+/* sr-only-focusable — becomes visible when focused/activated */
+.sr-only-focusable:focus,.sr-only-focusable:active{
+  /* unhide */
+  position:static!important; width:auto!important; height:auto!important; margin:0!important; overflow:visible!important; clip:auto!important; white-space:inherit!important;
+  /* visual */
+  padding:.4em .6em; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); z-index:9999;
+}
 /* Windows High Contrast / forced-colors safety */
 @media (forced-colors:active){
   *{outline-color:CanvasText!important;}
