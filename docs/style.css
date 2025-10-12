@@ -4,7 +4,3 @@
     section { padding: 1rem 0; }
     .brand { letter-spacing: .5px; }
     .hero {padding: 1.25rem 1rem; }
-    .kicker { font-size:.875rem; text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
-    .muted { color: var(--color-muted); } /* in case ivy.extra isn't loaded */
-    .center { text-align:center; }
-    .file-table td:nth-child(1), .file-table th:nth-child(1) { white-space: nowrap; }
