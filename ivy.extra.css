@@ -6,30 +6,57 @@
  */
 
 /** Requires: ivy.css (CORE). Works great with Lattice.css for layout.
- * Scope (EXTRA):
- * - Buttons (semantic + a11y) with opt-in variants via [data-variant].
- * - Details/summary, tooltips, dialog, progress, breadcrumbs.
- * - Advanced form touches: accent-color, switches, range, file button.
- * - Table striping (opt-in), badges, busy/spinner helper.
- * - Card/box containers, callouts, button & input groups, compact/dense tables, utilities.
- * Notes: classless-first; minimal overrides; reuse Ivy core tokens.
+ * Scope: buttons, details/summary, tooltips, dialog, progress, breadcrumbs,
+ * advanced forms, table striping/stacking, badges, busy/spinner, cards/boxes,
+ * callouts, groups, compact tables, tiny utilities.
  */
 
 /* ==========================================================================
-   0) Extra tokens — surfaces, primary, shadows
+   0) Extra tokens — surfaces, primary, shadows (light/dark + applied)
    ========================================================================== */
 :root{
-  --surface-2:#f5f7fa; --surface-3:#eef2f7;
-  --primary:var(--color-link); --on-primary:#ffffff;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
-  --shadow-md:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
+  /* light palette */
+  --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7; --on-primary-light:#ffffff;
+  --shadow-sm-light:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
+  --shadow-md-light:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
+  /* dark palette */
+  --surface-2-dark:#0f1216; --surface-3-dark:#12161b; --on-primary-dark:#0b0d10;
+  /* add light stroke so shadows read on dark bg */
+  --shadow-sm-dark:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10);
+  --shadow-md-dark:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.10);
 }
+
+/* ===========================================================================
+   Do not change or override anything below this line.
+   =========================================================================== */
+:root {
+  /* applied (defaults to light) */
+  --surface-2:var(--surface-2-light); --surface-3:var(--surface-3-light); --on-primary:var(--on-primary-light);
+  --shadow-sm:var(--shadow-sm-light); --shadow-md:var(--shadow-md-light);
+  /* primary uses core link color */
+  --primary:var(--color-link);
+}
+
+/* ==========================================================================
+   Theme switching (matches core pattern)
+   ========================================================================== */
+html{color-scheme:light;}
 @media (prefers-color-scheme:dark){
-  :root{
-    --surface-2:#0f1216; --surface-3:#12161b; --on-primary:#0b0d10;
-    --shadow-sm:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);
-    --shadow-md:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.07);
+  :root:not([data-theme]):not(.dark){
+    --surface-2:var(--surface-2-dark); --surface-3:var(--surface-3-dark); --on-primary:var(--on-primary-dark);
+    --shadow-sm:var(--shadow-sm-dark); --shadow-md:var(--shadow-md-dark);
   }
+  html:not([data-theme]):not(.dark){color-scheme:dark;}
+}
+:where([data-theme="dark"],.dark){
+  --surface-2:var(--surface-2-dark); --surface-3:var(--surface-3-dark); --on-primary:var(--on-primary-dark);
+  --shadow-sm:var(--shadow-sm-dark); --shadow-md:var(--shadow-md-dark);
+  color-scheme:dark;
+}
+:where([data-theme="light"]){
+  --surface-2:var(--surface-2-light); --surface-3:var(--surface-3-light); --on-primary:var(--on-primary-light);
+  --shadow-sm:var(--shadow-sm-light); --shadow-md:var(--shadow-md-light);
+  color-scheme:light;
 }
 
 /* ==========================================================================
@@ -49,7 +76,6 @@ button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,[ty
   outline:var(--focus-ring) solid var(--primary); outline-offset:2px;
 }
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{opacity:.6; cursor:not-allowed;}
-/* variants */
 [data-variant=primary]{background:var(--primary)!important; color:var(--on-primary)!important; border-color:color-mix(in oklab,var(--primary) 70%,#000 0%);}
 [data-variant=primary]:hover{filter:saturate(1.05) brightness(1.02);}
 [data-variant=primary]:active{filter:saturate(1.1) brightness(.98);}
@@ -61,10 +87,7 @@ button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disab
 /* ==========================================================================
    2) Details / summary — disclosure
    ========================================================================== */
-details{
-  border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);
-  padding:var(--m-0_5) var(--m-0_75); background:var(--surface-2);
-}
+details{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_5) var(--m-0_75); background:var(--surface-2);}
 details+details{margin-top:var(--m-0_75);}
 summary{cursor:pointer; font-weight:600; list-style:none;}
 summary::-webkit-details-marker{display:none;}
@@ -90,10 +113,7 @@ details[open]>summary{margin-bottom:var(--m-0_5);}
 /* ==========================================================================
    4) Dialog (<dialog>)
    ========================================================================== */
-dialog{
-  border:var(--bw-1) solid var(--color-border); border-radius:.75rem; padding:0; margin:auto;
-  background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;
-}
+dialog{border:var(--bw-1) solid var(--color-border); border-radius:.75rem; padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
 dialog>article{padding:var(--m) var(--m-0_75);}
 dialog::backdrop{background:color-mix(in oklab,#000 55%,transparent); backdrop-filter:saturate(.95) blur(1px);}
 
@@ -106,30 +126,31 @@ progress::-webkit-progress-value{background:var(--primary);}
 progress::-moz-progress-bar{background:var(--primary);}
 
 /* ==========================================================================
-   6) Tables (striping)
+   6) Tables (striping + stacking)
    ========================================================================== */
 table[data-striped] tbody tr:nth-child(odd){background:color-mix(in oklab,var(--surface-2) 70%,transparent);}
 tfoot td,tfoot th{color:var(--color-muted); font-weight:500;}
+@media (max-width:640px){
+  table[data-stack]{display:block;}
+  table[data-stack] :is(thead,tfoot){display:none;}
+  table[data-stack] tbody,table[data-stack] tr,table[data-stack] td{display:block; width:100%;}
+  table[data-stack] td{padding:var(--m-0_5) var(--m); border-bottom:var(--bw-1) solid var(--color-border);}
+  table[data-stack] td::before{content:attr(data-label) ": "; font-weight:600; color:var(--color-muted);}
+}
 
 /* ==========================================================================
    7) Forms — accent, switches, range, file button
    ========================================================================== */
 :where(input[type=checkbox],input[type=radio],progress){accent-color:var(--primary);}
-/* switch */
-input[type=checkbox][role=switch]{
-  appearance:none; width:2.5rem; height:1.35rem; border-radius:999px; background:var(--surface-3);
-  position:relative; border:var(--bw-1) solid var(--color-border); vertical-align:middle; outline:none; transition:background .15s;
-}
+input[type=checkbox][role=switch]{appearance:none; width:2.5rem; height:1.35rem; border-radius:999px; background:var(--surface-3); position:relative; border:var(--bw-1) solid var(--color-border); vertical-align:middle; outline:none; transition:background .15s;}
 input[role=switch]::after{content:""; position:absolute; left:.15rem; top:50%; width:1rem; height:1rem; transform:translateY(-50%); background:#fff; border-radius:999px; box-shadow:var(--shadow-sm); transition:left .15s;}
 input[role=switch]:checked{background:color-mix(in oklab,var(--primary) 40%,var(--surface-3));}
 input[role=switch]:checked::after{left:calc(100% - 1.15rem);}
 input[role=switch]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:2px;}
-/* range */
 input[type=range]{appearance:none; width:100%; height:.25rem; border-radius:999px; background:var(--surface-3);}
 input[type=range]::-webkit-slider-thumb{appearance:none; width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]::-moz-range-thumb{width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:6px;}
-/* file button */
 input[type=file]::-webkit-file-upload-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
 input[type=file]::file-selector-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
 input[type=file]::file-selector-button:hover{background:var(--surface-3);}
@@ -148,21 +169,15 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
    9) Badges
    ========================================================================== */
 [aria-label][data-badge]{position:relative;}
-[aria-label][data-badge]::after{
-  content:attr(data-badge); position:absolute; top:-.4em; right:-.4em; font-size:.7em; line-height:1;
-  background:var(--primary); color:var(--on-primary); border-radius:999px; padding:.25em .45em; box-shadow:var(--shadow-sm);
-}
+[aria-label][data-badge]::after{content:attr(data-badge); position:absolute; top:-.4em; right:-.4em; font-size:.7em; line-height:1; background:var(--primary); color:var(--on-primary); border-radius:999px; padding:.25em .45em; box-shadow:var(--shadow-sm);}
 
 /* ==========================================================================
    10) Busy/spinner — [aria-busy="true"]
    ========================================================================== */
 @keyframes ivy-spin{to{transform:rotate(1turn);}}
 [aria-busy=true]{position:relative;}
-[aria-busy=true]::after{
-  content:""; position:absolute; inset:auto .35rem .35rem auto; width:.9rem; height:.9rem;
-  border:var(--bw-2) solid color-mix(in oklab,var(--primary) 20%,transparent); border-top-color:var(--primary);
-  border-radius:50%; animation:ivy-spin .8s linear infinite;
-}
+[aria-busy=true]::after{content:""; position:absolute; inset:auto .35rem .35rem auto; width:.9rem; height:.9rem; border:var(--bw-2) solid color-mix(in oklab,var(--primary) 20%,transparent); border-top-color:var(--primary); border-radius:50%; animation:ivy-spin .8s linear infinite;}
+@media (prefers-reduced-motion:reduce){[aria-busy=true]::after{animation:none;}}
 
 /* ==========================================================================
    11) Containers — card / box
@@ -180,14 +195,14 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 [data-padding=lg]{padding:1.25rem;}
 
 /* ==========================================================================
-   12) Callouts
+   12) Callouts (attribute or class)
    ========================================================================== */
 .callout{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_75) var(--m); background:var(--surface-2);}
 .callout>strong{display:block; margin-bottom:.25rem;}
-.callout[data-tone=info]{border-color:color-mix(in oklab,var(--color-link) 30%,var(--color-border)); background:color-mix(in oklab,var(--color-link) 7%,var(--surface-2));}
-.callout[data-tone=success]{--ok:#22c55e; border-color:color-mix(in oklab,var(--ok) 30%,var(--color-border)); background:color-mix(in oklab,var(--ok) 7%,var(--surface-2));}
-.callout[data-tone=warn]{--warn:#f59e0b; border-color:color-mix(in oklab,var(--warn) 30%,var(--color-border)); background:color-mix(in oklab,var(--warn) 7%,var(--surface-2));}
-.callout[data-tone=danger]{--danger:#ef4444; border-color:color-mix(in oklab,var(--danger) 30%,var(--color-border)); background:color-mix(in oklab,var(--danger) 7%,var(--surface-2));}
+.callout[data-tone=info],.callout.info{border-color:color-mix(in oklab,var(--color-link) 30%,var(--color-border)); background:color-mix(in oklab,var(--color-link) 7%,var(--surface-2));}
+.callout[data-tone=success],.callout.success{border-color:color-mix(in oklab,var(--ok) 30%,var(--color-border)); background:color-mix(in oklab,var(--ok) 7%,var(--surface-2));}
+.callout[data-tone=warn],.callout.warn{border-color:color-mix(in oklab,var(--warn) 30%,var(--color-border)); background:color-mix(in oklab,var(--warn) 7%,var(--surface-2));}
+.callout[data-tone=danger],.callout.danger{border-color:color-mix(in oklab,var(--danger) 30%,var(--color-border)); background:color-mix(in oklab,var(--danger) 7%,var(--surface-2));}
 
 /* ==========================================================================
    13) Button groups
