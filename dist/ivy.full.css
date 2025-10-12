@@ -411,7 +411,7 @@ a:hover{text-decoration-thickness:var(--u-thick);}
 /* ==========================================================================
    8) Breadcrumbs — semantic structure
    ========================================================================== */
-nav[aria-label=breadcrumb] ol{display:flex; flex-wrap:wrap; gap:.35rem var(--m-0_5); padding:0; margin:0; list-style:none;}
+nav[aria-label=breadcrumb] ol{display:flex; flex-wrap:wrap; gap:0; padding:0; margin:0; list-style:none;}
 nav[aria-label=breadcrumb] li{display:flex; align-items:center; color:var(--color-muted);}
 nav[aria-label=breadcrumb] li+li::before{content:">"; margin:0 .35rem; color:var(--color-muted);}
 nav[aria-label=breadcrumb] a{text-decoration:none;}
@@ -435,7 +435,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 /* ==========================================================================
    11) Containers — card / box (with shadows)
    ========================================================================== */
-.card,.box{color:inherit; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
+.card,.box{color:inherit; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);margin:0 0 var(--m);}
 .card{box-shadow:var(--shadow-sm);}
 .card:hover{box-shadow:var(--shadow-md); transition:box-shadow .15s ease;}
 .card>footer,.card>header{margin:calc(var(--m)*-1); margin-bottom:var(--m); padding:var(--m);}
@@ -450,7 +450,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 /* ==========================================================================
    12) Callouts — attribute or class
    ========================================================================== */
-.callout{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_75) var(--m); background:var(--surface-2);}
+.callout{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_75) var(--m); background:var(--surface-2);margin:0 0 var(--m);}
 .callout>strong{display:block; margin-bottom:.25rem;}
 .callout[data-tone=info],.callout.info{border-color:color-mix(in oklab,var(--info) 45%,var(--color-border));background:color-mix(in oklab,var(--info) 12%,var(--surface-2));}
 .callout[data-tone=success],.callout.success{border-color:color-mix(in oklab,var(--ok) 45%,var(--color-border));background:color-mix(in oklab,var(--ok) 12%,var(--surface-2));}
