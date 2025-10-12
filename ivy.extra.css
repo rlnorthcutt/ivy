@@ -196,13 +196,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 }
 
 /* ==========================================================================
-   11) Small helpers — muted text and inline code tweak
-   ========================================================================== */
-.muted{color:var(--color-muted) !important;}
-p>code{padding:.08em .3em;}
-
-/* ==========================================================================
-   12) Containers — card / box (dark-mode aware, scoped)
+   11) Containers — card / box (dark-mode aware, scoped)
    ========================================================================== */
 .card,.box{
   color:inherit;
@@ -230,7 +224,7 @@ p>code{padding:.08em .3em;}
 [data-padding=lg]{ padding:1.25rem; }
 
 /* ==========================================================================
-   13) Callouts — lightweight notices
+   12) Callouts — lightweight notices
    ========================================================================== */
 .callout{
   border:1px solid var(--color-border);
@@ -261,14 +255,14 @@ p>code{padding:.08em .3em;}
 }
 
 /* ==========================================================================
-   14) Button groups — align & wrap
+   13) Button groups — align & wrap
    ========================================================================== */
 .btn-group{ display:flex; flex-wrap:wrap; gap:.5rem; }
 .btn-group[data-align=center]{ justify-content:center; }
 .btn-group[data-align=end]{ justify-content:flex-end; }
 
 /* ==========================================================================
-   15) Input groups — prefix/suffix add-ons
+   14) Input groups — prefix/suffix add-ons
    ========================================================================== */
 .input-group{ display:flex; align-items:stretch; gap:0; }
 .input-group > *{ margin:0; }
@@ -291,13 +285,13 @@ p>code{padding:.08em .3em;}
 }
 
 /* ==========================================================================
-   16) Tables — compact/dense variants
+   15) Tables — compact/dense variants
    ========================================================================== */
 table[data-compact] th, table[data-compact] td{ padding:.45rem .6rem; }
 table[data-dense]   th, table[data-dense]   td{ padding:.35rem .5rem; font-size:.95em; }
 
 /* ==========================================================================
-   17) Utility bridges (tiny, non-overlapping)
+   16) Utility bridges (tiny, non-overlapping)
    ========================================================================== */
 .divider{ height:1px; background:var(--color-border); margin:1rem 0; }
 .surface-2{ background:var(--surface-2); }
