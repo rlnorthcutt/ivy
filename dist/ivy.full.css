@@ -20,7 +20,7 @@
 :root{
   /* palette (light defaults) */
   --color-bg:#ffffff; --color-text:#1b1f23; --color-muted:#667085;
-  --color-link:#00CC66; --color-border:#e5e7eb; --color-surface:#fafafa;
+  --color-link:#00bb22; --color-border:#e5e7eb; --color-surface:#fafafa;
 
   /* typography & rhythm */
   --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,
