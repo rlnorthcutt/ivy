@@ -111,6 +111,11 @@ blockquote{
 /* figure */
 figure{margin:0 0 var(--m);}
 figcaption{margin-top:.5rem; color:var(--color-muted); font-size:.875em; text-align:center;}
+/*helpers*/
+.muted{color:var(--color-muted) !important;}
+.center { text-align: center; }
+.eyebrow { font-size: .875rem; color: var(--color-muted); }
+.kicker { font-size:.875rem; text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
 
 /* ==========================================================================
    3) Links and nav
@@ -149,6 +154,7 @@ kbd{
   background:var(--color-surface); border:1px solid var(--color-border);
   border-bottom-width:2px; border-radius:.25rem; padding:.15em .4em;
 }
+p>code{padding:.08em .3em;}
 
 /* ==========================================================================
    5) Media — images, video, svg
