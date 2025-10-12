@@ -1,6 +1,2 @@
 /* tiny polish for this landing page only (keeps libs unopinionated) */
-    header { padding: 3rem 0 2rem; }
-    footer { padding: 3rem 0 2rem; color: var(--color-muted); }
-    section { padding: 1rem 0; }
-    .brand { letter-spacing: .5px; }
-    .hero {padding: 1.25rem 1rem; }
+
