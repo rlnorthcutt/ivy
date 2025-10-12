@@ -36,6 +36,7 @@
 
   /* primary uses core link color to remain in sync with theme */
   --primary:var(--color-link);
+  --spinner-size:1.1rem; --spinner-thickness:3px;
 }
 
 /* theme switching (mirrors core; remaps applied tokens) */
@@ -186,7 +187,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
    ========================================================================== */
 @keyframes ivy-spin{to{transform:rotate(1turn);}}
 [aria-busy=true]{position:relative;}
-[aria-busy=true]::after{content:""; position:absolute; inset:auto .35rem .35rem auto; width:.9rem; height:.9rem; border:var(--bw-2) solid color-mix(in oklab,var(--primary) 20%,transparent); border-top-color:var(--primary); border-radius:50%; animation:ivy-spin .8s linear infinite;}
+[aria-busy=true]::after{content:""; position:absolute; inset:auto .35rem .35rem auto;width:var(--spinner-size); height:var(--spinner-size);border:var(--spinner-thickness) solid color-mix(in oklab,var(--primary) 20%,transparent);border-top-color:var(--primary); border-radius:50%;animation:ivy-spin .8s linear infinite;}
 @media (prefers-reduced-motion:reduce){[aria-busy=true]::after{animation:none;}}
 
 /* ==========================================================================
@@ -209,10 +210,10 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
    ========================================================================== */
 .callout{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_75) var(--m); background:var(--surface-2);}
 .callout>strong{display:block; margin-bottom:.25rem;}
-.callout[data-tone=info],.callout.info{border-color:color-mix(in oklab,var(--color-link) 30%,var(--color-border)); background:color-mix(in oklab,var(--color-link) 7%,var(--surface-2));}
-.callout[data-tone=success],.callout.success{border-color:color-mix(in oklab,var(--ok) 30%,var(--color-border)); background:color-mix(in oklab,var(--ok) 7%,var(--surface-2));}
-.callout[data-tone=warn],.callout.warn{border-color:color-mix(in oklab,var(--warn) 30%,var(--color-border)); background:color-mix(in oklab,var(--warn) 7%,var(--surface-2));}
-.callout[data-tone=danger],.callout.danger{border-color:color-mix(in oklab,var(--danger) 30%,var(--color-border)); background:color-mix(in oklab,var(--danger) 7%,var(--surface-2));}
+.callout[data-tone=info],.callout.info{border-color:color-mix(in oklab,var(--info) 45%,var(--color-border));background:color-mix(in oklab,var(--info) 12%,var(--surface-2));}
+.callout[data-tone=success],.callout.success{border-color:color-mix(in oklab,var(--ok) 45%,var(--color-border));background:color-mix(in oklab,var(--ok) 12%,var(--surface-2));}
+.callout[data-tone=warn],.callout.warn{border-color:color-mix(in oklab,var(--warn) 45%,var(--color-border));background:color-mix(in oklab,var(--warn) 12%,var(--surface-2));}
+.callout[data-tone=danger],.callout.danger{border-color:color-mix(in oklab,var(--danger) 45%,var(--color-border));background:color-mix(in oklab,var(--danger) 12%,var(--surface-2));}
 
 /* ==========================================================================
    13) Groups + helpers — button groups, nav align, typographic helpers
