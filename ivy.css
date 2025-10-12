@@ -46,7 +46,7 @@ html{color-scheme:light;}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme]):not(.dark){
     --color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#98a2b3;
-    --color-link:#79b8ff; --color-border:#23262b; --color-surface:#111418;
+    --color-border:#23262b; --color-surface:#111418;
   }
   html:not([data-theme]):not(.dark){color-scheme:dark;}
 }
