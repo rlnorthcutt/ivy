@@ -16,6 +16,7 @@
 
 /* ==========================================================================
    0) Root tokens — palette, type scale, rhythm
+    - Override these to customize the base look & feel.
    ========================================================================== */
 :root{
   /* palette (light defaults) */
@@ -30,6 +31,36 @@
                "Liberation Mono","Courier New",monospace;
   --base-size:16px; --font-size: 100%; --lh:1.6; --measure:64rem;
   --radius:.375rem; --m:1rem;
+}
+
+/* ===========================================================================
+   Do not change or override anything below this line.
+   =========================================================================== */
+
+/* ==========================================================================
+   Calculated Vars — minimal (derived from --m). Edit --m to scale rhythm.
+   ========================================================================== */
+:root{
+  /* Spacing scale (high reuse only) */
+  --m-0_5:  calc(var(--m) * 0.5);     /* 0.5rem  */
+  --m-0_75: calc(var(--m) * 0.75);    /* 0.75rem */
+  --m-0_875:calc(var(--m) * 0.875);   /* 0.875rem */
+  --m-1_5:  calc(var(--m) * 1.5);     /* 1.5rem  */
+  --m-2:    calc(var(--m) * 2);       /* 2rem    */
+
+  /* Type helper */
+  --fs-sm:  var(--m-0_875);           /* small text: h6, eyebrow/kicker, captions */
+
+  /* Radius tokens (fixed for stable look) */
+  --radius-sm: .25rem;
+  --radius-xs: .125rem;
+
+  /* Borders / focus / underline */
+  --bw-1: 1px;
+  --bw-2: 2px;
+  --focus-ring: var(--bw-2);
+  --u-offset: 2px;                    /* text-underline-offset */
+  --u-thick:  2px;                    /* hover underline thickness */
 }
 
 /* ==========================================================================
@@ -87,7 +118,7 @@ body{
 main,article,section,header,footer,aside,nav{display:block;}
 /* keep content readable by default; override with Lattice if needed */
 main,article{max-width:var(--measure); margin:0 auto; padding:0 var(--m);}
-header, footer { padding: calc(var(--m) * 2) 0;} 
+header, footer { padding: var(--m-2) 0;} 
 section { padding: var(--m) 0; }
 
 /* ==========================================================================
@@ -97,42 +128,42 @@ h1,h2,h3,h4,h5,h6{margin:0 0 .75em; line-height:1.2; font-weight:700;}
 h1{font-size:clamp(1.875rem,2vw+1rem,2.5rem);}
 h2{font-size:clamp(1.5rem,1.5vw+1rem,2rem);}
 h3{font-size:clamp(1.25rem,1vw+1rem,1.5rem);}
-h4{font-size:1.125rem;} h5{font-size:1rem;} h6{font-size:.875rem; color:var(--color-muted);}
+h4{font-size:1.125rem;} h5{font-size:1rem;} h6{font-size:var(--fs-sm); color:var(--color-muted);}
 p,ul,ol,dl,pre,table,blockquote,figure,section,article{margin:0 0 var(--m);}
 small{font-size:.875em; color:var(--color-muted);}
 strong,b{font-weight:600;} em,i{font-style:italic;}
 /* lists */
 ul,ol{padding-left:1.25em;}
 /* horizontal rule */
-hr{border:0; height:1px; background:var(--color-border); margin:1.5rem 0;}
+hr{border:0; height:var(--bw-1); background:var(--color-border); margin:var(--m-1_5) 0;}
 /* blockquote */
 blockquote{
-  margin:0 0 var(--m); padding-left:1rem; border-left:3px solid var(--color-border);
+  margin:0 0 var(--m); padding-left:var(--m); border-left:3px solid var(--color-border);
   color:var(--color-muted); font-style:italic;
 }
 /* figure */
 figure{margin:0 0 var(--m);}
-figcaption{margin-top:.5rem; color:var(--color-muted); font-size:.875em; text-align:center;}
+figcaption{margin-top:.5rem; color:var(--color-muted); font-size:var(--fs-sm); text-align:center;}
 /*helpers*/
 .muted{color:var(--color-muted) !important;}
 .center { text-align: center; }
-.eyebrow { font-size: .875rem; color: var(--color-muted); }
-.kicker { font-size:.875rem; text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
+.eyebrow { font-size: var(--fs-sm); color: var(--color-muted); }
+.kicker { font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
 
 /* ==========================================================================
    3) Links and nav
    ========================================================================== */
-a{color:var(--color-link); text-decoration:underline; text-underline-offset:2px;}
-a:hover{text-decoration-thickness:2px;}
-a:focus-visible{outline:2px solid var(--color-link); outline-offset:2px; border-radius:.125rem;}
+a{color:var(--color-link); text-decoration:underline; text-underline-offset:var(--u-offset);}
+a:hover{text-decoration-thickness:var(--u-thick);}
+a:focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px; border-radius:var(--radius-xs);}
 
 nav{margin:0 0 var(--m);}
 nav>ul,nav>ol{
-  display:flex; flex-wrap:wrap; align-items:center; gap:calc(var(--m)/2);
+  display:flex; flex-wrap:wrap; align-items:center; gap:var(--m-0_5);
   list-style:none; margin:0; padding:0;
 }
 nav li{display:flex; align-items:center;}
-nav a{display:inline-block; padding:.25rem .2rem; text-decoration:none;}
+nav a{display:inline-block; padding:.25rem .2rem; text-decoration:none;font-size:118.875%}
 nav a:hover{text-decoration:underline;}
 nav [aria-current=page]{font-weight:700;}
 /* opt-in alignment */
@@ -144,17 +175,17 @@ nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
    ========================================================================== */
 code,kbd,pre,samp{font-family:var(--font-mono); font-size:.95em;}
 code{
-  background:var(--color-surface); border:1px solid var(--color-border);
-  padding:.1em .35em; border-radius:.25rem;
+  background:var(--color-surface); border:var(--bw-1) solid var(--color-border);
+  padding:.1em .35em; border-radius:var(--radius-sm);
 }
 pre{
-  padding:1rem; overflow:auto; background:var(--color-surface);
-  border:1px solid var(--color-border); border-radius:.375rem;
+  padding:var(--m); overflow:auto; background:var(--color-surface);
+  border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);
 }
 pre>code{background:transparent; border:0; padding:0; font-size:1em;}
 kbd{
-  background:var(--color-surface); border:1px solid var(--color-border);
-  border-bottom-width:2px; border-radius:.25rem; padding:.15em .4em;
+  background:var(--color-surface); border:var(--bw-1) solid var(--color-border);
+  border-bottom-width:var(--bw-2); border-radius:var(--radius-sm); padding:.15em .4em;
 }
 p>code{padding:.08em .3em;}
 
@@ -169,8 +200,8 @@ iframe{max-width:100%; border:0;}
    6) Tables — minimal, readable
    ========================================================================== */
 table{width:100%; border-collapse:collapse;}
-th,td{padding:.625rem .75rem; border-bottom:1px solid var(--color-border); text-align:left;}
-thead th{border-bottom:2px solid var(--color-border);}
+th,td{padding:calc(var(--m) * 0.625) var(--m-0_75); border-bottom:var(--bw-1) solid var(--color-border); text-align:left;}
+thead th{border-bottom:var(--bw-2) solid var(--color-border);}
 caption{caption-side:bottom; padding:.5rem 0; color:var(--color-muted); font-size:.9em;}
 
 /* ==========================================================================
@@ -191,18 +222,18 @@ select{
   background-size:.4em .4em,.4em .4em,100% 100%; background-repeat:no-repeat;
 }
 input::placeholder,textarea::placeholder{color:var(--color-muted);}
-fieldset{border:1px solid var(--color-border); border-radius:var(--radius); padding:1rem;}
+fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
 legend{padding:0 .35rem; color:var(--color-muted);}
 /* buttons: minimal reset so they look decent but not “themed” */
 button,[type=button],[type=submit],[type=reset]{
-  display:inline-block; width:auto; padding:.5em .8em; border:1px solid var(--color-border);
+  display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid var(--color-border);
   border-radius:var(--radius); background:var(--color-surface); cursor:pointer;
 }
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{
   opacity:.6; cursor:not-allowed;
 }
 /* focus states */
-:focus-visible{outline:2px solid var(--color-link); outline-offset:2px;}
+:focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px;}
 
 /* ==========================================================================
    8) Selection, helpers, misc
@@ -222,6 +253,3 @@ button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disab
   margin:0 !important; overflow:visible !important; clip:auto !important;
   white-space:inherit !important;
 }
-/* deprecated HTML alignment attrs (common in old content) */
-img[align=left]{float:left; margin:.25rem .75rem .5rem 0;}
-img[align=right]{float:right; margin:.25rem 0 .5rem .75rem;}
