@@ -26,7 +26,7 @@
   --color-link-light:#00bb22; --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
   /* palette (dark) */
   --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
-  --color-link-dark:#79b8ff; --color-border-dark:#23262b; --color-surface-dark:#111418;
+  --color-link-dark:#00bb22; --color-border-dark:#23262b; --color-surface-dark:#111418;
   /* applied palette (defaults to light; theme switch remaps these) */
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
   --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
