@@ -1,39 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Ivy Extra — Patterns Showcase</title>
-
-  <link rel="stylesheet" href="ivy.full.min.css" />
+  <meta name="description" content="Ivy: elegant classless CSS. Extra library demo page.">
+  <meta name="keywords" content="CSS, utilities, classless, layout, design system">
+  <!-- keep existing includes as requested -->
+  <link rel="stylesheet" href="ivy.full.min.css">
   <link rel="stylesheet" href="lattice.full.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+  <a class="sr-only sr-only-focusable skip-link" href="#content">Skip to content</a>
 
-  <header class="l-place-content">
-    <nav class="grid-container px-5" role="navigation" aria-label="Primary">
-        <ul class="col-span-11 d-flex gap-2">
-            <li><a href="./">Home</a></li>
-            <li><a href="ivy-core.html">Ivy Core</a></li>
-            <li><a href="ivy-extra.html">Ivy Extra</a></li>
-        </ul>
-        <dark-mode-toggle theme="auto" class="col-start-12"></dark-mode-toggle>
+  <!-- Site header (kept) -->
+  <header class="lattice" role="banner">
+    <nav class="container d-flex justify-between" aria-label="Primary">
+      <ul class="d-flex gap-2 m-0 p-0">
+        <li><a href="./">Home</a></li>
+        <li><a href="ivy-core.html">Ivy Core</a></li>
+        <li><a href="ivy-extra.html" aria-current="page">Ivy Extra</a></li>
+      </ul>
+      <dark-mode-toggle theme="auto" strategy="attr" dark-class="dark"></dark-mode-toggle>
     </nav>
-    
-    <div class="hero mx-auto center">
-      <p class="kicker">CSS micro-stack</p>
-      <h1>Ivy Extra — Optional Polish</h1>
-      <p>Buttons, details, tooltips, dialog, progress, forms, breadcrumbs, badges, busy.</p>
-      </p>
-    </div>
   </header>
 
-  <main>
-    <article>
-      <section aria-labelledby="buttons">
-        <h2 id="buttons">Buttons (classless + data-variant)</h2>
+  <!-- Intro hero (kept) -->
+  <main id="content">
+    <section class="container hero center px-5 py-4">
+      <p class="kicker">CSS micro-stack</p>
+      <h1>Ivy EXTRA — Optional Polish</h1>
+      <p>Buttons, details, tooltips, dialog, progress, tables, forms, breadcrumbs, badges, busy, cards/boxes, callouts, groups, utilities.</p>
+    </section>
+
+    <article class="container">
+      <!-- 1) Buttons — base + variants/sizes -->
+      <section id="buttons">
+        <h2>Buttons</h2>
         <p>
           <button>Default</button>
           <button data-variant="primary">Primary</button>
@@ -47,8 +50,9 @@
         </p>
       </section>
 
-      <section aria-labelledby="details">
-        <h2 id="details">Details / Summary</h2>
+      <!-- 2) Details / summary -->
+      <section id="details">
+        <h2>Details / Summary</h2>
         <details>
           <summary>What is Ivy Extra?</summary>
           <p>Ivy Extra is an optional polish layer over the classless core.</p>
@@ -59,8 +63,9 @@
         </details>
       </section>
 
-      <section aria-labelledby="tooltips">
-        <h2 id="tooltips">Tooltips (data attributes)</h2>
+      <!-- 3) Tooltips -->
+      <section id="tooltips">
+        <h2>Tooltips</h2>
         <p>
           <button data-tooltip="Default (top)">Top</button>
           <button data-tooltip="On the right" data-placement="right">Right</button>
@@ -69,8 +74,9 @@
         </p>
       </section>
 
-      <section aria-labelledby="dialog">
-        <h2 id="dialog">Dialog</h2>
+      <!-- 4) Dialog -->
+      <section id="dialog">
+        <h2>Dialog</h2>
         <p><button id="openDialog" data-variant="primary">Open dialog</button></p>
         <dialog id="demoDialog">
           <article>
@@ -81,13 +87,17 @@
         </dialog>
       </section>
 
-      <section aria-labelledby="progress">
-        <h2 id="progress">Progress</h2>
+      <!-- 5) Progress -->
+      <section id="progress">
+        <h2>Progress</h2>
         <p><progress max="100" value="32">32%</progress></p>
       </section>
 
-      <section aria-labelledby="tables">
-        <h2 id="tables">Striped Table (opt-in)</h2>
+      <!-- 6) Tables — striped / stacked / compact / dense -->
+      <section id="tables">
+        <h2>Tables</h2>
+
+        <h3>Striped (opt-in)</h3>
         <table data-striped>
           <thead><tr><th>Task</th><th>Status</th><th>Owner</th></tr></thead>
           <tbody>
@@ -97,17 +107,44 @@
           </tbody>
           <tfoot><tr><td colspan="3">Totals: 3</td></tr></tfoot>
         </table>
+
+        <h3 class="eyebrow">Responsive, stacked (≤640px)</h3>
+        <table data-stack>
+          <thead><tr><th>Label</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr>
+              <td data-label="Label">Version</td>
+              <td data-label="Value">1.0.0</td>
+            </tr>
+            <tr>
+              <td data-label="Label">License</td>
+              <td data-label="Value">MIT</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="eyebrow">Compact / Dense</h3>
+        <table data-compact>
+          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+          <tbody><tr><td>Paper</td><td>3</td><td>$6.00</td></tr></tbody>
+        </table>
+        <table data-dense>
+          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+          <tbody><tr><td>Pens</td><td>2</td><td>$3.50</td></tr></tbody>
+        </table>
       </section>
 
-      <section aria-labelledby="forms">
-        <h2 id="forms">Form Enhancements</h2>
-        <p><label><input type="checkbox" role="switch" /> Enable notifications</label></p>
-        <p><label>Volume <input type="range" value="60" /></label></p>
-        <p><label>Upload <input type="file" /></label></p>
+      <!-- 7) Forms — accent-color, switches, range, file -->
+      <section id="forms">
+        <h2>Form Enhancements</h2>
+        <p><label><input type="checkbox" role="switch"> Enable notifications</label></p>
+        <p><label>Volume <input type="range" value="60"></label></p>
+        <p><label>Upload <input type="file"></label></p>
       </section>
 
-      <section aria-labelledby="breadcrumbs">
-        <h2 id="breadcrumbs">Breadcrumbs</h2>
+      <!-- 8) Breadcrumbs -->
+      <section id="breadcrumbs">
+        <h2>Breadcrumbs</h2>
         <nav aria-label="breadcrumb">
           <ol>
             <li><a href="#">Home</a></li>
@@ -117,42 +154,92 @@
         </nav>
       </section>
 
-      <section aria-labelledby="badges">
-        <h2 id="badges">Badges (data-badge)</h2>
+      <!-- 9) Badges -->
+      <section id="badges">
+        <h2>Badges</h2>
         <p>
-          <span aria-label="Inbox" data-badge="4" class="demo-card">Inbox</span>
-          <span aria-label="Alerts" data-badge="9" class="demo-card">Alerts</span>
+          <span aria-label="Inbox" data-badge="4">Inbox</span>
+          <span aria-label="Alerts" data-badge="9" style="margin-left:.75rem;">Alerts</span>
         </p>
       </section>
 
-      <section aria-labelledby="busy">
-        <h2 id="busy">Busy / Spinner</h2>
-        <div class="demo-card" aria-busy="true" style="min-height:3rem;">
-          Loading… (spinner is positioned in the corner)
-        </div>
+      <!-- 10) Busy / spinner -->
+      <section id="busy">
+        <h2>Busy / Spinner</h2>
+        <div class="card" aria-busy="true" style="min-height:3rem;">Loading… (spinner in the corner)</div>
       </section>
 
-      <section aria-labelledby="muted">
-        <h2 id="muted">Muted &amp; Inline Code</h2>
-        <p class="muted">This is muted text for secondary information.</p>
-        <p>Inline code tweak: <code>npm run build</code></p>
+      <!-- 11) Containers — card / box -->
+      <section id="containers">
+        <h2>Containers</h2>
+        <div class="box" style="margin-bottom:1rem;">
+          <strong>Box</strong>
+          <p>Neutral container with border + radius.</p>
+        </div>
+        <div class="card" style="margin-bottom:1rem;">
+          <strong>Card</strong>
+          <p>Card with elevation; hover to see shadow.</p>
+        </div>
+        <div class="card" data-variant="soft" style="margin-bottom:1rem;">
+          <strong>Card (soft)</strong>
+          <p>Softer surface background.</p>
+        </div>
+        <div class="card" data-variant="primary" style="margin-bottom:1rem;">
+          <strong>Card (primary)</strong>
+          <p>Primary-accented border + subtle ring.</p>
+        </div>
+        <div class="card" data-padding="sm" style="margin-bottom:1rem;"><strong>Small padding</strong></div>
+        <div class="card" data-padding="lg"><strong>Large padding</strong></div>
+      </section>
+
+      <!-- 12) Callouts — attribute or class -->
+      <section id="callouts">
+        <h2>Callouts</h2>
+        <div class="callout"><strong>Note</strong><p>Neutral callout.</p></div>
+        <div class="callout info"><strong>Info</strong><p>Using class tone.</p></div>
+        <div class="callout" data-tone="success"><strong>Success</strong><p>Using attribute tone.</p></div>
+        <div class="callout warn"><strong>Warning</strong><p>Be careful.</p></div>
+        <div class="callout danger"><strong>Danger</strong><p>Action required.</p></div>
+      </section>
+
+      <!-- 13) Groups + helpers -->
+      <section id="groups">
+        <h2>Groups &amp; Helpers</h2>
+        <div class="btn-group" style="margin-bottom:1rem;">
+          <button data-variant="outline">Prev</button>
+          <button data-variant="primary">Save</button>
+          <button data-variant="ghost">Next</button>
+        </div>
+        <div class="btn-group" data-align="center" style="margin-bottom:1rem;">
+          <button>One</button><button>Two</button><button>Three</button>
+        </div>
+        <nav data-align="end" aria-label="Aligned nav">
+          <ul><li><a href="#">Aligned Right</a></li></ul>
+        </nav>
+        <p class="eyebrow">Eyebrow helper</p>
+        <p class="kicker">Kicker helper</p>
+      </section>
+
+      <!-- 14) Utilities -->
+      <section id="utilities">
+        <h2>Utilities</h2>
+        <div class="divider"></div>
+        <p class="surface-2" style="padding:.5rem;">Surface-2 block</p>
+        <p class="surface-3" style="padding:.5rem;">Surface-3 block</p>
+        <p class="muted">Muted text with a <a href="#">muted link</a>.</p>
       </section>
     </article>
   </main>
 
-<footer class="l-place-content center">
+  <footer class="l-place-content center">
     <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
   </footer>
-  <script type="module" src="dark-mode-toggle.min.js" defer></script>
 
+  <script type="module" src="dark-mode-toggle.min.js" defer></script>
   <script>
-    const dlg = document.getElementById('demoDialog');
-    document.getElementById('openDialog').addEventListener('click', () => {
-      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
-    });
-    document.getElementById('closeDialog').addEventListener('click', () => {
-      if (dlg.close) dlg.close(); else dlg.removeAttribute('open');
-    });
+    const dlg=document.getElementById('demoDialog');
+    document.getElementById('openDialog').addEventListener('click',()=>{ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); });
+    document.getElementById('closeDialog').addEventListener('click',()=>{ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
   </script>
 </body>
 </html>
