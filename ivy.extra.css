@@ -116,7 +116,7 @@ dialog::backdrop{background:color-mix(in oklab,#000 55%,transparent); backdrop-f
 /* ==========================================================================
    5) Progress — theme-aware
    ========================================================================== */
-progress{width:100%; height:.5rem; appearance:none; border:0; background:var(--surface-2); border-radius:999px; overflow:hidden;}
+progress{width:100%; height:var(--m); appearance:none; border:0; background:var(--surface-2); border-radius:999px; overflow:hidden;}
 progress::-webkit-progress-bar{background:var(--surface-2);}
 progress::-webkit-progress-value{background:var(--primary);}
 progress::-moz-progress-bar{background:var(--primary);}
@@ -154,13 +154,26 @@ input[role=switch]:checked::after{left:calc(100% - 1.15rem);}
 input[role=switch]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:2px;}
 /* kbd embellishment (moved from core) */
 kbd{border-bottom-width:var(--bw-2);}
-input[type=range]{appearance:none; width:100%; height:.25rem; border-radius:999px; background:var(--surface-3);}
+/* range (volume) — filled track to the left of the thumb */
+input[type=range]{
+  appearance:none; width:100%; height:.25rem; border-radius:999px;
+  /* base + filled-left segment via gradient (WebKit/Blink) */
+  --range-fill:color-mix(in oklab,var(--primary) 40%,transparent);
+  background:linear-gradient(var(--range-fill),var(--range-fill)) 0/var(--range-progress,0%) 100% no-repeat,var(--surface-3);
+}
 input[type=range]::-webkit-slider-thumb{appearance:none; width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]::-moz-range-thumb{width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
+input[type=range]::-moz-range-track{height:.25rem; border-radius:999px; background:var(--surface-3);}
+input[type=range]::-moz-range-progress{height:.25rem; border-radius:999px; background:var(--range-fill);}
 input[type=range]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:6px;}
-/* nicer file pick button */
-input[type=file]::-webkit-file-upload-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
-input[type=file]::file-selector-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
+/* nicer file pick button — match default button look */
+input[type=file]::-webkit-file-upload-button,
+input[type=file]::file-selector-button{
+  color:inherit; background:var(--surface-2); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);
+  padding:.55em .9em; line-height:1.25; box-shadow:var(--shadow-sm); cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+input[type=file]::-webkit-file-upload-button:hover,
 input[type=file]::file-selector-button:hover{background:var(--surface-3);}
 /* legend + hover underline nicety (moved from core) */
 legend{padding:0 .35rem; color:var(--color-muted);}
@@ -171,7 +184,7 @@ a:hover{text-decoration-thickness:var(--u-thick);}
    ========================================================================== */
 nav[aria-label=breadcrumb] ol{display:flex; flex-wrap:wrap; gap:.35rem var(--m-0_5); padding:0; margin:0; list-style:none;}
 nav[aria-label=breadcrumb] li{display:flex; align-items:center; color:var(--color-muted);}
-nav[aria-label=breadcrumb] li+li::before{content:"/"; margin:0 .35rem; color:var(--color-border);}
+nav[aria-label=breadcrumb] li+li::before{content:">"; margin:0 .35rem; color:var(--color-muted);}
 nav[aria-label=breadcrumb] a{text-decoration:none;}
 nav[aria-label=breadcrumb] a:hover{text-decoration:underline;}
 nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
