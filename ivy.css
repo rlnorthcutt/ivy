@@ -5,61 +5,66 @@
  * License: MIT (https://opensource.org/licenses/MIT)
  */
 
-/** Scope (CORE):
- * - Document & typography rhythm (fluid headings, readable line-length).
- * - Minimal color tokens (bg/text/muted/link/border) + dark scheme.
- * - Clean element defaults: links, lists, blockquotes, code/pre, media.
- * - Minimal tables & basic form controls (no component theming).
- * - Tiny a11y touches (selection, focus-visible, sr-only).
- * Use Lattice.css for layout & placement; add only tiny custom CSS on top.
+/** Scope (CORE)
+ * - Readable defaults for HTML elements (typography, code, tables, forms, media).
+ * - Minimal color tokens with light/dark support.
+ * - Tiny a11y improvements (focus-visible, skip link, sr-only) + print + forced-colors.
+ * - No components; no layout system (use Lattice.css for placement).
+ * Philosophy
+ * - Keep core tiny; move polish to ivy.extra.css.
+ * - Prefer variables; only keep calculated vars that “pay rent” (used ≥ 2–3×).
  */
 
 /* ==========================================================================
    0) Root tokens — palette, type scale, rhythm
-   - Override these to customize the base look & feel.
+   - Define both light AND dark palettes here.
+   - “Applied” tokens (e.g., --color-bg) default to light and are remapped by theme.
    ========================================================================== */
 :root{
-  /* palette (light defaults) */
+  /* palette (light) */
   --color-bg-light:#ffffff; --color-text-light:#1b1f23; --color-muted-light:#667085;
   --color-link-light:#00bb22; --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
-  /* palette (dark defaults) */
+  /* palette (dark) */
   --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
-  --color-link-dark:#00bb22; --color-border-dark:#23262b; --color-surface-dark:#111418;
-
-  /* applied palette (defaults to light) */
+  --color-link-dark:#79b8ff; --color-border-dark:#23262b; --color-surface-dark:#111418;
+  /* applied palette (defaults to light; theme switch remaps these) */
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
   --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
 
-  /* typography & rhythm */
+  /* type & rhythm (global scales) */
   --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
   --base-size:16px; --font-size:100%; --lh:1.6; --measure:64rem;
   --radius:.375rem; --m:1rem;
-  /* semantic states */
+
+  /* semantic states (reused across core & extra) */
   --ok:#22c55e; --warn:#f59e0b; --danger:#ef4444;
 }
 
 /* ===========================================================================
-   Do not change or override anything below this line.
+   Do not change below (core defaults). Use overrides or Extra for customization.
    =========================================================================== */
 
 /* ==========================================================================
-   Calculated Vars — minimal (derived from --m). Edit --m to scale rhythm.
+   Calculated Vars — minimal (derived from --m)
+   - Only keep high-use values to keep core slim.
    ========================================================================== */
 :root{
-  /* spacing scale (high reuse only) */
-  --m-0_5:calc(var(--m)*0.5); --m-0_75:calc(var(--m)*0.75); --m-0_875:calc(var(--m)*0.875);
-  --m-1_5:calc(var(--m)*1.5); --m-2:calc(var(--m)*2);
-  /* type helper */
+  /* spacing scale */
+  --m-0_5:calc(var(--m)*0.5); --m-0_75:calc(var(--m)*0.75); --m-0_875:calc(var(--m)*0.875); --m-2:calc(var(--m)*2);
+  /* type helper (small) */
   --fs-sm:var(--m-0_875);
-  /* radius tokens (fixed for stable look) */
+  /* radii */
   --radius-sm:.25rem; --radius-xs:.125rem;
-  /* borders / focus / underline */
-  --bw-1:1px; --bw-2:2px; --focus-ring:var(--bw-2); --u-offset:2px; --u-thick:2px;
+  /* borders, focus, underline */
+  --bw-1:1px; --bw-2:2px; --focus-ring:var(--bw-2);
+  --u-offset:2px; --u-thick:2px;
 }
 
 /* ==========================================================================
    Theme switching
+   - Applied tokens remapped via prefers-color-scheme or explicit [data-theme]/.dark.
+   - color-scheme hints native form controls.
    ========================================================================== */
 html{color-scheme:light;}
 @media (prefers-color-scheme:dark){
@@ -79,6 +84,7 @@ html{color-scheme:light;}
   --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
   color-scheme:light;
 }
+/* responsive root type (based on 16px) */
 @media (min-width:576px){:root,:host{--font-size:110%;}}
 @media (min-width:768px){:root,:host{--font-size:115%;}}
 @media (min-width:1024px){:root,:host{--font-size:120%;}}
@@ -89,6 +95,7 @@ html{color-scheme:light;}
 
 /* ==========================================================================
    1) Document & base
+   - Default readable width; layout handled by Lattice.css if needed.
    ========================================================================== */
 *{box-sizing:border-box;}
 html{font-size:100%;}
@@ -99,7 +106,8 @@ header,footer{padding:var(--m-2) 0;}
 section{padding:var(--m) 0;}
 
 /* ==========================================================================
-   2) Typography flow — headings, paragraphs, lists, hr, quotes
+   2) Typography flow
+   - Fluid headings; comfy paragraph rhythm; minimal helpers.
    ========================================================================== */
 h1,h2,h3,h4,h5,h6{margin:0 0 .75em; line-height:1.2; font-weight:700;}
 h1{font-size:clamp(1.875rem,2vw+1rem,2.5rem);}
@@ -110,20 +118,17 @@ p,ul,ol,dl,pre,table,blockquote,figure,section,article{margin:0 0 var(--m);}
 small{font-size:.875em; color:var(--color-muted);}
 strong,b{font-weight:600;} em,i{font-style:italic;}
 ul,ol{padding-left:1.25em;}
-hr{border:0; height:var(--bw-1); background:var(--color-border); margin:var(--m-1_5) 0;}
+hr{border:0; height:var(--bw-1); background:var(--color-border); margin:var(--m-2) 0;}
 blockquote{margin:0 0 var(--m); padding-left:var(--m); border-left:3px solid var(--color-border); color:var(--color-muted); font-style:italic;}
 figure{margin:0 0 var(--m);}
 figcaption{margin-top:.5rem; color:var(--color-muted); font-size:var(--fs-sm); text-align:center;}
 .muted{color:var(--color-muted)!important;}
-.center{text-align:center;}
-.eyebrow{font-size:var(--fs-sm); color:var(--color-muted);}
-.kicker{font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted);}
 
 /* ==========================================================================
    3) Links and nav
+   - Keep link underline offset in core; hover thickness moved to Extra.
    ========================================================================== */
 a{color:var(--color-link); text-decoration:underline; text-underline-offset:var(--u-offset);}
-a:hover{text-decoration-thickness:var(--u-thick);}
 a:focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px; border-radius:var(--radius-xs);}
 nav{margin:0 0 var(--m);}
 nav>ul,nav>ol{display:flex; flex-wrap:wrap; align-items:center; gap:var(--m-0_5); list-style:none; margin:0; padding:0;}
@@ -131,17 +136,16 @@ nav li{display:flex; align-items:center;}
 nav a{display:inline-block; padding:.25rem .2rem; text-decoration:none; font-size:118.875%;}
 nav a:hover{text-decoration:underline;}
 nav [aria-current=page]{font-weight:700;}
-nav[data-align=center]>ul,nav[data-align=center]>ol{justify-content:center;}
-nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
 
 /* ==========================================================================
    4) Code, pre, kbd
+   - Minimal, readable code; no syntax themes in core.
    ========================================================================== */
 code,kbd,pre,samp{font-family:var(--font-mono); font-size:.95em;}
 code{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
 pre{padding:var(--m); overflow:auto; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
 pre>code{background:transparent; border:0; padding:0; font-size:1em;}
-kbd{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-bottom-width:var(--bw-2); border-radius:var(--radius-sm); padding:.15em .4em;}
+kbd{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius-sm); padding:.15em .4em;}
 p>code{padding:.08em .3em;}
 
 /* ==========================================================================
@@ -153,54 +157,56 @@ iframe{max-width:100%; border:0;}
 
 /* ==========================================================================
    6) Tables — minimal, readable
+   - Keep structure in core; striping/stacking/compact in Extra.
    ========================================================================== */
 table{width:100%; border-collapse:collapse;}
-th,td{padding:calc(var(--m)*0.625) var(--m-0_75); border-bottom:var(--bw-1) solid var(--color-border); text-align:left;}
+th,td{padding:var(--m-0_75); border-bottom:var(--bw-1) solid var(--color-border); text-align:left;}
 thead th{border-bottom:var(--bw-2) solid var(--color-border);}
-caption{caption-side:bottom; padding:.5rem 0; color:var(--color-muted); font-size:.9em;}
 
 /* ==========================================================================
-   7) Forms — normalize & minimal controls (no component theming)
+   7) Forms — normalize & minimal controls
+   - No component theming; just sane defaults. Extras in ivy.extra.css.
    ========================================================================== */
 input,textarea,select,button{font:inherit; color:inherit; line-height:inherit;}
 input,textarea,select{width:100%; padding:.5em .65em; border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-bg);}
 textarea{min-height:8rem; resize:vertical;}
 select{
-  appearance:none; background-image:
-  linear-gradient(45deg,transparent 50%,currentColor 50%),
-  linear-gradient(135deg,currentColor 50%,transparent 50%),
-  linear-gradient(to right,transparent,transparent);
+  appearance:none; /* tiny caret using currentColor for theme parity */
+  background-image:
+    linear-gradient(45deg,transparent 50%,currentColor 50%),
+    linear-gradient(135deg,currentColor 50%,transparent 50%),
+    linear-gradient(to right,transparent,transparent);
   background-position:calc(100% - 1.1em) .9em,calc(100% - .7em) .9em,0 0;
   background-size:.4em .4em,.4em .4em,100% 100%; background-repeat:no-repeat;
 }
 input::placeholder,textarea::placeholder{color:var(--color-muted);}
 fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
-legend{padding:0 .35rem; color:var(--color-muted);}
 button,[type=button],[type=submit],[type=reset]{display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); background:var(--color-surface); cursor:pointer;}
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{opacity:.6; cursor:not-allowed;}
 :focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px;}
-/* forms: error/help states */
+/* forms: native + ARIA error states + tiny helpers */
 :is(input,select,textarea)[aria-invalid=true],:is(input,select,textarea):invalid{border-color:color-mix(in oklab,var(--danger) 60%,var(--color-border));}
 .form-help{font-size:var(--fs-sm); color:var(--color-muted);}
 .form-error{font-size:var(--fs-sm); color:color-mix(in oklab,var(--danger) 80%,var(--color-text));}
 
 /* ==========================================================================
    8) Selection, accessibility
+   - Selection tint, visually-hidden helpers, skip link, HC mode, print.
    ========================================================================== */
 ::selection{background:color-mix(in oklab,var(--color-link) 25%,transparent); color:inherit;}
 .sr-only{position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(1px,1px,1px,1px)!important; white-space:nowrap!important; border:0!important;}
 .sr-only-focusable:focus,.sr-only-focusable:active{position:static!important; width:auto!important; height:auto!important; margin:0!important; overflow:visible!important; clip:auto!important; white-space:inherit!important;}
-/* skip link */
+/* keyboard-accessible “skip to content” link (only visible on focus) */
 .skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
 .skip-link:focus{left:auto; top:auto; padding:.4em .6em; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
-/* high contrast (Windows forced-colors) */
+/* Windows High Contrast / forced-colors safety */
 @media (forced-colors:active){
   *{outline-color:CanvasText!important;}
   a{text-decoration:underline;}
   :focus-visible{outline:var(--focus-ring) solid CanvasText;}
   :is(input,select,textarea,button){border-color:CanvasText; background:Canvas; color:CanvasText;}
 }
-/* print */
+/* print: clean pages by default */
 @media print{
   :root{--color-bg:#fff; --color-text:#000;}
   body{background:#fff; color:#000;}

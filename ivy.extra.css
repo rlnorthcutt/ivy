@@ -2,44 +2,43 @@
  * Ivy Extra — optional polish for Ivy.css (CLASSLESS)
  * Version: 1.1.0-extra
  * URL: https://github.com/rlnorthcutt/ivy
- * License: MIT (https://opensource.org/licenses/MIT)
+ * License: MIT
  */
 
-/** Requires: ivy.css (CORE). Works great with Lattice.css for layout.
- * Scope: buttons, details/summary, tooltips, dialog, progress, breadcrumbs,
- * advanced forms, table striping/stacking, badges, busy/spinner, cards/boxes,
- * callouts, groups, compact tables, tiny utilities.
+/** Requires: ivy.css (CORE)
+ * Scope (EXTRA)
+ * - Component-level polish: buttons/variants, details/summary, tooltips, dialog,
+ *   progress, breadcrumbs, badges, spinner, cards/boxes with shadows, callouts.
+ * - Advanced form touches: accent-color, switches, range, file button, kbd nicety.
+ * - Tables: striping, stacked (responsive), compact/dense, caption styling.
+ * - Utilities + small helpers (nav align, typographic helpers).
+ * Theme
+ * - Mirrors core theme switching; defines surface/shadow tokens for both schemes.
  */
 
 /* ==========================================================================
-   0) Extra tokens — surfaces, primary, shadows (light/dark + applied)
+   0) Tokens — surfaces + shadows (light/dark) + applied + primary
+   - Dark shadows include a soft halo for visibility on dark backgrounds.
    ========================================================================== */
 :root{
-  /* light palette */
+  /* light surfaces + shadows */
   --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7; --on-primary-light:#ffffff;
   --shadow-sm-light:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
   --shadow-md-light:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
-  /* dark palette */
+  /* dark surfaces + shadows (with light glow stroke) */
   --surface-2-dark:#0f1216; --surface-3-dark:#12161b; --on-primary-dark:#0b0d10;
-  /* add light stroke so shadows read on dark bg */
-  --shadow-sm-dark:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10);
-  --shadow-md-dark:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.10);
-}
+  --shadow-sm-dark:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10),0 0 8px rgba(255,255,255,.08);
+  --shadow-md-dark:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.10),0 0 22px rgba(255,255,255,.10);
 
-/* ===========================================================================
-   Do not change or override anything below this line.
-   =========================================================================== */
-:root {
-  /* applied (defaults to light) */
+  /* applied (default to light; remapped via theme switching below) */
   --surface-2:var(--surface-2-light); --surface-3:var(--surface-3-light); --on-primary:var(--on-primary-light);
   --shadow-sm:var(--shadow-sm-light); --shadow-md:var(--shadow-md-light);
-  /* primary uses core link color */
+
+  /* primary uses core link color to remain in sync with theme */
   --primary:var(--color-link);
 }
 
-/* ==========================================================================
-   Theme switching (matches core pattern)
-   ========================================================================== */
+/* theme switching (mirrors core; remaps applied tokens) */
 html{color-scheme:light;}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme]):not(.dark){
@@ -50,17 +49,16 @@ html{color-scheme:light;}
 }
 :where([data-theme="dark"],.dark){
   --surface-2:var(--surface-2-dark); --surface-3:var(--surface-3-dark); --on-primary:var(--on-primary-dark);
-  --shadow-sm:var(--shadow-sm-dark); --shadow-md:var(--shadow-md-dark);
-  color-scheme:dark;
+  --shadow-sm:var(--shadow-sm-dark); --shadow-md:var(--shadow-md-dark); color-scheme:dark;
 }
 :where([data-theme="light"]){
   --surface-2:var(--surface-2-light); --surface-3:var(--surface-3-light); --on-primary:var(--on-primary-light);
-  --shadow-sm:var(--shadow-sm-light); --shadow-md:var(--shadow-md-light);
-  color-scheme:light;
+  --shadow-sm:var(--shadow-sm-light); --shadow-md:var(--shadow-md-light); color-scheme:light;
 }
 
 /* ==========================================================================
-   1) Buttons — semantic elements + opt-in variants
+   1) Buttons — minimal base + opt-in variants/sizes
+   - Base inherits core button reset; adds surfaces/shadows/variants here.
    ========================================================================== */
 button,[type=button],[type=submit],[type=reset],a[role=button]{
   display:inline-block; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);
@@ -69,13 +67,10 @@ button,[type=button],[type=submit],[type=reset],a[role=button]{
 }
 button:hover,[type=button]:hover,[type=submit]:hover,[type=reset]:hover,a[role=button]:hover{background:var(--surface-3);}
 button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{transform:translateY(1px);}
-@media (prefers-reduced-motion:reduce){
-  button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{transform:none;}
-}
-button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,[type=reset]:focus-visible,a[role=button]:focus-visible{
-  outline:var(--focus-ring) solid var(--primary); outline-offset:2px;
-}
+@media (prefers-reduced-motion:reduce){button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{transform:none;}}
+button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,[type=reset]:focus-visible,a[role=button]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:2px;}
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{opacity:.6; cursor:not-allowed;}
+/* variants (opt-in) */
 [data-variant=primary]{background:var(--primary)!important; color:var(--on-primary)!important; border-color:color-mix(in oklab,var(--primary) 70%,#000 0%);}
 [data-variant=primary]:hover{filter:saturate(1.05) brightness(1.02);}
 [data-variant=primary]:active{filter:saturate(1.1) brightness(.98);}
@@ -85,7 +80,7 @@ button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disab
 [data-size=lg]{padding:.7em 1.1em; font-size:1.05em;}
 
 /* ==========================================================================
-   2) Details / summary — disclosure
+   2) Details / summary — disclosure polish
    ========================================================================== */
 details{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_5) var(--m-0_75); background:var(--surface-2);}
 details+details{margin-top:var(--m-0_75);}
@@ -95,7 +90,7 @@ details[open]{background:var(--surface-3);}
 details[open]>summary{margin-bottom:var(--m-0_5);}
 
 /* ==========================================================================
-   3) Tooltips — [data-tooltip]
+   3) Tooltips — opt-in via [data-tooltip]
    ========================================================================== */
 [data-tooltip]{position:relative;}
 [data-tooltip]::after{
@@ -111,14 +106,14 @@ details[open]>summary{margin-bottom:var(--m-0_5);}
 [data-placement=left]::after{inset:50% calc(100% + var(--m-0_5)) auto auto; transform:translateY(-50%);}
 
 /* ==========================================================================
-   4) Dialog (<dialog>)
+   4) Dialog — minimal modal styling
    ========================================================================== */
 dialog{border:var(--bw-1) solid var(--color-border); border-radius:.75rem; padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
 dialog>article{padding:var(--m) var(--m-0_75);}
 dialog::backdrop{background:color-mix(in oklab,#000 55%,transparent); backdrop-filter:saturate(.95) blur(1px);}
 
 /* ==========================================================================
-   5) Progress
+   5) Progress — theme-aware
    ========================================================================== */
 progress{width:100%; height:.5rem; appearance:none; border:0; background:var(--surface-2); border-radius:999px; overflow:hidden;}
 progress::-webkit-progress-bar{background:var(--surface-2);}
@@ -126,10 +121,15 @@ progress::-webkit-progress-value{background:var(--primary);}
 progress::-moz-progress-bar{background:var(--primary);}
 
 /* ==========================================================================
-   6) Tables (striping + stacking)
+   6) Tables — striping, caption, stacked, compact/dense
+   - Core keeps minimal structure; Extra adds comfort and responsive fallback.
    ========================================================================== */
 table[data-striped] tbody tr:nth-child(odd){background:color-mix(in oklab,var(--surface-2) 70%,transparent);}
 tfoot td,tfoot th{color:var(--color-muted); font-weight:500;}
+/* comfort padding compared to core */
+table th,table td{padding:calc(var(--m)*0.625) var(--m-0_75);}
+caption{caption-side:bottom; padding:.5rem 0; color:var(--color-muted); font-size:.9em;}
+/* opt-in stacked layout on narrow screens (use data-label on <td>) */
 @media (max-width:640px){
   table[data-stack]{display:block;}
   table[data-stack] :is(thead,tfoot){display:none;}
@@ -137,26 +137,36 @@ tfoot td,tfoot th{color:var(--color-muted); font-weight:500;}
   table[data-stack] td{padding:var(--m-0_5) var(--m); border-bottom:var(--bw-1) solid var(--color-border);}
   table[data-stack] td::before{content:attr(data-label) ": "; font-weight:600; color:var(--color-muted);}
 }
+/* compact/dense toggles */
+table[data-compact] th,table[data-compact] td{padding:.45rem .6rem;}
+table[data-dense] th,table[data-dense] td{padding:.35rem .5rem; font-size:.95em;}
 
 /* ==========================================================================
-   7) Forms — accent, switches, range, file button
+   7) Forms — accent-color, switches, range, file button + small cosmetics
    ========================================================================== */
 :where(input[type=checkbox],input[type=radio],progress){accent-color:var(--primary);}
+/* switch control (<input type="checkbox" role="switch">) */
 input[type=checkbox][role=switch]{appearance:none; width:2.5rem; height:1.35rem; border-radius:999px; background:var(--surface-3); position:relative; border:var(--bw-1) solid var(--color-border); vertical-align:middle; outline:none; transition:background .15s;}
 input[role=switch]::after{content:""; position:absolute; left:.15rem; top:50%; width:1rem; height:1rem; transform:translateY(-50%); background:#fff; border-radius:999px; box-shadow:var(--shadow-sm); transition:left .15s;}
 input[role=switch]:checked{background:color-mix(in oklab,var(--primary) 40%,var(--surface-3));}
 input[role=switch]:checked::after{left:calc(100% - 1.15rem);}
 input[role=switch]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:2px;}
+/* kbd embellishment (moved from core) */
+kbd{border-bottom-width:var(--bw-2);}
 input[type=range]{appearance:none; width:100%; height:.25rem; border-radius:999px; background:var(--surface-3);}
 input[type=range]::-webkit-slider-thumb{appearance:none; width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]::-moz-range-thumb{width:1rem; height:1rem; border-radius:50%; background:var(--primary); border:var(--bw-2) solid var(--color-bg); box-shadow:var(--shadow-sm);}
 input[type=range]:focus-visible{outline:var(--focus-ring) solid var(--primary); outline-offset:6px;}
+/* nicer file pick button */
 input[type=file]::-webkit-file-upload-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
 input[type=file]::file-selector-button{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:.45em .8em; background:var(--surface-2); cursor:pointer;}
 input[type=file]::file-selector-button:hover{background:var(--surface-3);}
+/* legend + hover underline nicety (moved from core) */
+legend{padding:0 .35rem; color:var(--color-muted);}
+a:hover{text-decoration-thickness:var(--u-thick);}
 
 /* ==========================================================================
-   8) Breadcrumbs
+   8) Breadcrumbs — semantic structure
    ========================================================================== */
 nav[aria-label=breadcrumb] ol{display:flex; flex-wrap:wrap; gap:.35rem var(--m-0_5); padding:0; margin:0; list-style:none;}
 nav[aria-label=breadcrumb] li{display:flex; align-items:center; color:var(--color-muted);}
@@ -166,13 +176,13 @@ nav[aria-label=breadcrumb] a:hover{text-decoration:underline;}
 nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 
 /* ==========================================================================
-   9) Badges
+   9) Badges — tiny label chips
    ========================================================================== */
 [aria-label][data-badge]{position:relative;}
 [aria-label][data-badge]::after{content:attr(data-badge); position:absolute; top:-.4em; right:-.4em; font-size:.7em; line-height:1; background:var(--primary); color:var(--on-primary); border-radius:999px; padding:.25em .45em; box-shadow:var(--shadow-sm);}
 
 /* ==========================================================================
-   10) Busy/spinner — [aria-busy="true"]
+   10) Busy/spinner — attribute-driven
    ========================================================================== */
 @keyframes ivy-spin{to{transform:rotate(1turn);}}
 [aria-busy=true]{position:relative;}
@@ -180,7 +190,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 @media (prefers-reduced-motion:reduce){[aria-busy=true]::after{animation:none;}}
 
 /* ==========================================================================
-   11) Containers — card / box
+   11) Containers — card / box (with shadows)
    ========================================================================== */
 .card,.box{color:inherit; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
 .card{box-shadow:var(--shadow-sm);}
@@ -195,7 +205,7 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 [data-padding=lg]{padding:1.25rem;}
 
 /* ==========================================================================
-   12) Callouts (attribute or class)
+   12) Callouts — attribute or class
    ========================================================================== */
 .callout{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m-0_75) var(--m); background:var(--surface-2);}
 .callout>strong{display:block; margin-bottom:.25rem;}
@@ -205,31 +215,21 @@ nav[aria-label=breadcrumb] [aria-current=page]{color:inherit; font-weight:600;}
 .callout[data-tone=danger],.callout.danger{border-color:color-mix(in oklab,var(--danger) 30%,var(--color-border)); background:color-mix(in oklab,var(--danger) 7%,var(--surface-2));}
 
 /* ==========================================================================
-   13) Button groups
+   13) Groups + helpers — button groups, nav align, typographic helpers
    ========================================================================== */
 .btn-group{display:flex; flex-wrap:wrap; gap:var(--m-0_5);}
 .btn-group[data-align=center]{justify-content:center;}
 .btn-group[data-align=end]{justify-content:flex-end;}
+/* nav alignment helpers (moved from core) */
+nav[data-align=center]>ul,nav[data-align=center]>ol{justify-content:center;}
+nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
+/* typographic helpers (moved from core) */
+.center{text-align:center;}
+.eyebrow{font-size:var(--fs-sm); color:var(--color-muted);}
+.kicker{font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted);}
 
 /* ==========================================================================
-   14) Input groups
-   ========================================================================== */
-.input-group{display:flex; align-items:stretch; gap:0;}
-.input-group>*{margin:0;}
-.input-group> :is(button,[type=button],[type=submit],[type=reset],.addon){border-radius:0; border-right:0;}
-.input-group> :is(input,select,textarea){border-radius:0; flex:1 1 auto;}
-.input-group>:first-child{border-top-left-radius:var(--radius); border-bottom-left-radius:var(--radius);}
-.input-group>:last-child{border-right:var(--bw-1) solid var(--color-border); border-top-right-radius:var(--radius); border-bottom-right-radius:var(--radius);}
-.addon{display:inline-flex; align-items:center; padding:.5em .7em; background:var(--surface-2); border:var(--bw-1) solid var(--color-border); color:var(--color-muted);}
-
-/* ==========================================================================
-   15) Tables — compact/dense variants
-   ========================================================================== */
-table[data-compact] th,table[data-compact] td{padding:.45rem .6rem;}
-table[data-dense] th,table[data-dense] td{padding:.35rem .5rem; font-size:.95em;}
-
-/* ==========================================================================
-   16) Utilities
+   14) Utilities — small, non-overlapping helpers
    ========================================================================== */
 .divider{height:1px; background:var(--color-border); margin:var(--m) 0;}
 .surface-2{background:var(--surface-2);}
