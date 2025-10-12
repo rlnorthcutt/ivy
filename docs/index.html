@@ -13,17 +13,22 @@
 <body>
   <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-  <header class="l-place-content">
-    <nav class="grid-container px-5" role="navigation" aria-label="Primary">
-        <ul class="col-span-11 d-flex gap-2">
-            <li><a href="./">Home</a></li>
-            <li><a href="ivy-core.html">Ivy Core</a></li>
-            <li><a href="ivy-extra.html">Ivy Extra</a></li>
-        </ul>
-        <dark-mode-toggle theme="auto" class="col-start-12"></dark-mode-toggle>
+  <!-- Site header -->
+  <header class="lattice" role="banner">
+    <nav class="container d-flex justify-between items-center px-5 py-3" aria-label="Primary">
+      <ul class="d-flex gap-2 m-0 p-0">
+        <li><a href="./">Home</a></li>
+        <li><a href="ivy-core.html">Ivy Core</a></li>
+        <li><a href="ivy-extra.html">Ivy Extra</a></li>
+      </ul>
+      <dark-mode-toggle theme="auto" strategy="attr" dark-class="dark"></dark-mode-toggle>
     </nav>
+  </header>
 
-    <div class="hero mx-auto center">
+  <!-- Main content -->
+  <main id="content" class="lattice">
+    <!-- Hero moved out of header -->
+    <section class="container hero center px-5 py-4">
       <p class="kicker">CSS micro-stack</p>
       <h1 class="brand">Ivy (classless) + Lattice (layout)</h1>
       <p>Write clean, semantic HTML with <strong>Ivy</strong>. Add tiny, semantic positioning with <strong>Lattice</strong>. Sprinkle a few custom rules and ship.</p>
@@ -31,39 +36,30 @@
         <a role="button" data-variant="primary" href="#quickstart">Get started</a>
         <a role="button" data-variant="outline" href="https://github.com/rlnorthcutt" target="_blank" rel="noopener">GitHub</a>
       </p>
-    </div>
-  </header>
+    </section>
 
-  <main id="content" class="l-place-content">
-    <article>
-
+    <article class="container px-5">
       <!-- Features -->
-      <section aria-labelledby="features">
+      <section>
         <h2 id="features">Why this stack?</h2>
         <div class="grid sm-col-2 md-col-3 gap-3">
           <div class="card">
-            <header>
-              <h3>Classless first</h3>
-           </header>
+            <header><h3>Classless first</h3></header>
             <p>Ivy styles semantic HTML (headings, forms, tables, media) with a small, elegant baseline.</p>
           </div>
           <div class="card">
-            <header>
-            <h3>Tiny layout</h3>
-           </header>
+            <header><h3>Tiny layout</h3></header>
             <p>Lattice provides minimal, readable utilities for grids, spans, and placement. No framework lock-in.</p>
           </div>
           <div class="card">
-            <header>
-            <h3>Composable</h3>
-           </header>
-            <p>Use Ivy alone for blogs & docs. Add Lattice when you need responsive structure or two-column layouts.</p>
+            <header><h3>Composable</h3></header>
+            <p>Use Ivy alone for blogs &amp; docs. Add Lattice when you need responsive structure or two-column layouts.</p>
           </div>
         </div>
       </section>
 
       <!-- Quick Start -->
-      <section aria-labelledby="quickstart">
+      <section>
         <h2 id="quickstart">Quick start</h2>
         <p>Add Ivy (classless) and Lattice (layout) to your page:</p>
 <pre><code>&lt;!-- Classless theme --&gt;
@@ -79,10 +75,10 @@
       </section>
 
       <!-- Minimal example -->
-      <section aria-labelledby="minimal">
-        <h2 id="minimal">Minimal example</h2>
-<pre><code>&lt;main class="l-place-content"&gt;
-  &lt;article&gt;
+      <section>
+        <h2>Minimal example</h2>
+<pre><code>&lt;main class="lattice"&gt;
+  &lt;article class="container"&gt;
     &lt;h1&gt;Hello, Ivy&lt;/h1&gt;
     &lt;p&gt;This is clean HTML with elegant defaults.&lt;/p&gt;
     &lt;section class="grid sm-col-2 gap-3"&gt;
@@ -94,8 +90,8 @@
       </section>
 
       <!-- Live demo grid -->
-      <section aria-labelledby="demo">
-        <h2 id="demo">Live layout demo (Lattice grid)</h2>
+      <section>
+        <h2>Live layout demo (Lattice grid)</h2>
         <div class="grid sm-col-2 lg-col-3 gap-3">
           <article>
             <h3>Article</h3>
@@ -103,14 +99,14 @@
             <p><a href="#features">Learn more</a></p>
           </article>
           <article class="card">
-           <header><h3>Card</h3></header> 
-            <p>Cards are just articles with a border. class="card" </p>
+            <header><h3>Card</h3></header>
+            <p>Cards are just articles with a border. <code>class="card"</code></p>
             <p><a role="button" data-variant="outline" href="#files">See files</a></p>
           </article>
           <article>
             <h3>Form</h3>
             <form>
-              <p><label> Email<br /><input type="email" placeholder="you@example.com" /></label></p>
+              <p><label>Email<br><input type="email" placeholder="you@example.com"></label></p>
               <p><button data-variant="primary" type="button">Subscribe</button></p>
             </form>
           </article>
@@ -118,8 +114,8 @@
       </section>
 
       <!-- Files -->
-      <section aria-labelledby="files">
-        <h2 id="files">Files & builds</h2>
+      <section>
+        <h2 id="files">Files &amp; builds</h2>
         <p>The CI builds minified files into <code>dist/</code>. Use a single file or compose them.</p>
         <table class="file-table">
           <thead><tr><th>File</th><th>What</th></tr></thead>
@@ -135,8 +131,8 @@
       </section>
 
       <!-- Philosophy -->
-      <section aria-labelledby="philosophy">
-        <h2 id="philosophy">Philosophy</h2>
+      <section>
+        <h2>Philosophy</h2>
         <ul>
           <li><strong>Classless first:</strong> Author HTML, not frameworks.</li>
           <li><strong>Utilities, not systems:</strong> Lattice adds just enough positioning.</li>
@@ -146,9 +142,12 @@
     </article>
   </main>
 
-  <footer>
-    <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+  <footer class="lattice">
+    <div class="container px-5 py-4">
+      <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+    </div>
   </footer>
+
   <script type="module" src="dark-mode-toggle.min.js" defer></script>
 </body>
 </html>
