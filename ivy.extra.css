@@ -12,7 +12,7 @@
  * - Details/summary, tooltips, dialog, progress, breadcrumbs.
  * - Advanced form touches: accent-color, switches, range, file button.
  * - Table striping (opt-in), small badges, busy/spinner helper.
- * - NEW: card/box containers, callouts, button & input groups, compact/dense tables,
+ * - Card/box containers, callouts, button & input groups, compact/dense tables,
  *        tiny utilities (divider, surface-*), dark/light friendly tweaks.
  * Notes: classless first; no layout system here. Keep overrides minimal.
  */
@@ -202,7 +202,6 @@ p>code{padding:.08em .3em;}
    12) Containers — card / box (dark-mode aware, scoped)
    ========================================================================== */
 .card,.box{
-  background:var(--color-bg);
   color:inherit;
   border:1px solid var(--color-border);
   border-radius:var(--radius);
