@@ -6,31 +6,37 @@
  */
 
 /** Scope (CORE):
- *  - Document & typography rhythm (fluid headings, readable line-length).
- *  - Minimal color tokens (bg/text/muted/link/border) + dark scheme.
- *  - Clean element defaults: links, lists, blockquotes, code/pre, media.
- *  - Minimal tables & basic form controls (no component theming).
- *  - Tiny a11y touches (selection, focus-visible, sr-only).
+ * - Document & typography rhythm (fluid headings, readable line-length).
+ * - Minimal color tokens (bg/text/muted/link/border) + dark scheme.
+ * - Clean element defaults: links, lists, blockquotes, code/pre, media.
+ * - Minimal tables & basic form controls (no component theming).
+ * - Tiny a11y touches (selection, focus-visible, sr-only).
  * Use Lattice.css for layout & placement; add only tiny custom CSS on top.
  */
 
 /* ==========================================================================
    0) Root tokens — palette, type scale, rhythm
-    - Override these to customize the base look & feel.
+   - Override these to customize the base look & feel.
    ========================================================================== */
 :root{
   /* palette (light defaults) */
-  --color-bg:#ffffff; --color-text:#1b1f23; --color-muted:#667085;
-  --color-link:#00bb22; --color-border:#e5e7eb; --color-surface:#fafafa;
+  --color-bg-light:#ffffff; --color-text-light:#1b1f23; --color-muted-light:#667085;
+  --color-link-light:#00bb22; --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
+  /* palette (dark defaults) */
+  --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
+  --color-link-dark:#79b8ff; --color-border-dark:#23262b; --color-surface-dark:#111418;
+
+  /* applied palette (defaults to light) */
+  --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
+  --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
 
   /* typography & rhythm */
-  --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,
-               Noto Sans,Helvetica Neue,Arial,"Apple Color Emoji",
-               "Segoe UI Emoji","Segoe UI Symbol";
-  --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,
-               "Liberation Mono","Courier New",monospace;
-  --base-size:16px; --font-size: 100%; --lh:1.6; --measure:64rem;
+  --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --base-size:16px; --font-size:100%; --lh:1.6; --measure:64rem;
   --radius:.375rem; --m:1rem;
+  /* semantic states */
+  --ok:#22c55e; --warn:#f59e0b; --danger:#ef4444;
 }
 
 /* ===========================================================================
@@ -41,85 +47,56 @@
    Calculated Vars — minimal (derived from --m). Edit --m to scale rhythm.
    ========================================================================== */
 :root{
-  /* Spacing scale (high reuse only) */
-  --m-0_5:  calc(var(--m) * 0.5);     /* 0.5rem  */
-  --m-0_75: calc(var(--m) * 0.75);    /* 0.75rem */
-  --m-0_875:calc(var(--m) * 0.875);   /* 0.875rem */
-  --m-1_5:  calc(var(--m) * 1.5);     /* 1.5rem  */
-  --m-2:    calc(var(--m) * 2);       /* 2rem    */
-
-  /* Type helper */
-  --fs-sm:  var(--m-0_875);           /* small text: h6, eyebrow/kicker, captions */
-
-  /* Radius tokens (fixed for stable look) */
-  --radius-sm: .25rem;
-  --radius-xs: .125rem;
-
-  /* Borders / focus / underline */
-  --bw-1: 1px;
-  --bw-2: 2px;
-  --focus-ring: var(--bw-2);
-  --u-offset: 2px;                    /* text-underline-offset */
-  --u-thick:  2px;                    /* hover underline thickness */
+  /* spacing scale (high reuse only) */
+  --m-0_5:calc(var(--m)*0.5); --m-0_75:calc(var(--m)*0.75); --m-0_875:calc(var(--m)*0.875);
+  --m-1_5:calc(var(--m)*1.5); --m-2:calc(var(--m)*2);
+  /* type helper */
+  --fs-sm:var(--m-0_875);
+  /* radius tokens (fixed for stable look) */
+  --radius-sm:.25rem; --radius-xs:.125rem;
+  /* borders / focus / underline */
+  --bw-1:1px; --bw-2:2px; --focus-ring:var(--bw-2); --u-offset:2px; --u-thick:2px;
 }
 
 /* ==========================================================================
    Theme switching
-   - Attribute/class on ANY element scopes theme to that element + its subtree.
-   - If nothing explicit is set, fall back to prefers-color-scheme.
-   - Also set color-scheme so native controls match.
    ========================================================================== */
-
-/* Global default */
 html{color-scheme:light;}
-
-/* Auto (no explicit data-theme/class on :root) */
 @media (prefers-color-scheme:dark){
   :root:not([data-theme]):not(.dark){
-    --color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#98a2b3;
-    --color-border:#23262b; --color-surface:#111418;
+    --color-bg:var(--color-bg-dark); --color-text:var(--color-text-dark); --color-muted:var(--color-muted-dark);
+    --color-link:var(--color-link-dark); --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
   }
   html:not([data-theme]):not(.dark){color-scheme:dark;}
 }
-
-/* Explicit dark (attribute or class) — works on html or any container */
-:where([data-theme="dark"], .dark){
-  --color-bg:#0b0d10; --color-text:#e6e7e9; --color-muted:#98a2b3;
-  --color-link:#79b8ff; --color-border:#23262b; --color-surface:#111418;
+:where([data-theme="dark"],.dark){
+  --color-bg:var(--color-bg-dark); --color-text:var(--color-text-dark); --color-muted:var(--color-muted-dark);
+  --color-link:var(--color-link-dark); --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
   color-scheme:dark;
 }
-
-/* Explicit light (attribute anywhere) — useful to force light inside a dark page */
 :where([data-theme="light"]){
-  --color-bg:#ffffff; --color-text:#1b1f23; --color-muted:#667085;
-  --color-link:#0a66c2; --color-border:#e5e7eb; --color-surface:#fafafa;
+  --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
+  --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
   color-scheme:light;
 }
-
-/* Responsive type scale (based on 16px root) */
-@media (min-width: 576px)  { :root,:host { --font-size: 110%;    } } /* 17.6px */
-@media (min-width: 768px)  { :root,:host { --font-size: 115%;    } } /* 18.4px */
-@media (min-width: 1024px) { :root,:host { --font-size: 120%;    } } /* 19.2px */
-@media (min-width: 1280px) { :root,:host { --font-size: 130%;    } } /* 20.8px */
-@media (min-width: 1536px) { :root,:host { --font-size: 137.5%;  } } /* 22.0px */
-@media (min-width: 1920px) { :root,:host { --font-size: 143.75%; } } /* 23.0px */
-@media (min-width: 2560px) { :root,:host { --font-size: 150%;    } } /* 24.0px */
+@media (min-width:576px){:root,:host{--font-size:110%;}}
+@media (min-width:768px){:root,:host{--font-size:115%;}}
+@media (min-width:1024px){:root,:host{--font-size:120%;}}
+@media (min-width:1280px){:root,:host{--font-size:130%;}}
+@media (min-width:1536px){:root,:host{--font-size:137.5%;}}
+@media (min-width:1920px){:root,:host{--font-size:143.75%;}}
+@media (min-width:2560px){:root,:host{--font-size:150%;}}
 
 /* ==========================================================================
    1) Document & base
    ========================================================================== */
 *{box-sizing:border-box;}
 html{font-size:100%;}
-body{
-  margin:0; font-family:var(--font-sans); font-size:var(--base-size);
-  line-height:var(--lh); color:var(--color-text); background:var(--color-bg);
-  text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
-}
+body{margin:0; font-family:var(--font-sans); font-size:var(--base-size); line-height:var(--lh); color:var(--color-text); background:var(--color-bg); text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;}
 main,article,section,header,footer,aside,nav{display:block;}
-/* keep content readable by default; override with Lattice if needed */
 main,article{max-width:var(--measure); margin:0 auto; padding:0 var(--m);}
-header, footer { padding: var(--m-2) 0;} 
-section { padding: var(--m) 0; }
+header,footer{padding:var(--m-2) 0;}
+section{padding:var(--m) 0;}
 
 /* ==========================================================================
    2) Typography flow — headings, paragraphs, lists, hr, quotes
@@ -132,23 +109,15 @@ h4{font-size:1.125rem;} h5{font-size:1rem;} h6{font-size:var(--fs-sm); color:var
 p,ul,ol,dl,pre,table,blockquote,figure,section,article{margin:0 0 var(--m);}
 small{font-size:.875em; color:var(--color-muted);}
 strong,b{font-weight:600;} em,i{font-style:italic;}
-/* lists */
 ul,ol{padding-left:1.25em;}
-/* horizontal rule */
 hr{border:0; height:var(--bw-1); background:var(--color-border); margin:var(--m-1_5) 0;}
-/* blockquote */
-blockquote{
-  margin:0 0 var(--m); padding-left:var(--m); border-left:3px solid var(--color-border);
-  color:var(--color-muted); font-style:italic;
-}
-/* figure */
+blockquote{margin:0 0 var(--m); padding-left:var(--m); border-left:3px solid var(--color-border); color:var(--color-muted); font-style:italic;}
 figure{margin:0 0 var(--m);}
 figcaption{margin-top:.5rem; color:var(--color-muted); font-size:var(--fs-sm); text-align:center;}
-/*helpers*/
-.muted{color:var(--color-muted) !important;}
-.center { text-align: center; }
-.eyebrow { font-size: var(--fs-sm); color: var(--color-muted); }
-.kicker { font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
+.muted{color:var(--color-muted)!important;}
+.center{text-align:center;}
+.eyebrow{font-size:var(--fs-sm); color:var(--color-muted);}
+.kicker{font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted);}
 
 /* ==========================================================================
    3) Links and nav
@@ -156,17 +125,12 @@ figcaption{margin-top:.5rem; color:var(--color-muted); font-size:var(--fs-sm); t
 a{color:var(--color-link); text-decoration:underline; text-underline-offset:var(--u-offset);}
 a:hover{text-decoration-thickness:var(--u-thick);}
 a:focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px; border-radius:var(--radius-xs);}
-
 nav{margin:0 0 var(--m);}
-nav>ul,nav>ol{
-  display:flex; flex-wrap:wrap; align-items:center; gap:var(--m-0_5);
-  list-style:none; margin:0; padding:0;
-}
+nav>ul,nav>ol{display:flex; flex-wrap:wrap; align-items:center; gap:var(--m-0_5); list-style:none; margin:0; padding:0;}
 nav li{display:flex; align-items:center;}
-nav a{display:inline-block; padding:.25rem .2rem; text-decoration:none;font-size:118.875%}
+nav a{display:inline-block; padding:.25rem .2rem; text-decoration:none; font-size:118.875%;}
 nav a:hover{text-decoration:underline;}
 nav [aria-current=page]{font-weight:700;}
-/* opt-in alignment */
 nav[data-align=center]>ul,nav[data-align=center]>ol{justify-content:center;}
 nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
 
@@ -174,19 +138,10 @@ nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
    4) Code, pre, kbd
    ========================================================================== */
 code,kbd,pre,samp{font-family:var(--font-mono); font-size:.95em;}
-code{
-  background:var(--color-surface); border:var(--bw-1) solid var(--color-border);
-  padding:.1em .35em; border-radius:var(--radius-sm);
-}
-pre{
-  padding:var(--m); overflow:auto; background:var(--color-surface);
-  border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);
-}
+code{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
+pre{padding:var(--m); overflow:auto; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
 pre>code{background:transparent; border:0; padding:0; font-size:1em;}
-kbd{
-  background:var(--color-surface); border:var(--bw-1) solid var(--color-border);
-  border-bottom-width:var(--bw-2); border-radius:var(--radius-sm); padding:.15em .4em;
-}
+kbd{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-bottom-width:var(--bw-2); border-radius:var(--radius-sm); padding:.15em .4em;}
 p>code{padding:.08em .3em;}
 
 /* ==========================================================================
@@ -200,18 +155,15 @@ iframe{max-width:100%; border:0;}
    6) Tables — minimal, readable
    ========================================================================== */
 table{width:100%; border-collapse:collapse;}
-th,td{padding:calc(var(--m) * 0.625) var(--m-0_75); border-bottom:var(--bw-1) solid var(--color-border); text-align:left;}
+th,td{padding:calc(var(--m)*0.625) var(--m-0_75); border-bottom:var(--bw-1) solid var(--color-border); text-align:left;}
 thead th{border-bottom:var(--bw-2) solid var(--color-border);}
 caption{caption-side:bottom; padding:.5rem 0; color:var(--color-muted); font-size:.9em;}
 
 /* ==========================================================================
-   7) Forms — normalize & minimal controls (no design system theming)
+   7) Forms — normalize & minimal controls (no component theming)
    ========================================================================== */
 input,textarea,select,button{font:inherit; color:inherit; line-height:inherit;}
-input,textarea,select{
-  width:100%; padding:.5em .65em; border:1px solid var(--color-border);
-  border-radius:var(--radius); background:var(--color-bg);
-}
+input,textarea,select{width:100%; padding:.5em .65em; border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-bg);}
 textarea{min-height:8rem; resize:vertical;}
 select{
   appearance:none; background-image:
@@ -224,32 +176,35 @@ select{
 input::placeholder,textarea::placeholder{color:var(--color-muted);}
 fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
 legend{padding:0 .35rem; color:var(--color-muted);}
-/* buttons: minimal reset so they look decent but not “themed” */
-button,[type=button],[type=submit],[type=reset]{
-  display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid var(--color-border);
-  border-radius:var(--radius); background:var(--color-surface); cursor:pointer;
-}
-button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{
-  opacity:.6; cursor:not-allowed;
-}
-/* focus states */
+button,[type=button],[type=submit],[type=reset]{display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); background:var(--color-surface); cursor:pointer;}
+button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{opacity:.6; cursor:not-allowed;}
 :focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px;}
+/* forms: error/help states */
+:is(input,select,textarea)[aria-invalid=true],:is(input,select,textarea):invalid{border-color:color-mix(in oklab,var(--danger) 60%,var(--color-border));}
+.form-help{font-size:var(--fs-sm); color:var(--color-muted);}
+.form-error{font-size:var(--fs-sm); color:color-mix(in oklab,var(--danger) 80%,var(--color-text));}
 
 /* ==========================================================================
-   8) Selection, helpers, misc
+   8) Selection, accessibility
    ========================================================================== */
-::selection{
-  background:color-mix(in oklab,var(--color-link) 25%,transparent);
-  color:inherit;
+::selection{background:color-mix(in oklab,var(--color-link) 25%,transparent); color:inherit;}
+.sr-only{position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(1px,1px,1px,1px)!important; white-space:nowrap!important; border:0!important;}
+.sr-only-focusable:focus,.sr-only-focusable:active{position:static!important; width:auto!important; height:auto!important; margin:0!important; overflow:visible!important; clip:auto!important; white-space:inherit!important;}
+/* skip link */
+.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
+.skip-link:focus{left:auto; top:auto; padding:.4em .6em; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
+/* high contrast (Windows forced-colors) */
+@media (forced-colors:active){
+  *{outline-color:CanvasText!important;}
+  a{text-decoration:underline;}
+  :focus-visible{outline:var(--focus-ring) solid CanvasText;}
+  :is(input,select,textarea,button){border-color:CanvasText; background:Canvas; color:CanvasText;}
 }
-/* hide-only helper */
-.sr-only{
-  position:absolute !important; width:1px !important; height:1px !important;
-  padding:0 !important; margin:-1px !important; overflow:hidden !important;
-  clip:rect(1px,1px,1px,1px) !important; white-space:nowrap !important; border:0 !important;
-}
-.sr-only-focusable:focus,.sr-only-focusable:active{
-  position:static !important; width:auto !important; height:auto !important;
-  margin:0 !important; overflow:visible !important; clip:auto !important;
-  white-space:inherit !important;
+/* print */
+@media print{
+  :root{--color-bg:#fff; --color-text:#000;}
+  body{background:#fff; color:#000;}
+  nav,[role=banner],[role=navigation],.btn-group{display:none!important;}
+  a{text-decoration:underline;}
+  pre,code{white-space:pre-wrap;}
 }
