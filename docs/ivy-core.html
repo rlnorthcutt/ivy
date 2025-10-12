@@ -1,42 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Ivy (CORE) — Elements Showcase</title>
-
-  <link rel="stylesheet" href="ivy.full.min.css" />
-  <link rel="stylesheet" href="lattice.full.min.css">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dist/ivy.css">
 </head>
 <body>
-   <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+  <a class="sr-only sr-only-focusable skip-link" href="#content">Skip to content</a>
 
-  <header class="l-place-content">
-    <nav class="grid-container px-5" role="navigation" aria-label="Primary">
-        <ul class="col-span-11 d-flex gap-2">
-            <li><a href="./">Home</a></li>
-            <li><a href="ivy-core.html">Ivy Core</a></li>
-            <li><a href="ivy-extra.html">Ivy Extra</a></li>
-        </ul>
-        <dark-mode-toggle theme="auto" class="col-start-12"></dark-mode-toggle>
+  <!-- Site header -->
+    <!-- 3) Links & nav -->
+  <header class="lattice" role="banner">
+    <nav class="container d-flex justify-between" aria-label="Primary">
+      <ul class="d-flex gap-2 m-0 p-0">
+        <li><a href="./">Home</a></li>
+        <li><a href="ivy-core.html">Ivy Core</a></li>
+        <li><a href="ivy-extra.html">Ivy Extra</a></li>
+      </ul>
+      <dark-mode-toggle theme="auto" strategy="attr" dark-class="dark"></dark-mode-toggle>
     </nav>
-    
-    <div class="hero mx-auto center">
-      <p class="kicker">CSS micro-stack</p>
-      <h1>Ivy.css (CORE) — Classless Demo</h1>
-        <p>Minimal, elegant defaults for semantic HTML.</p>
-    </div>
   </header>
 
+    <!-- Intro -->
   <main id="content">
+    <section class="container hero center px-5 py-4">
+      <p class="kicker">CSS micro-stack</p>
+      <h1>Ivy.css (CORE) — Classless Demo</h1>
+      <p>Minimal, elegant defaults for semantic HTML.</p>
+    </section>
     <article>
-      <section aria-labelledby="typo">
-        <h2 id="typo">Typography</h2>
+      <!-- 2) Typography flow -->
+      <section id="typography">
+        <h2>Typography</h2>
         <p>
           Ivy provides a readable rhythm, a sane measure, and fluid headings.
           Inline <strong>strong</strong>, <em>emphasis</em>, and
-          <a href="#">links</a> get clean defaults. <small>Small text looks like this.</small>
+          <a href="#">links</a> get clean defaults.
+          <small>Small text looks like this.</small>
         </p>
         <h1>H1 heading</h1>
         <h2>H2 heading</h2>
@@ -44,14 +45,13 @@
         <h4>H4 heading</h4>
         <h5>H5 heading</h5>
         <h6>H6 heading</h6>
-        <hr />
-        <blockquote>
-          “Good design is as little design as possible.”
-        </blockquote>
+        <hr>
+        <blockquote>“Good design is as little design as possible.”</blockquote>
       </section>
 
-      <section aria-labelledby="lists">
-        <h2 id="lists">Lists</h2>
+      <!-- Lists (still part of typographic flow) -->
+      <section id="lists">
+        <h2>Lists</h2>
         <ul>
           <li>Unordered item one</li>
           <li>Unordered item two</li>
@@ -65,8 +65,9 @@
         </dl>
       </section>
 
-      <section aria-labelledby="code">
-        <h2 id="code">Code &amp; Preformatted</h2>
+      <!-- 4) Code, pre, kbd -->
+      <section id="code">
+        <h2>Code &amp; Preformatted</h2>
         <p>Inline <code>const x = 1;</code> code.</p>
         <pre><code>// Preformatted block
 function greet(name) {
@@ -75,20 +76,22 @@ function greet(name) {
         <p>Press <kbd>⌘</kbd> + <kbd>K</kbd> to search.</p>
       </section>
 
-      <section aria-labelledby="media">
-        <h2 id="media">Media</h2>
+      <!-- 5) Media -->
+      <section id="media">
+        <h2>Media</h2>
         <figure>
-          <img src="https://picsum.photos/960/540" alt="Random demo image" />
+          <img src="https://picsum.photos/960/540" alt="Random demo image">
           <figcaption>Fig. 1 — Responsive image with caption.</figcaption>
         </figure>
         <video controls width="480">
-          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
           Sorry, your browser doesn't support embedded videos.
         </video>
       </section>
 
-      <section aria-labelledby="tables">
-        <h2 id="tables">Tables</h2>
+      <!-- 6) Tables -->
+      <section id="tables">
+        <h2>Tables</h2>
         <table>
           <caption>Basic, readable table</caption>
           <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
@@ -99,32 +102,36 @@ function greet(name) {
         </table>
       </section>
 
-      <section aria-labelledby="forms">
-        <h2 id="forms">Forms (minimal)</h2>
+      <!-- 7) Forms (minimal) -->
+      <section id="forms">
+        <h2>Forms (minimal)</h2>
         <form>
           <fieldset>
             <legend>Contact</legend>
-            <p><label> Name<br /><input type="text" placeholder="Jane Doe" /></label></p>
-            <p><label> Email<br /><input type="email" placeholder="jane@example.com" /></label></p>
-            <p><label> Topic<br />
+            <p><label>Name<br><input type="text" placeholder="Jane Doe"></label></p>
+            <p><label>Email<br><input type="email" placeholder="jane@example.com"></label></p>
+            <p><label>Topic<br>
               <select>
                 <option>General</option><option>Support</option><option>Other</option>
               </select>
             </label></p>
-            <p><label> Message<br /><textarea placeholder="Write your message…"></textarea></label></p>
-            <p>
-              <button type="submit">Send</button>
-              <button type="reset">Reset</button>
-            </p>
+            <p><label>Message<br><textarea placeholder="Write your message…"></textarea></label></p>
+            <p><button type="submit">Send</button> <button type="reset">Reset</button></p>
           </fieldset>
         </form>
+      </section>
+
+      <!-- 8) Selection & accessibility -->
+      <section id="a11y">
+        <h2>Selection &amp; accessibility</h2>
+        <p>Try selecting this text to see the selection color. The “Skip to content” link becomes visible on focus.</p>
+        <p><span class="sr-only">Screen-reader-only text.</span></p>
       </section>
     </article>
   </main>
 
-<footer class="l-place-content center">
-    <p>© 2025 Lattice &amp; Ivy • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+  <footer>
+    <p>© 2025 Ivy • MIT License • <a href="https://github.com/rlnorthcutt/ivy">GitHub</a></p>
   </footer>
-  <script type="module" src="dark-mode-toggle.min.js" defer></script>
 </body>
 </html>
