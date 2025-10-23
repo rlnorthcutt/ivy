@@ -23,14 +23,14 @@
 :root{
   /* palette (light) */
   --color-bg-light:#ffffff; --color-text-light:#1b1f23; --color-muted-light:#667085;
-  --color-link-light:#006600; --color-primary-light:#1d4ed8; --color-primary-text-light:#ffffff;
-  --color-secondary-light:#9333ea; --color-secondary-text-light:#ffffff;
+  --color-link-light:#00786c; --color-primary-light:#00786c; --color-primary-text-light:#ffffff;
+  --color-secondary-light:#d64c1d; --color-secondary-text-light:#ffffff;
   --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
   --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7;
   /* palette (dark) */
   --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
-  --color-link-dark:#34d399; --color-primary-dark:#60a5fa; --color-primary-text-dark:#0b0d10;
-  --color-secondary-dark:#c084fc; --color-secondary-text-dark:#0b0d10;
+  --color-link-dark:#00786c; --color-primary-dark:#00786c; --color-primary-text-dark:#0b0d10;
+  --color-secondary-dark:#d64c1d; --color-secondary-text-dark:#0b0d10;
   --color-border-dark:#23262b; --color-surface-dark:#111418;
   --surface-2-dark:#0f1216;  --surface-3-dark:#12161b;
   /* applied palette (defaults to light; theme switch remaps these) */
