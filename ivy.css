@@ -23,15 +23,21 @@
 :root{
   /* palette (light) */
   --color-bg-light:#ffffff; --color-text-light:#1b1f23; --color-muted-light:#667085;
-  --color-link-light:#006600; --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
+  --color-link-light:#006600; --color-primary-light:#1d4ed8; --color-primary-text-light:#ffffff;
+  --color-secondary-light:#9333ea; --color-secondary-text-light:#ffffff;
+  --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
   --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7;
   /* palette (dark) */
   --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
-  --color-link-dark:#006600; --color-border-dark:#23262b; --color-surface-dark:#111418;
+  --color-link-dark:#34d399; --color-primary-dark:#60a5fa; --color-primary-text-dark:#0b0d10;
+  --color-secondary-dark:#c084fc; --color-secondary-text-dark:#0b0d10;
+  --color-border-dark:#23262b; --color-surface-dark:#111418;
   --surface-2-dark:#0f1216;  --surface-3-dark:#12161b;
   /* applied palette (defaults to light; theme switch remaps these) */
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
-  --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
+  --color-link:var(--color-link-light); --color-primary:var(--color-primary-light); --color-primary-text:var(--color-primary-text-light);
+  --color-secondary:var(--color-secondary-light); --color-secondary-text:var(--color-secondary-text-light);
+  --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
 
   /* type & rhythm (global scales) */
   --font-sans:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -70,7 +76,9 @@ html{color-scheme:light;}
 @media (prefers-color-scheme:dark){
   html:not([data-theme]){
     --color-bg:var(--color-bg-dark); --color-text:var(--color-text-dark); --color-muted:var(--color-muted-dark);
-    --color-link:var(--color-link-dark); --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
+    --color-link:var(--color-link-dark); --color-primary:var(--color-primary-dark); --color-primary-text:var(--color-primary-text-dark);
+    --color-secondary:var(--color-secondary-dark); --color-secondary-text:var(--color-secondary-text-dark);
+    --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
     --surface-2:var(--surface-2-dark, var(--color-surface)); --surface-3:var(--surface-3-dark, var(--color-surface));
     --shadow-sm:var(--shadow-sm-dark, var(--shadow-sm)); --shadow-md:var(--shadow-md-dark, var(--shadow-md));
     color-scheme:dark;
@@ -78,14 +86,18 @@ html{color-scheme:light;}
 }
 html[data-theme="dark"], html.dark{
   --color-bg:var(--color-bg-dark); --color-text:var(--color-text-dark); --color-muted:var(--color-muted-dark);
-  --color-link:var(--color-link-dark); --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
+  --color-link:var(--color-link-dark); --color-primary:var(--color-primary-dark); --color-primary-text:var(--color-primary-text-dark);
+  --color-secondary:var(--color-secondary-dark); --color-secondary-text:var(--color-secondary-text-dark);
+  --color-border:var(--color-border-dark); --color-surface:var(--color-surface-dark);
   --surface-2:var(--surface-2-dark, var(--color-surface)); --surface-3:var(--surface-3-dark, var(--color-surface));
   --shadow-sm:var(--shadow-sm-dark, var(--shadow-sm)); --shadow-md:var(--shadow-md-dark, var(--shadow-md));
   color-scheme:dark;
 }
 html[data-theme="light"], html.light{
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
-  --color-link:var(--color-link-light); --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
+  --color-link:var(--color-link-light); --color-primary:var(--color-primary-light); --color-primary-text:var(--color-primary-text-light);
+  --color-secondary:var(--color-secondary-light); --color-secondary-text:var(--color-secondary-text-light);
+  --color-border:var(--color-border-light); --color-surface:var(--color-surface-light);
   --surface-2:var(--surface-2-light, var(--color-surface)); --surface-3:var(--surface-3-light, var(--color-surface));
   --shadow-sm:var(--shadow-sm-light, var(--shadow-sm)); --shadow-md:var(--shadow-md-light, var(--shadow-md));
   color-scheme:light;
@@ -190,9 +202,11 @@ select{
 }
 input::placeholder,textarea::placeholder{color:var(--color-muted);}
 fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m);}
-button,[type=button],[type=submit],[type=reset]{display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); background:var(--color-surface); cursor:pointer;}
+button,[type=button],[type=submit],[type=reset]{display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid color-mix(in oklab,var(--color-primary) 55%,var(--color-border)); border-radius:var(--radius); background:var(--color-primary); color:var(--color-primary-text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease,color .15s ease;}
+button:hover,[type=button]:hover,[type=submit]:hover,[type=reset]:hover{background:color-mix(in oklab,var(--color-primary) 85%,var(--color-bg));}
+button:active,[type=button]:active,[type=submit]:active,[type=reset]:active{background:color-mix(in oklab,var(--color-primary) 75%,var(--color-bg));}
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled{opacity:.6; cursor:not-allowed;}
-:focus-visible{outline:var(--focus-ring) solid var(--color-link); outline-offset:2px;}
+:focus-visible{outline:var(--focus-ring) solid var(--color-primary); outline-offset:2px;}
 /* forms: native + ARIA error states + tiny helpers */
 :is(input,select,textarea)[aria-invalid=true],:is(input,select,textarea):invalid{border-color:color-mix(in oklab,var(--danger) 60%,var(--color-border));}
 .form-help{font-size:var(--fs-sm); color:var(--color-muted);}
