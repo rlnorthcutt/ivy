@@ -188,8 +188,8 @@ thead th{border-bottom:var(--bw-2) solid var(--color-border);}
    7) Forms — normalize & minimal controls
    - No component theming; just sane defaults. Extras in ivy.extra.css.
    ========================================================================== */
-input,textarea,select,button{font:inherit; color:inherit; line-height:inherit;}
-input,textarea,select{width:100%; padding:.5em .65em; border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-bg);}
+input,textarea,select,button{font:inherit; color:inherit; line-height:inherit; margin: var(--m-0_5) 0;}
+input,textarea,select{width:100%; padding:var(--m-0_5) var(--m-0_75); border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-bg);}
 textarea{min-height:8rem; resize:vertical;}
 select{
   appearance:none; /* tiny caret using currentColor for theme parity */
