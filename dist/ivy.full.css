@@ -360,8 +360,8 @@ details[open]>summary{margin-bottom:var(--m-0_5);}
 /* ==========================================================================
    4) Dialog — minimal modal styling
    ========================================================================== */
-dialog{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
-dialog>article{padding:var(--m) var(--m-2);}
+dialog{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); width:50%; min-width:30rem; max-width:48rem;}
+dialog>article{padding:var(--m) var(--m-2); margin:0;}
 dialog::backdrop{background:color-mix(in oklab,#000 55%,transparent); backdrop-filter:saturate(.95) blur(1px);}
 
 /* ==========================================================================
