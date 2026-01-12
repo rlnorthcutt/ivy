@@ -106,7 +106,7 @@ details[open]>summary{margin-bottom:var(--m-0_5);}
   content:attr(data-tooltip); position:absolute; white-space:nowrap;
   inset:auto auto calc(100% + var(--m-0_5)) 50%; transform:translateX(-50%); pointer-events:none;
   background:color-mix(in oklab,var(--color-text) 93%,transparent); color:var(--color-bg);
-  padding:.35em .5em; border-radius:.35rem; font-size:.85em; opacity:0; translate:0 .25rem;
+  padding:.35em .5em; border-radius:var(--radius); font-size:.85em; opacity:0; translate:0 .25rem;
   transition:opacity .15s ease,translate .15s ease; box-shadow:var(--shadow-sm); z-index:50;
 }
 [data-tooltip]:hover::after,[data-tooltip]:focus-within::after{opacity:1; translate:0 0;}
@@ -117,8 +117,8 @@ details[open]>summary{margin-bottom:var(--m-0_5);}
 /* ==========================================================================
    4) Dialog — minimal modal styling
    ========================================================================== */
-dialog{border:var(--bw-1) solid var(--color-border); border-radius:.75rem; padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
-dialog>article{padding:var(--m) var(--m-0_75);}
+dialog{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:0; margin:auto; background:var(--color-bg); color:inherit; box-shadow:var(--shadow-md); max-width:48rem;}
+dialog>article{padding:var(--m) var(--m-2);}
 dialog::backdrop{background:color-mix(in oklab,#000 55%,transparent); backdrop-filter:saturate(.95) blur(1px);}
 
 /* ==========================================================================
