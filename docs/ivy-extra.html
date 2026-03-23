@@ -3,242 +3,920 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ivy Extra — Patterns Showcase</title>
-  <meta name="description" content="Ivy: elegant classless CSS. Extra library demo page.">
-  <meta name="keywords" content="CSS, utilities, classless, layout, design system">
+  <title>Ivy Extra — Components &amp; Patterns</title>
+  <meta name="description" content="Live demo of every component in ivy.extra.css — buttons, cards, tooltips, dialog, progress, forms, badges, and more.">
   <link rel="stylesheet" href="ivy.full.min.css">
   <link rel="stylesheet" href="lattice.full.min.css">
 </head>
 <body>
-  <a class="sr-only sr-only-focusable skip-link" href="#content">Skip to content</a>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-  <!-- Site header -->
-  <header class="lattice" role="banner">
+  <header class="sticky" role="banner">
     <nav class="container d-flex justify-between" aria-label="Primary">
       <ul class="d-flex gap-2 m-0 p-0">
-        <li><a href="./">Home</a></li>
-        <li><a href="ivy-core.html">Ivy Core</a></li>
-        <li><a href="ivy-extra.html" aria-current="page">Ivy Extra</a></li>
+        <li><a href="./">Ivy CSS</a></li>
+        <li><a href="ivy-core.html">Core Demo</a></li>
+        <li><a href="ivy-extra.html" aria-current="page">Extra Demo</a></li>
       </ul>
       <dark-mode-toggle></dark-mode-toggle>
     </nav>
   </header>
 
-  <!-- Intro hero -->
   <main id="content">
-    <section class="container hero center px-5 py-4">
-      <p class="kicker">CSS micro-stack</p>
-      <h1>Ivy EXTRA — Optional Polish</h1>
-      <p>Buttons, details, tooltips, dialog, progress, tables, forms, breadcrumbs, badges, busy, cards/boxes, callouts, groups, utilities.</p>
+    <section class="container center py-4 px-5">
+      <p class="kicker">ivy.extra.css</p>
+      <h1>Extra Components</h1>
+      <p>Optional polish activated with <code>data-*</code> attributes and a handful of semantic class names. Requires <code>ivy.css</code> core.</p>
     </section>
 
     <article class="container">
-      <!-- 1) Buttons — base + variants/sizes -->
+
+      <!-- In-page nav -->
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#details">Details</a></li>
+          <li><a href="#tooltips">Tooltips</a></li>
+          <li><a href="#dialog">Dialog</a></li>
+          <li><a href="#progress">Progress</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+          <li><a href="#badges">Badges</a></li>
+          <li><a href="#spinner">Spinner</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#callouts">Callouts</a></li>
+          <li><a href="#groups">Groups</a></li>
+          <li><a href="#utilities">Utilities</a></li>
+        </ul>
+      </nav>
+      <hr>
+
+      <!-- ================================================================
+           BUTTONS
+           ================================================================ -->
       <section id="buttons">
         <h2>Buttons</h2>
+        <p>The core provides the base button style. Extra adds box-shadow, a press animation, and opt-in variants and sizes via <code>data-variant</code> and <code>data-size</code>.</p>
+
+        <h3>Variants</h3>
         <p>
           <button>Default</button>
           <button data-variant="primary">Primary</button>
+          <button data-variant="secondary">Secondary</button>
           <button data-variant="outline">Outline</button>
+          <button data-variant="outline-secondary">Outline secondary</button>
           <button data-variant="ghost">Ghost</button>
+          <button data-variant="ghost-secondary">Ghost secondary</button>
         </p>
+        <p><button disabled>Disabled</button></p>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;button&gt;Default&lt;/button&gt;
+&lt;button data-variant="primary"&gt;Primary&lt;/button&gt;
+&lt;button data-variant="secondary"&gt;Secondary&lt;/button&gt;
+&lt;button data-variant="outline"&gt;Outline&lt;/button&gt;
+&lt;button data-variant="outline-secondary"&gt;Outline secondary&lt;/button&gt;
+&lt;button data-variant="ghost"&gt;Ghost&lt;/button&gt;
+&lt;button data-variant="ghost-secondary"&gt;Ghost secondary&lt;/button&gt;
+&lt;button disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        </details>
+
+        <h3>Sizes</h3>
         <p>
           <button data-variant="primary" data-size="sm">Small</button>
+          <button data-variant="primary">Default</button>
           <button data-variant="primary" data-size="lg">Large</button>
-          <a role="button" href="#" data-variant="outline">Link as button</a>
         </p>
+        <p>
+          <button data-variant="outline" data-size="sm">Small outline</button>
+          <button data-variant="outline" data-size="lg">Large outline</button>
+        </p>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;button data-variant="primary" data-size="sm"&gt;Small&lt;/button&gt;
+&lt;button data-variant="primary"&gt;Default&lt;/button&gt;
+&lt;button data-variant="primary" data-size="lg"&gt;Large&lt;/button&gt;</code></pre>
+        </details>
+
+        <h3>Link as button</h3>
+        <p>Add <code>role="button"</code> to an <code>&lt;a&gt;</code> to style it as a button. All variants and sizes work the same way.</p>
+        <p>
+          <a role="button" href="#buttons" data-variant="primary">Primary link</a>
+          <a role="button" href="#buttons" data-variant="outline">Outline link</a>
+          <a role="button" href="#buttons" data-variant="ghost">Ghost link</a>
+        </p>
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;a role="button" href="/path" data-variant="primary"&gt;Primary link&lt;/a&gt;
+&lt;a role="button" href="/path" data-variant="outline"&gt;Outline link&lt;/a&gt;
+&lt;a role="button" href="/path" data-variant="ghost"&gt;Ghost link&lt;/a&gt;</code></pre>
+        </details>
       </section>
 
-      <!-- 2) Details / summary -->
+      <!-- ================================================================
+           DETAILS / SUMMARY
+           ================================================================ -->
       <section id="details">
         <h2>Details / Summary</h2>
+        <p>Native <code>&lt;details&gt;</code> disclosure elements get a border, border-radius, and surface-2 background. Stacked <code>&lt;details&gt;</code> elements get automatic top margin. An open panel switches to surface-3.</p>
+
         <details>
           <summary>What is Ivy Extra?</summary>
-          <p>Ivy Extra is an optional polish layer over the classless core.</p>
+          <p>An optional polish layer over the classless core. It adds component-level styling through <code>data-*</code> attributes and semantic class names — no extra markup needed.</p>
+        </details>
+        <details>
+          <summary>When should I use Extra vs Core?</summary>
+          <p>Use Core alone for blogs, documentation sites, and content pages. Add Extra when you need interactive components: modal dialogs, tooltips, styled cards, or form controls like switches and range inputs.</p>
         </details>
         <details open>
           <summary>Open by default</summary>
-          <p>Use semantic elements, not div soup.</p>
+          <p>Add the <code>open</code> attribute on <code>&lt;details&gt;</code> to show it expanded on page load.</p>
+        </details>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;details&gt;
+  &lt;summary&gt;Title here&lt;/summary&gt;
+  &lt;p&gt;Content shown when expanded.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;!-- Open by default --&gt;
+&lt;details open&gt;
+  &lt;summary&gt;Already open&lt;/summary&gt;
+  &lt;p&gt;Visible on load.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
         </details>
       </section>
 
-      <!-- 3) Tooltips -->
+      <!-- ================================================================
+           TOOLTIPS
+           ================================================================ -->
       <section id="tooltips">
         <h2>Tooltips</h2>
-        <p>
-          <button data-tooltip="Default (top)">Top</button>
-          <button data-tooltip="On the right" data-placement="right">Right</button>
-          <button data-tooltip="On the bottom" data-placement="bottom">Bottom</button>
-          <button data-tooltip="On the left" data-placement="left">Left</button>
-        </p>
+        <p>CSS-only tooltips. Add <code>data-tooltip="…"</code> to any element. The tooltip appears on hover and <code>:focus-within</code>. Use <code>data-placement</code> to control direction.</p>
+
+        <div class="btn-group" style="padding: var(--space-xl) 0;">
+          <button data-tooltip="Default placement (top)">Top (default)</button>
+          <button data-tooltip="Appears on the right" data-placement="right">Right</button>
+          <button data-tooltip="Appears below" data-placement="bottom">Bottom</button>
+          <button data-tooltip="Appears on the left" data-placement="left">Left</button>
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- Default (top) --&gt;
+&lt;button data-tooltip="Tooltip text"&gt;Top&lt;/button&gt;
+
+&lt;!-- Right --&gt;
+&lt;button data-tooltip="Tooltip text" data-placement="right"&gt;Right&lt;/button&gt;
+
+&lt;!-- Bottom --&gt;
+&lt;button data-tooltip="Tooltip text" data-placement="bottom"&gt;Bottom&lt;/button&gt;
+
+&lt;!-- Left --&gt;
+&lt;button data-tooltip="Tooltip text" data-placement="left"&gt;Left&lt;/button&gt;</code></pre>
+        </details>
+
+        <div class="callout warn">
+          <strong>Accessibility note</strong>
+          <p>The <code>data-tooltip</code> content is rendered via CSS <code>content: attr(data-tooltip)</code> and is not reliably accessible to screen readers. For interactive elements, supplement with <code>aria-label</code> or link to a visible/sr-only element via <code>aria-describedby</code>:</p>
+          <pre><code>&lt;button
+  data-tooltip="Removes the item permanently"
+  aria-label="Delete item — removes permanently"&gt;
+  Delete
+&lt;/button&gt;</code></pre>
+        </div>
       </section>
 
-      <!-- 4) Dialog -->
+      <!-- ================================================================
+           DIALOG
+           ================================================================ -->
       <section id="dialog">
         <h2>Dialog</h2>
+        <p>Native <code>&lt;dialog&gt;</code> modal with Ivy Extra styles: border, padding, shadow, and a frosted-glass backdrop. The dialog content should be wrapped in an <code>&lt;article&gt;</code>.</p>
+
         <p><button id="openDialog" data-variant="primary">Open dialog</button></p>
+
         <dialog id="demoDialog">
           <article>
-            <h3>Modal Title</h3>
-            <p>This is a native <code>&lt;dialog&gt;</code> with Ivy Extra styles.</p>
-            <p><button id="closeDialog">Close</button></p>
+            <h3>Modal title</h3>
+            <p>This is a native <code>&lt;dialog&gt;</code> styled by Ivy Extra. It centers automatically and adapts to viewport width on small screens.</p>
+            <p>The backdrop uses <code>color-mix()</code> for a dark tint and <code>backdrop-filter: blur()</code> for a frosted-glass effect.</p>
+            <div class="btn-group" data-align="end">
+              <button id="closeDialog" data-variant="ghost">Cancel</button>
+              <button data-variant="primary">Confirm</button>
+            </div>
           </article>
         </dialog>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- Trigger --&gt;
+&lt;button id="openDialog"&gt;Open dialog&lt;/button&gt;
+
+&lt;!-- Dialog (hidden until showModal() is called) --&gt;
+&lt;dialog id="myDialog"&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Title&lt;/h3&gt;
+    &lt;p&gt;Content here.&lt;/p&gt;
+    &lt;div class="btn-group" data-align="end"&gt;
+      &lt;button id="closeDialog" data-variant="ghost"&gt;Cancel&lt;/button&gt;
+      &lt;button data-variant="primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+        </details>
+
+        <div class="callout info">
+          <strong>Requires JavaScript</strong>
+          <p>The native <code>&lt;dialog&gt;</code> element must be opened with <code>dialog.showModal()</code> (for a proper modal with backdrop and focus trap) or <code>dialog.show()</code> (for a non-modal). Close it with <code>dialog.close()</code>.</p>
+          <pre><code>const dialog = document.getElementById('myDialog');
+
+// Open as a modal (recommended — traps focus, adds backdrop)
+document.getElementById('openDialog')
+  .addEventListener('click', () =&gt; dialog.showModal());
+
+// Close
+document.getElementById('closeDialog')
+  .addEventListener('click', () =&gt; dialog.close());
+
+// Optional: close on backdrop click
+dialog.addEventListener('click', e =&gt; {
+  if (e.target === dialog) dialog.close();
+});</code></pre>
+        </div>
+
+        <div class="callout success">
+          <strong>Accessibility</strong>
+          <p>Using <code>showModal()</code> automatically traps focus inside the dialog and restores it to the trigger element when closed. Add <code>aria-labelledby</code> pointing to the dialog's heading for screen reader context:</p>
+          <pre><code>&lt;dialog aria-labelledby="dialog-title"&gt;
+  &lt;article&gt;
+    &lt;h3 id="dialog-title"&gt;Title&lt;/h3&gt;
+    ...
+  &lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+        </div>
       </section>
 
-      <!-- 5) Progress -->
+      <!-- ================================================================
+           PROGRESS
+           ================================================================ -->
       <section id="progress">
         <h2>Progress</h2>
+        <p>Styled <code>&lt;progress&gt;</code> bars. The track uses <code>--surface-2</code>; the filled value uses <code>--color-primary</code>. Add <code>data-variant="secondary"</code> to use the secondary color.</p>
+
+        <p><strong>Primary (default)</strong></p>
         <p><progress max="100" value="32">32%</progress></p>
+
+        <p><strong>Secondary</strong></p>
+        <p><progress max="100" value="68" data-variant="secondary">68%</progress></p>
+
+        <p><strong>Full</strong></p>
+        <p><progress max="100" value="100">100%</progress></p>
+
+        <p><strong>Indeterminate</strong> (omit the <code>value</code> attribute)</p>
+        <p><progress max="100">Loading…</progress></p>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- Primary --&gt;
+&lt;progress max="100" value="32"&gt;32%&lt;/progress&gt;
+
+&lt;!-- Secondary color --&gt;
+&lt;progress max="100" value="68" data-variant="secondary"&gt;68%&lt;/progress&gt;
+
+&lt;!-- Indeterminate (no value attribute) --&gt;
+&lt;progress max="100"&gt;Loading…&lt;/progress&gt;</code></pre>
+        </details>
+
+        <div class="callout info">
+          <strong>Accessibility note</strong>
+          <p>Always include fallback text inside <code>&lt;progress&gt;</code> for browsers that don't support the element. Add <code>aria-valuenow</code>, <code>aria-valuemin</code>, <code>aria-valuemax</code>, and <code>aria-label</code> for screen reader context:</p>
+          <pre><code>&lt;progress
+  max="100"
+  value="32"
+  aria-label="Upload progress"
+  aria-valuenow="32"
+  aria-valuemin="0"
+  aria-valuemax="100"&gt;32%&lt;/progress&gt;</code></pre>
+        </div>
       </section>
 
-      <!-- 6) Tables — striped / stacked / compact / dense -->
+      <!-- ================================================================
+           TABLES (EXTRA)
+           ================================================================ -->
       <section id="tables">
         <h2>Tables</h2>
+        <p>Extra adds striped rows, responsive stacking on narrow screens, and compact/dense size variants.</p>
 
-        <h3>Striped (opt-in)</h3>
+        <h3>Striped rows — <code>data-striped</code></h3>
         <table data-striped>
-          <thead><tr><th>Task</th><th>Status</th><th>Owner</th></tr></thead>
+          <thead>
+            <tr><th>Task</th><th>Status</th><th>Owner</th></tr>
+          </thead>
           <tbody>
-            <tr><td>Docs</td><td>In progress</td><td>Ron</td></tr>
-            <tr><td>Site</td><td>Review</td><td>Alex</td></tr>
-            <tr><td>Release</td><td>Planned</td><td>Sam</td></tr>
+            <tr><td>Documentation</td><td>In progress</td><td>Alice</td></tr>
+            <tr><td>Design review</td><td>Complete</td><td>Bob</td></tr>
+            <tr><td>Release</td><td>Planned</td><td>Carol</td></tr>
+            <tr><td>Marketing</td><td>In progress</td><td>Dave</td></tr>
           </tbody>
-          <tfoot><tr><td colspan="3">Totals: 3</td></tr></tfoot>
+          <tfoot>
+            <tr><td colspan="3">4 tasks total</td></tr>
+          </tfoot>
         </table>
 
-        <h3 class="eyebrow">Responsive, stacked (≤640px)</h3>
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;table data-striped&gt;
+  &lt;thead&gt;...&lt;/thead&gt;
+  &lt;tbody&gt;...&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </details>
+
+        <h3>Responsive stacking — <code>data-stack</code></h3>
+        <p>At viewport widths ≤ 640px, the table switches to a block layout with each row displayed as a card-like block. Each <code>&lt;td&gt;</code> needs a <code>data-label</code> attribute to show its column name in the stacked view.</p>
         <table data-stack>
-          <thead><tr><th>Label</th><th>Value</th></tr></thead>
+          <thead>
+            <tr><th>Name</th><th>Version</th><th>License</th></tr>
+          </thead>
           <tbody>
             <tr>
-              <td data-label="Label">Version</td>
-              <td data-label="Value">1.0.0</td>
+              <td data-label="Name">ivy.css</td>
+              <td data-label="Version">1.1.1</td>
+              <td data-label="License">MIT</td>
             </tr>
             <tr>
-              <td data-label="Label">License</td>
-              <td data-label="Value">MIT</td>
+              <td data-label="Name">lattice.css</td>
+              <td data-label="Version">1.0.0</td>
+              <td data-label="License">MIT</td>
             </tr>
           </tbody>
         </table>
 
-        <h3 class="eyebrow">Compact / Dense</h3>
-        <table data-compact>
-          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
-          <tbody><tr><td>Paper</td><td>3</td><td>$6.00</td></tr></tbody>
-        </table>
-        <table data-dense>
-          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
-          <tbody><tr><td>Pens</td><td>2</td><td>$3.50</td></tr></tbody>
-        </table>
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;table data-stack&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Version&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;!-- Each td needs data-label matching the column heading --&gt;
+      &lt;td data-label="Name"&gt;ivy.css&lt;/td&gt;
+      &lt;td data-label="Version"&gt;1.1.1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </details>
+
+        <h3>Size variants — <code>data-compact</code> and <code>data-dense</code></h3>
+        <div class="grid sm-col-2 gap-3">
+          <div>
+            <p class="eyebrow">Compact padding</p>
+            <table data-compact>
+              <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+              <tbody>
+                <tr><td>Paper</td><td>3</td><td>$6.00</td></tr>
+                <tr><td>Pens</td><td>2</td><td>$3.50</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <p class="eyebrow">Dense padding + smaller font</p>
+            <table data-dense>
+              <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+              <tbody>
+                <tr><td>Paper</td><td>3</td><td>$6.00</td></tr>
+                <tr><td>Pens</td><td>2</td><td>$3.50</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;table data-compact&gt;...&lt;/table&gt;
+&lt;table data-dense&gt;...&lt;/table&gt;</code></pre>
+        </details>
       </section>
 
-      <!-- 7) Forms — accent-color, switches, range, file -->
+      <!-- ================================================================
+           FORMS (EXTRA)
+           ================================================================ -->
       <section id="forms">
         <h2>Form Enhancements</h2>
-        <p><label><input type="checkbox" role="switch"> Enable notifications</label></p>
-        <p><label>Volume <input type="range" value="60"></label></p>
-        <p><label>Upload <input type="file"></label></p>
+        <p>Extra adds accent colors, a toggle switch, a fully styled range input, and a matched file upload button.</p>
+
+        <h3>Checkbox and radio — accent color</h3>
+        <p>Checkboxes, radio buttons, and native progress bars use <code>accent-color: var(--color-primary)</code>. Add <code>data-variant="secondary"</code> for the secondary accent color.</p>
+        <form>
+          <p>
+            <label><input type="checkbox" checked> Primary accent (checked)</label>&nbsp;&nbsp;
+            <label><input type="checkbox" data-variant="secondary" checked> Secondary accent</label>
+          </p>
+          <p>
+            <label><input type="radio" name="accentDemo" checked> Primary</label>&nbsp;&nbsp;
+            <label><input type="radio" name="accentDemo" data-variant="secondary"> Secondary</label>
+          </p>
+        </form>
+
+        <h3>Toggle switch</h3>
+        <p>Use <code>&lt;input type="checkbox" role="switch"&gt;</code> for a toggle switch. The switch animates on check/uncheck.</p>
+        <form>
+          <p><label><input type="checkbox" role="switch" checked> Enable notifications</label></p>
+          <p><label><input type="checkbox" role="switch"> Dark mode override</label></p>
+          <p><label><input type="checkbox" role="switch" disabled> Disabled switch</label></p>
+        </form>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" role="switch" checked&gt;
+  Enable notifications
+&lt;/label&gt;</code></pre>
+        </details>
+
+        <div class="callout success">
+          <strong>Accessibility</strong>
+          <p><code>role="switch"</code> communicates the on/off semantics to screen readers. The checked state is announced as "on" and unchecked as "off". Always pair with a visible label.</p>
+        </div>
+
+        <h3>Range input</h3>
+        <p>Extra styles the track and thumb. The filled portion of the track requires a small JS snippet to set the <code>--range-progress</code> CSS custom property on the element.</p>
+
+        <form>
+          <p>
+            <label for="demo-range">Volume: <span id="rangeVal">60</span>%</label>
+            <input id="demo-range" type="range" min="0" max="100" value="60">
+          </p>
+          <p>
+            <label for="demo-range2">Brightness</label>
+            <input id="demo-range2" type="range" min="0" max="100" value="35">
+          </p>
+        </form>
+
+        <details>
+          <summary>View HTML + required JavaScript</summary>
+          <pre><code>&lt;input id="myRange" type="range" min="0" max="100" value="60"&gt;
+
+&lt;script&gt;
+  function initRange(el) {
+    function update() {
+      const min = parseFloat(el.min) || 0;
+      const max = parseFloat(el.max) || 100;
+      // Set as a dimensionless ratio (0–1), not a percentage
+      const ratio = (parseFloat(el.value) - min) / (max - min);
+      el.style.setProperty('--range-progress', ratio);
+    }
+    update();                              // set on init
+    el.addEventListener('input', update); // update on drag
+  }
+
+  // Initialize all ranges on the page
+  document.querySelectorAll('input[type=range]').forEach(initRange);
+&lt;/script&gt;</code></pre>
+        </details>
+
+        <div class="callout info">
+          <strong>How it works</strong>
+          <p>The styled track is a CSS <code>linear-gradient</code> background that uses <code>--range-progress</code> as the width of the filled segment. The filled color is a 40% tint of <code>--color-primary</code>. Firefox natively supports <code>::-moz-range-progress</code> so the JS is mainly needed for WebKit/Blink.</p>
+        </div>
+
+        <h3>File upload button</h3>
+        <p>The file selector button is styled to match Ivy's default button appearance using the <code>::file-selector-button</code> pseudo-element.</p>
+        <form>
+          <p><label for="demo-file">Upload an image<br>
+            <input id="demo-file" type="file" accept="image/*">
+          </label></p>
+        </form>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;label&gt;
+  Upload a file
+  &lt;input type="file" accept=".pdf,.doc,.docx"&gt;
+&lt;/label&gt;</code></pre>
+        </details>
+
+        <h3>Legend styling</h3>
+        <p>Extra gives <code>&lt;legend&gt;</code> a muted text color and small horizontal padding to separate it visually from the fieldset border.</p>
+        <form>
+          <fieldset>
+            <legend>Preferences</legend>
+            <p><label><input type="checkbox"> Newsletter</label></p>
+            <p><label><input type="checkbox" checked> Product updates</label></p>
+          </fieldset>
+        </form>
       </section>
 
-      <!-- 8) Breadcrumbs -->
+      <!-- ================================================================
+           BREADCRUMBS
+           ================================================================ -->
       <section id="breadcrumbs">
         <h2>Breadcrumbs</h2>
+        <p>A <code>&lt;nav aria-label="breadcrumb"&gt;</code> wrapping an <code>&lt;ol&gt;</code>. Separators are added automatically via CSS (no extra markup). The current page is marked with <code>aria-current="page"</code>.</p>
+
         <nav aria-label="breadcrumb">
           <ol>
             <li><a href="#">Home</a></li>
             <li><a href="#">Library</a></li>
-            <li aria-current="page">Data</li>
+            <li><a href="#">Components</a></li>
+            <li aria-current="page">Breadcrumbs</li>
           </ol>
         </nav>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;nav aria-label="breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/library"&gt;Library&lt;/a&gt;&lt;/li&gt;
+    &lt;!-- Last item: current page, no link --&gt;
+    &lt;li aria-current="page"&gt;Current page&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+        </details>
+
+        <div class="callout success">
+          <strong>Accessibility</strong>
+          <p>The <code>aria-label="breadcrumb"</code> on the <code>&lt;nav&gt;</code> identifies it to screen readers. <code>aria-current="page"</code> on the last item tells screen readers it represents the current location. The CSS-generated <code>&gt;</code> separator is purely decorative (<code>pointer-events: none</code>) and not read aloud.</p>
+        </div>
       </section>
 
-      <!-- 9) Badges -->
+      <!-- ================================================================
+           BADGES
+           ================================================================ -->
       <section id="badges">
         <h2>Badges</h2>
-        <p>
-          <span aria-label="Inbox" data-badge="4">Inbox</span>
-          <span aria-label="Alerts" data-badge="9" style="margin-left:.75rem;">Alerts</span>
-        </p>
+        <p>Notification chip overlaid on an element. Requires both <code>aria-label</code> (for screen reader context) and <code>data-badge</code> (for the chip value) on the same element.</p>
+
+        <div class="btn-group" style="padding: var(--m) 0;">
+          <button aria-label="Inbox, 4 new messages" data-badge="4">Inbox</button>
+          <button aria-label="Alerts, 12 notifications" data-badge="12" data-variant="outline">Alerts</button>
+          <button aria-label="Messages, 99+ unread" data-badge="99+" data-tone="secondary" data-variant="ghost">Messages</button>
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- Primary badge (default) --&gt;
+&lt;button aria-label="Inbox, 4 new messages" data-badge="4"&gt;
+  Inbox
+&lt;/button&gt;
+
+&lt;!-- Secondary badge color --&gt;
+&lt;button
+  aria-label="Messages, 99+ unread"
+  data-badge="99+"
+  data-tone="secondary"&gt;
+  Messages
+&lt;/button&gt;</code></pre>
+        </details>
+
+        <div class="callout warn">
+          <strong>Both attributes required</strong>
+          <p>The badge selector is <code>[aria-label][data-badge]</code> — it only activates when both attributes are present. This enforces accessible labeling: the <code>aria-label</code> should include the badge content in a meaningful way (e.g. "Inbox, 4 new messages" not just "Inbox").</p>
+        </div>
       </section>
 
-      <!-- 10) Busy / spinner -->
-      <section id="busy">
+      <!-- ================================================================
+           BUSY / SPINNER
+           ================================================================ -->
+      <section id="spinner">
         <h2>Busy / Spinner</h2>
-        <div class="card" aria-busy="true" style="min-height:3rem;">Loading… (spinner in the corner)</div>
+        <p>Adding <code>aria-busy="true"</code> to any element shows a small CSS spinner in its bottom-right corner using a <code>::after</code> pseudo-element. The element must have <code>position: relative</code> (automatically applied by Ivy Extra).</p>
+
+        <h3>On a button</h3>
+        <p>
+          <button aria-busy="true" data-variant="primary">Saving…</button>
+          <button aria-busy="true" data-variant="outline">Loading</button>
+        </p>
+
+        <h3>On a card</h3>
+        <div class="card" aria-busy="true" style="min-height: 4rem;">
+          <p>Content loading…</p>
+        </div>
+
+        <h3>On any container</h3>
+        <div class="box" aria-busy="true" style="min-height: 3rem;">
+          Processing your request…
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- On a button --&gt;
+&lt;button aria-busy="true"&gt;Saving…&lt;/button&gt;
+
+&lt;!-- On a card --&gt;
+&lt;div class="card" aria-busy="true" style="min-height: 4rem;"&gt;
+  Content loading…
+&lt;/div&gt;</code></pre>
+        </details>
+
+        <div class="callout info">
+          <strong>Implementation notes</strong>
+          <p>The spinner renders on <code>::after</code>, positioned absolutely in the bottom-right corner. The container needs sufficient height to show the spinner. Customize size and thickness with CSS variables: <code>--spinner-size</code> (default <code>1.1rem</code>) and <code>--spinner-thickness</code> (default <code>3px</code>).</p>
+          <p>Toggle <code>aria-busy</code> via JavaScript when your async operation starts and ends. This simultaneously shows/hides the spinner and communicates loading state to screen readers.</p>
+          <pre><code>el.setAttribute('aria-busy', 'true');
+await doAsyncWork();
+el.removeAttribute('aria-busy');</code></pre>
+        </div>
       </section>
 
-      <!-- 11) Containers — card / box -->
-      <section id="containers">
-        <h2>Containers</h2>
-        <div class="box">
-          <strong>Box</strong>
-          <p>Neutral container with border + radius.</p>
+      <!-- ================================================================
+           CARDS
+           ================================================================ -->
+      <section id="cards">
+        <h2>Cards &amp; Boxes</h2>
+        <p>Two container variants: <code>.card</code> has a shadow and a hover lift; <code>.box</code> is flat with just a border. Both share the same padding, border-radius, and surface background.</p>
+
+        <h3>Box vs Card</h3>
+        <div class="grid sm-col-2 gap-3">
+          <div class="box">
+            <strong>Box</strong>
+            <p>Flat container — border and border-radius only. No shadow, no hover effect. Use for static grouping.</p>
+          </div>
+          <div class="card">
+            <strong>Card</strong>
+            <p>Adds a subtle shadow. Hover over this card to see the shadow deepen and the border shift to the primary color.</p>
+          </div>
         </div>
+
+        <h3>Card with header and footer</h3>
+        <p>Add a <code>&lt;header&gt;</code> and/or <code>&lt;footer&gt;</code> as a direct child of <code>.card</code>. They bleed to the card edges with negative margins and get a border to separate them from the body.</p>
         <div class="card">
-          <strong>Card</strong>
-          <p>Card with elevation; hover to see shadow.</p>
+          <header>
+            <h4>Card title</h4>
+          </header>
+          <p>Card body content. This area has standard padding and can hold any content — text, images, forms, etc.</p>
+          <footer>
+            <div class="btn-group" data-align="end">
+              <button data-variant="ghost" data-size="sm">Cancel</button>
+              <button data-variant="primary" data-size="sm">Save</button>
+            </div>
+          </footer>
         </div>
-        <div class="card" data-variant="soft">
-          <strong>Card (soft)</strong>
-          <p>Softer surface background.</p>
+
+        <details>
+          <summary>View HTML — card with header/footer</summary>
+          <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h4&gt;Card title&lt;/h4&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Body content here.&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;div class="btn-group" data-align="end"&gt;
+      &lt;button data-variant="ghost" data-size="sm"&gt;Cancel&lt;/button&gt;
+      &lt;button data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+        </details>
+
+        <h3>Card variants</h3>
+        <div class="grid sm-col-2 gap-3">
+          <div class="card" data-variant="soft">
+            <strong>Soft</strong>
+            <p><code>data-variant="soft"</code> — surface-2 background, slightly elevated appearance.</p>
+          </div>
+          <div class="card" data-variant="primary">
+            <strong>Primary accent</strong>
+            <p><code>data-variant="primary"</code> — primary-tinted border with a subtle colored ring.</p>
+          </div>
+          <div class="card" data-variant="secondary">
+            <strong>Secondary accent</strong>
+            <p><code>data-variant="secondary"</code> — secondary-tinted border with a subtle colored ring.</p>
+          </div>
+          <div class="box" data-variant="soft">
+            <strong>Box soft</strong>
+            <p>Variants also work on <code>.box</code>.</p>
+          </div>
         </div>
-        <div class="card" data-variant="primary">
-          <strong>Card (primary)</strong>
-          <p>Primary-accented border + subtle ring.</p>
+
+        <h3>Padding sizes</h3>
+        <div class="grid sm-col-3 gap-3">
+          <div class="card" data-padding="sm"><strong>Small padding</strong><br><code>data-padding="sm"</code></div>
+          <div class="card"><strong>Default padding</strong><br>no attribute</div>
+          <div class="card" data-padding="lg"><strong>Large padding</strong><br><code>data-padding="lg"</code></div>
         </div>
-        <div class="card" data-padding="sm"><strong>Small padding</strong></div>
-        <div class="card" data-padding="lg"><strong>Large padding</strong></div>
+
+        <details>
+          <summary>View HTML — variants and padding</summary>
+          <pre><code>&lt;div class="card" data-variant="soft"&gt;Soft&lt;/div&gt;
+&lt;div class="card" data-variant="primary"&gt;Primary&lt;/div&gt;
+&lt;div class="card" data-variant="secondary"&gt;Secondary&lt;/div&gt;
+&lt;div class="box" data-variant="soft"&gt;Box soft&lt;/div&gt;
+
+&lt;div class="card" data-padding="sm"&gt;Small padding&lt;/div&gt;
+&lt;div class="card" data-padding="lg"&gt;Large padding&lt;/div&gt;</code></pre>
+        </details>
       </section>
 
-      <!-- 12) Callouts — attribute or class -->
+      <!-- ================================================================
+           CALLOUTS
+           ================================================================ -->
       <section id="callouts">
         <h2>Callouts</h2>
-        <div class="callout"><strong>Note</strong><p>Neutral callout.</p></div>
-        <div class="callout info"><strong>Info</strong><p>Using class tone.</p></div>
-        <div class="callout" data-tone="success"><strong>Success</strong><p>Using attribute tone.</p></div>
-        <div class="callout warn"><strong>Warning</strong><p>Be careful.</p></div>
-        <div class="callout danger"><strong>Danger</strong><p>Action required.</p></div>
+        <p>Contextual message blocks. Apply a tone with <code>data-tone="…"</code> or a matching class name. A <code>&lt;strong&gt;</code> as the first child renders as a block label.</p>
+
+        <div class="callout">
+          <strong>Neutral</strong>
+          <p>Default callout — no tone attribute. Uses <code>--surface-2</code> background.</p>
+        </div>
+        <div class="callout" data-tone="info">
+          <strong>Info</strong>
+          <p>Use <code>data-tone="info"</code> or <code>class="callout info"</code> for informational messages.</p>
+        </div>
+        <div class="callout" data-tone="success">
+          <strong>Success</strong>
+          <p>Use <code>data-tone="success"</code> or <code>class="callout success"</code> for positive outcomes.</p>
+        </div>
+        <div class="callout" data-tone="warn">
+          <strong>Warning</strong>
+          <p>Use <code>data-tone="warn"</code> or <code>class="callout warn"</code> for cautionary messages.</p>
+        </div>
+        <div class="callout" data-tone="danger">
+          <strong>Danger</strong>
+          <p>Use <code>data-tone="danger"</code> or <code>class="callout danger"</code> for errors or destructive actions.</p>
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;!-- Neutral --&gt;
+&lt;div class="callout"&gt;
+  &lt;strong&gt;Note&lt;/strong&gt;
+  &lt;p&gt;Content here.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Toned — use data-tone attribute OR matching class --&gt;
+&lt;div class="callout" data-tone="info"&gt;...&lt;/div&gt;
+&lt;div class="callout" data-tone="success"&gt;...&lt;/div&gt;
+&lt;div class="callout" data-tone="warn"&gt;...&lt;/div&gt;
+&lt;div class="callout" data-tone="danger"&gt;...&lt;/div&gt;
+
+&lt;!-- Class syntax (equivalent) --&gt;
+&lt;div class="callout info"&gt;...&lt;/div&gt;
+&lt;div class="callout success"&gt;...&lt;/div&gt;</code></pre>
+        </details>
       </section>
 
-      <!-- 13) Groups + helpers -->
+      <!-- ================================================================
+           GROUPS & HELPERS
+           ================================================================ -->
       <section id="groups">
         <h2>Groups &amp; Helpers</h2>
+
+        <h3>Button group — <code>.btn-group</code></h3>
+        <p>Wraps buttons in a flex row with a small gap. Use <code>data-align="center"</code> or <code>data-align="end"</code> to align the group.</p>
+
+        <p class="eyebrow">Left (default)</p>
         <div class="btn-group">
           <button data-variant="outline">Prev</button>
           <button data-variant="primary">Save</button>
           <button data-variant="ghost">Next</button>
         </div>
+
+        <p class="eyebrow">Centered</p>
         <div class="btn-group" data-align="center">
-          <button>One</button><button>Two</button><button>Three</button>
+          <button>One</button>
+          <button>Two</button>
+          <button>Three</button>
         </div>
-        <nav data-align="end" aria-label="Aligned nav">
-          <ul><li><a href="#">Aligned Right</a></li></ul>
+
+        <p class="eyebrow">Right-aligned</p>
+        <div class="btn-group" data-align="end">
+          <button data-variant="ghost">Cancel</button>
+          <button data-variant="primary">Confirm</button>
+        </div>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;div class="btn-group"&gt;
+  &lt;button data-variant="outline"&gt;Prev&lt;/button&gt;
+  &lt;button data-variant="primary"&gt;Save&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="btn-group" data-align="center"&gt;...&lt;/div&gt;
+&lt;div class="btn-group" data-align="end"&gt;...&lt;/div&gt;</code></pre>
+        </details>
+
+        <h3>Nav alignment</h3>
+        <p>Use <code>data-align="center"</code> or <code>data-align="end"</code> on a <code>&lt;nav&gt;</code> element to align its links.</p>
+
+        <nav data-align="center" aria-label="Centered nav example">
+          <ul>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
         </nav>
-        <p class="eyebrow">Eyebrow helper</p>
-        <p class="kicker">Kicker helper</p>
+
+        <nav data-align="end" aria-label="Right-aligned nav example">
+          <ul>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </nav>
+
+        <h3>Typographic helpers</h3>
+        <p class="eyebrow">Eyebrow — <code>.eyebrow</code></p>
+        <p class="kicker">Kicker — <code>.kicker</code> (uppercase with letter-spacing)</p>
+        <p>Both are small, muted text. Kicker adds uppercase transformation and <code>0.08em</code> letter-spacing for a label/category treatment.</p>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;p class="eyebrow"&gt;Category label&lt;/p&gt;
+&lt;h2&gt;Main heading&lt;/h2&gt;
+
+&lt;p class="kicker"&gt;Section title&lt;/p&gt;
+&lt;h3&gt;Sub-heading&lt;/h3&gt;</code></pre>
+        </details>
       </section>
 
-      <!-- 14) Utilities -->
+      <!-- ================================================================
+           UTILITIES
+           ================================================================ -->
       <section id="utilities">
         <h2>Utilities</h2>
+
+        <h3>Divider — <code>.divider</code></h3>
+        <p>A 1px horizontal rule using <code>--color-border</code>. Unlike <code>&lt;hr&gt;</code>, it has no top/bottom margin.</p>
         <div class="divider"></div>
-        <p class="surface-2" style="padding:.5rem;">Surface-2 block</p>
-        <p class="surface-3" style="padding:.5rem;">Surface-3 block</p>
-        <p class="muted">Muted text with a <a href="#">muted link</a>.</p>
+        <p>Content after the divider.</p>
+
+        <h3>Surface levels — <code>.surface-2</code>, <code>.surface-3</code></h3>
+        <p>Apply background colors for depth and elevation.</p>
+        <p class="surface-2" data-padding="sm">Surface 2 — slightly elevated</p>
+        <p class="surface-3" data-padding="sm">Surface 3 — most elevated</p>
+
+        <h3>Muted text — <code>.muted</code></h3>
+        <p class="muted">Muted paragraph text. Links inside muted text also get desaturated: <a href="#">muted link</a>.</p>
+
+        <h3>Center — <code>.center</code></h3>
+        <p class="center">Centered text — <code>text-align: center</code>.</p>
+
+        <h3>Color utilities</h3>
+        <p>
+          <span class="text-primary">text-primary</span>&nbsp;&nbsp;
+          <span class="text-secondary">text-secondary</span>&nbsp;&nbsp;
+          <code class="bg-primary">bg-primary</code>&nbsp;&nbsp;
+          <code class="bg-secondary">bg-secondary</code>
+        </p>
+
+        <details>
+          <summary>View HTML</summary>
+          <pre><code>&lt;div class="divider"&gt;&lt;/div&gt;
+
+&lt;div class="surface-2"&gt;Elevated surface&lt;/div&gt;
+&lt;div class="surface-3"&gt;Most elevated&lt;/div&gt;
+
+&lt;p class="muted"&gt;Muted text&lt;/p&gt;
+&lt;p class="center"&gt;Centered text&lt;/p&gt;
+
+&lt;span class="text-primary"&gt;Primary color text&lt;/span&gt;
+&lt;span class="text-secondary"&gt;Secondary color text&lt;/span&gt;
+&lt;span class="bg-primary"&gt;Primary background&lt;/span&gt;
+&lt;span class="bg-secondary"&gt;Secondary background&lt;/span&gt;</code></pre>
+        </details>
       </section>
+
     </article>
   </main>
 
   <footer class="container center">
-    <p>© 2025 Ivy CSS Library • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js" defer></script>
   <script>
-    const dlg=document.getElementById('demoDialog');
-    document.getElementById('openDialog').addEventListener('click',()=>{ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); });
-    document.getElementById('closeDialog').addEventListener('click',()=>{ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
+    // Dialog
+    const dlg = document.getElementById('demoDialog');
+    document.getElementById('openDialog').addEventListener('click', () => dlg.showModal());
+    document.getElementById('closeDialog').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+    // Range input fill — set --range-progress as a dimensionless ratio (0–1)
+    function initRange(el) {
+      function update() {
+        const min = parseFloat(el.min) || 0;
+        const max = parseFloat(el.max) || 100;
+        const ratio = (parseFloat(el.value) - min) / (max - min);
+        el.style.setProperty('--range-progress', ratio);
+      }
+      update();
+      el.addEventListener('input', update);
+    }
+    document.querySelectorAll('input[type=range]').forEach(initRange);
+
+    // Live range value display
+    const rangeEl = document.getElementById('demo-range');
+    const rangeVal = document.getElementById('rangeVal');
+    if (rangeEl && rangeVal) {
+      rangeEl.addEventListener('input', () => { rangeVal.textContent = rangeEl.value; });
+    }
   </script>
 </body>
 </html>

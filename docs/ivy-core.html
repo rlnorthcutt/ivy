@@ -3,138 +3,404 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ivy (CORE) — Elements Showcase</title>
-  <meta name="description" content="Ivy: elegant classless CSS. Core library demo page." />
-  <meta name="keywords" content="CSS, utilities, classless, layout, design system" />
-  <link rel="stylesheet" href="ivy.full.min.css" />
+  <title>Ivy Core — Elements Showcase</title>
+  <meta name="description" content="Live demo of every element styled by ivy.css core. Zero classes required — just semantic HTML.">
+  <link rel="stylesheet" href="ivy.full.min.css">
   <link rel="stylesheet" href="lattice.full.min.css">
 </head>
 <body>
-  <a class="sr-only sr-only-focusable skip-link" href="#content">Skip to content</a>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-  <!-- Site header -->
-    <!-- 3) Links & nav -->
-  <header class="lattice" role="banner">
+  <header class="sticky" role="banner">
     <nav class="container d-flex justify-between" aria-label="Primary">
       <ul class="d-flex gap-2 m-0 p-0">
-        <li><a href="./">Home</a></li>
-        <li><a href="ivy-core.html">Ivy Core</a></li>
-        <li><a href="ivy-extra.html">Ivy Extra</a></li>
+        <li><a href="./">Ivy CSS</a></li>
+        <li><a href="ivy-core.html" aria-current="page">Core Demo</a></li>
+        <li><a href="ivy-extra.html">Extra Demo</a></li>
       </ul>
       <dark-mode-toggle></dark-mode-toggle>
     </nav>
   </header>
 
-    <!-- Intro -->
   <main id="content">
-    <section class="container hero center px-5 py-4">
-      <p class="kicker">CSS micro-stack</p>
-      <h1>Ivy.css (CORE) — Classless Demo</h1>
-      <p>Minimal, elegant defaults for semantic HTML.</p>
+    <section class="container center py-4 px-5">
+      <p class="kicker">ivy.css core</p>
+      <h1>Core Elements</h1>
+      <p>Every element below is styled by <code>ivy.css</code> alone — no classes required. Just write semantic HTML.</p>
     </section>
+
     <article>
-      <!-- 2) Typography flow -->
+      <!-- In-page navigation -->
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#lists">Lists</a></li>
+          <li><a href="#links">Links &amp; Nav</a></li>
+          <li><a href="#code">Code</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#a11y">Accessibility</a></li>
+        </ul>
+      </nav>
+      <hr>
+
+      <!-- Typography -->
       <section id="typography">
         <h2>Typography</h2>
-        <p>
-          Ivy provides a readable rhythm, a sane measure, and fluid headings.
-          Inline <strong>strong</strong>, <em>emphasis</em>, and
-          <a href="#">links</a> get clean defaults.
-          <small>Small text looks like this.</small>
-        </p>
-        <h1>H1 heading</h1>
-        <h2>H2 heading</h2>
-        <h3>H3 heading</h3>
-        <h4>H4 heading</h4>
-        <h5>H5 heading</h5>
-        <h6>H6 heading</h6>
+        <p>Headings use fluid sizing via <code>clamp()</code> — they scale smoothly between a minimum and maximum size. Body text uses <code>--lh: 1.6</code> for comfortable reading rhythm, with a max content width of <code>--measure: 64rem</code>.</p>
+
+        <h1>H1 — Page title <small>clamp(1.875rem, 2vw, 2.5rem)</small></h1>
+        <h2>H2 — Section heading <small>clamp(1.5rem, 1.5vw, 2rem)</small></h2>
+        <h3>H3 — Subsection <small>clamp(1.25rem, 1vw, 1.5rem)</small></h3>
+        <h4>H4 — Minor heading (1.125rem)</h4>
+        <h5>H5 — Small heading (1rem)</h5>
+        <h6>H6 — Micro heading (0.875rem, muted color)</h6>
+
+        <p>A body paragraph. Ivy sets a comfortable <strong>line height of 1.6</strong>, a readable font stack (Inter or system-ui), and consistent spacing between block elements. Inline <strong>bold</strong>, <em>italic</em>, <code>code</code>, and <a href="#">links</a> all have clean, accessible defaults. <small>Small text inherits muted color and 87.5% size.</small></p>
+
+        <blockquote>"Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects."<br><cite>— Dieter Rams</cite></blockquote>
+
         <hr>
-        <blockquote>“Good design is as little design as possible.”</blockquote>
+
+        <p>A horizontal rule (<code>&lt;hr&gt;</code>) uses a 1px border rendered with <code>--color-border</code>, with <code>--space-xl</code> (2rem) vertical margin above and below.</p>
       </section>
 
-      <!-- Lists (still part of typographic flow) -->
+      <!-- Lists -->
       <section id="lists">
         <h2>Lists</h2>
-        <ul>
-          <li>Unordered item one</li>
-          <li>Unordered item two</li>
-        </ul>
-        <ol>
-          <li>Ordered item one</li>
-          <li>Ordered item two</li>
-        </ol>
-        <dl>
-          <dt>Term</dt><dd>Definition text with natural spacing.</dd>
-        </dl>
+        <p>Unordered, ordered, and definition lists all use <code>1.25em</code> left padding and bottom margin equal to <code>--m</code>.</p>
+
+        <div class="grid sm-col-3 gap-3">
+          <div>
+            <h3>Unordered</h3>
+            <ul>
+              <li>First item</li>
+              <li>Second item
+                <ul>
+                  <li>Nested item</li>
+                  <li>Another nested</li>
+                </ul>
+              </li>
+              <li>Third item</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Ordered</h3>
+            <ol>
+              <li>First step</li>
+              <li>Second step
+                <ol>
+                  <li>Sub-step A</li>
+                  <li>Sub-step B</li>
+                </ol>
+              </li>
+              <li>Third step</li>
+            </ol>
+          </div>
+          <div>
+            <h3>Definition list</h3>
+            <dl>
+              <dt>Classless</dt>
+              <dd>Styled with no class attributes on HTML elements.</dd>
+              <dt>Token</dt>
+              <dd>A CSS custom property that holds a design value.</dd>
+            </dl>
+          </div>
+        </div>
       </section>
 
-      <!-- 4) Code, pre, kbd -->
+      <!-- Links and navigation -->
+      <section id="links">
+        <h2>Links &amp; Navigation</h2>
+        <p>Links are <a href="#">underlined with a 2px offset</a> and use <code>--color-link</code>. On focus, they show a solid outline in the same color. A <a href="https://example.com" target="_blank" rel="noopener">link to an external page</a> works the same way.</p>
+
+        <h3>nav — flex link list</h3>
+        <p>A <code>&lt;nav&gt;</code> wrapping a <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> renders as a horizontal flex row. Links inside nav have no underline by default; underline appears on hover.</p>
+
+        <nav aria-label="Example site nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#" aria-current="page">Current page</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+
+        <p>The <code>aria-current="page"</code> attribute makes the active item bold. This is handled purely via CSS.</p>
+
+        <h3>header nav</h3>
+        <p>Links inside a <code>header nav</code> receive a slightly larger font size (<code>1rem</code>) for improved tap target size.</p>
+      </section>
+
+      <!-- Code -->
       <section id="code">
         <h2>Code &amp; Preformatted</h2>
-        <p>Inline <code>const x = 1;</code> code.</p>
-        <pre><code>// Preformatted block
+
+        <h3>Inline code</h3>
+        <p>Use <code>&lt;code&gt;</code> for inline code snippets like <code>const x = 1</code> or CSS property names like <code>--color-primary</code>. It gets a surface background, border, and monospace font.</p>
+
+        <h3>Code block</h3>
+        <p>Wrap <code>&lt;code&gt;</code> inside <code>&lt;pre&gt;</code> for multi-line blocks. The inner <code>&lt;code&gt;</code> has its background and border removed when nested inside <code>&lt;pre&gt;</code>.</p>
+        <pre><code>// JavaScript example
 function greet(name) {
-  return `Hello, ${name}!`;
+  const msg = `Hello, ${name}!`;
+  console.log(msg);
+  return msg;
 }</code></pre>
-        <p>Press <kbd>⌘</kbd> + <kbd>K</kbd> to search.</p>
+
+        <h3>Keyboard key</h3>
+        <p>Use <code>&lt;kbd&gt;</code> for keyboard shortcuts. Press <kbd>⌘</kbd> + <kbd>K</kbd> to open the command palette. Or use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette in VS Code. When using <code>ivy.extra.css</code>, <code>&lt;kbd&gt;</code> gets an extra bottom border for an embossed key appearance.</p>
+
+        <h3>Samp</h3>
+        <p>The <code>&lt;samp&gt;</code> element, used for sample program output: <samp>Error: file not found at path /foo/bar</samp>. It shares the monospace font stack.</p>
       </section>
 
-      <!-- 5) Media -->
+      <!-- Media -->
       <section id="media">
         <h2>Media</h2>
+        <p>Images, video, canvas, and SVG all get <code>max-width: 100%; height: auto</code> to prevent overflow. Images are <code>display: block</code>; SVGs are <code>inline-block</code>.</p>
+
+        <h3>Figure with caption</h3>
         <figure>
-          <img src="https://picsum.photos/960/540" alt="Random demo image">
-          <figcaption>Fig. 1 — Responsive image with caption.</figcaption>
+          <img src="https://picsum.photos/seed/ivy/960/400" alt="A random demo image — rolling hills and sky">
+          <figcaption>Fig. 1 — Responsive image inside a <code>&lt;figure&gt;</code> with a <code>&lt;figcaption&gt;</code>. Caption uses muted color and 0.875rem size.</figcaption>
         </figure>
-        <video controls width="480">
+
+        <h3>Video</h3>
+        <p>Video also respects <code>max-width: 100%</code>.</p>
+        <video controls width="640">
           <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-          Sorry, your browser doesn't support embedded videos.
+          Your browser doesn't support embedded video.
         </video>
+
+        <h3>iframe</h3>
+        <p>Iframes get <code>max-width: 100%</code> and <code>border: 0</code>.</p>
+        <iframe src="https://example.com" title="Example domain" style="height:8rem;" loading="lazy"></iframe>
       </section>
 
-      <!-- 6) Tables -->
+      <!-- Tables -->
       <section id="tables">
         <h2>Tables</h2>
+        <p>Tables are full-width with <code>border-collapse: collapse</code>. Cells have <code>--space-sm</code> padding and a bottom border. <code>&lt;thead th&gt;</code> gets a thicker bottom border to separate header from body.</p>
+
         <table>
-          <caption>Basic, readable table</caption>
-          <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+          <caption>CSS file sizes — ivy.css</caption>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Contents</th>
+              <th>Minified</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Paper</td><td>3</td><td>$6.00</td></tr>
-            <tr><td>Pens</td><td>2</td><td>$3.50</td></tr>
+            <tr>
+              <td><code>ivy.min.css</code></td>
+              <td>Core only</td>
+              <td>~10.7 KB</td>
+            </tr>
+            <tr>
+              <td><code>ivy.extra.min.css</code></td>
+              <td>Extra only</td>
+              <td>~13.3 KB</td>
+            </tr>
+            <tr>
+              <td><code>ivy.full.min.css</code></td>
+              <td>Core + Extra</td>
+              <td>~24 KB</td>
+            </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">Total (full bundle)</td>
+              <td>~24 KB</td>
+            </tr>
+          </tfoot>
         </table>
       </section>
 
-      <!-- 7) Forms (minimal) -->
+      <!-- Forms -->
       <section id="forms">
-        <h2>Forms (minimal)</h2>
+        <h2>Forms</h2>
+        <p>All form controls inherit the body font and line height. Inputs and selects are full-width with consistent padding, border, and border-radius from the token set. Buttons use the primary color and switch to a lighter tint on hover.</p>
+
+        <h3>Text inputs</h3>
         <form>
           <fieldset>
-            <legend>Contact</legend>
-            <p><label>Name<br><input type="text" placeholder="Jane Doe"></label></p>
-            <p><label>Email<br><input type="email" placeholder="jane@example.com"></label></p>
-            <p><label>Topic<br>
-              <select>
-                <option>General</option><option>Support</option><option>Other</option>
-              </select>
-            </label></p>
-            <p><label>Message<br><textarea placeholder="Write your message…"></textarea></label></p>
-            <p><button type="submit">Send</button> <button type="reset">Reset</button></p>
+            <legend>Contact information</legend>
+            <p>
+              <label for="demo-name">Full name</label>
+              <input id="demo-name" type="text" placeholder="Jane Doe">
+            </p>
+            <p>
+              <label for="demo-email">Email address</label>
+              <input id="demo-email" type="email" placeholder="jane@example.com">
+            </p>
+            <p>
+              <label for="demo-url">Website</label>
+              <input id="demo-url" type="url" placeholder="https://example.com">
+            </p>
+            <p>
+              <label for="demo-phone">Phone</label>
+              <input id="demo-phone" type="tel" placeholder="+1 (555) 000-0000">
+            </p>
+            <p>
+              <label for="demo-num">Age</label>
+              <input id="demo-num" type="number" min="0" max="120" placeholder="30">
+            </p>
+            <p>
+              <label for="demo-pass">Password</label>
+              <input id="demo-pass" type="password" placeholder="••••••••">
+              <span class="form-help">Minimum 8 characters.</span>
+            </p>
           </fieldset>
+        </form>
+
+        <h3>Textarea and select</h3>
+        <form>
+          <p>
+            <label for="demo-msg">Message</label>
+            <textarea id="demo-msg" placeholder="Write your message…"></textarea>
+            <span class="form-help">Maximum 500 characters.</span>
+          </p>
+          <p>
+            <label for="demo-topic">Topic</label>
+            <select id="demo-topic">
+              <option value="">Choose a topic…</option>
+              <option>General</option>
+              <option>Support</option>
+              <option>Feedback</option>
+              <option>Other</option>
+            </select>
+          </p>
+        </form>
+
+        <h3>Checkboxes and radio buttons</h3>
+        <form>
+          <fieldset>
+            <legend>Preferences</legend>
+            <p>
+              <label><input type="checkbox" checked> Receive newsletters</label><br>
+              <label><input type="checkbox"> Receive product updates</label><br>
+              <label><input type="checkbox" disabled> Disabled option</label>
+            </p>
+          </fieldset>
+          <fieldset>
+            <legend>Notification frequency</legend>
+            <p>
+              <label><input type="radio" name="freq" value="daily"> Daily</label><br>
+              <label><input type="radio" name="freq" value="weekly" checked> Weekly</label><br>
+              <label><input type="radio" name="freq" value="never"> Never</label>
+            </p>
+          </fieldset>
+        </form>
+
+        <h3>Validation states</h3>
+        <p>Use <code>aria-invalid="true"</code> on inputs that fail validation. The border changes to a <code>--danger</code>-tinted color. Use <code>.form-error</code> for the error message and <code>.form-help</code> for neutral hint text.</p>
+        <form>
+          <p>
+            <label for="demo-err-email">Email address</label>
+            <input id="demo-err-email" type="email" value="not-an-email" aria-invalid="true">
+            <span class="form-error">Please enter a valid email address.</span>
+          </p>
+          <p>
+            <label for="demo-ok-email">Email address</label>
+            <input id="demo-ok-email" type="email" value="jane@example.com">
+            <span class="form-help">We'll never share your email.</span>
+          </p>
+        </form>
+
+        <h3>Buttons</h3>
+        <p>The core button is a full-primary-colored button. <code>ivy.extra.css</code> adds variants. Disabled buttons use <code>opacity: 0.6</code> and <code>cursor: not-allowed</code>.</p>
+        <p>
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+          <button type="button" disabled>Disabled</button>
+          <a role="button" href="#">Link as button</a>
+        </p>
+
+        <h3>Date and time</h3>
+        <form>
+          <div class="grid sm-col-2 gap-3">
+            <p>
+              <label for="demo-date">Date</label>
+              <input id="demo-date" type="date">
+            </p>
+            <p>
+              <label for="demo-time">Time</label>
+              <input id="demo-time" type="time">
+            </p>
+            <p>
+              <label for="demo-datetime">Date &amp; time</label>
+              <input id="demo-datetime" type="datetime-local">
+            </p>
+            <p>
+              <label for="demo-color">Color picker</label>
+              <input id="demo-color" type="color" value="#166534">
+            </p>
+          </div>
+        </form>
+
+        <h3>Search and range</h3>
+        <form>
+          <p>
+            <label for="demo-search">Search</label>
+            <input id="demo-search" type="search" placeholder="Search…">
+          </p>
+          <p>
+            <label for="demo-range">Range (unstyled in core)</label>
+            <input id="demo-range" type="range" min="0" max="100" value="40">
+            <span class="form-help">Add <code>ivy.extra.css</code> for a fully styled range track and thumb.</span>
+          </p>
         </form>
       </section>
 
-      <!-- 8) Selection & accessibility -->
+      <!-- Accessibility -->
       <section id="a11y">
-        <h2>Selection &amp; accessibility</h2>
-        <p>Try selecting this text to see the selection color. The “Skip to content” link becomes visible on focus.</p>
-        <p><span class="sr-only">Screen-reader-only text.</span></p>
+        <h2>Accessibility</h2>
+
+        <h3>Text selection</h3>
+        <p>Select some text on this page — the selection background uses a 25% tint of <code>--color-link</code> so it looks on-theme in both light and dark modes. Try it: <strong>select this sentence to see the selection color.</strong></p>
+
+        <h3>Skip link</h3>
+        <p>The "Skip to content" link at the top of the page is visually hidden with <code>.sr-only</code> until it receives focus. Tab to the top of the page to see it appear. It's implemented with both <code>.sr-only</code> and <code>.sr-only-focusable</code>:</p>
+        <pre><code>&lt;a class="sr-only sr-only-focusable" href="#content"&gt;Skip to content&lt;/a&gt;</code></pre>
+
+        <h3>Screen reader only text</h3>
+        <p>The <code>.sr-only</code> class hides content visually while keeping it available to screen readers. Useful for icon buttons, form hints, and decorative separators.</p>
+        <pre><code>&lt;button&gt;
+  &lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;
+  &lt;span class="sr-only"&gt;Close dialog&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        <p>The text below is present in the DOM but visually invisible:</p>
+        <span class="sr-only">This text is only visible to screen readers.</span>
+        <p><em>(Nothing visible above — that's correct.)</em></p>
+
+        <h3>Focus visible</h3>
+        <p>Ivy uses <code>:focus-visible</code> so focus rings appear only when navigating with the keyboard, not on mouse click. Tab through the elements below to see focus rings:</p>
+        <div class="btn-group">
+          <button type="button">Button</button>
+          <button type="button" data-variant="outline">Outline</button>
+          <a href="#">Link</a>
+          <a role="button" href="#">Link as button</a>
+        </div>
+        <p><input type="text" placeholder="Tab to this input"></p>
+
+        <h3>Forced colors (Windows High Contrast)</h3>
+        <p>Inside <code>@media (forced-colors: active)</code>, Ivy restores OS system colors on all controls and removes custom borders that would otherwise disappear. The custom select caret is replaced with the native OS caret.</p>
+
+        <h3>Reduced motion</h3>
+        <p>When <code>prefers-reduced-motion: reduce</code> is active, all transitions and animations are set to <code>0.01ms</code> duration and a single iteration. No motion plays at all.</p>
+
+        <h3>Print</h3>
+        <p>When printing, Ivy hides navigation, forces a white background and black text, ensures all links are underlined, and wraps pre/code content.</p>
       </section>
+
     </article>
   </main>
 
   <footer class="container center">
-    <p>© 2025 Ivy CSS Library • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js" defer></script>

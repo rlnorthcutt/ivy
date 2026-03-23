@@ -1,142 +1,439 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lattice + Ivy — Minimal CSS Utilities & Classless Theme</title>
-  <meta name="description" content="Lattice: tiny layout utilities. Ivy: elegant classless CSS. Pair them for clean HTML + simple positioning." />
-  <meta name="keywords" content="CSS, utilities, classless, layout, design system" />
-  <link rel="stylesheet" href="ivy.full.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ivy CSS — Classless, Elegant HTML Defaults</title>
+  <meta name="description" content="Ivy: tiny, classless CSS baseline for semantic HTML. Clean typography, light/dark themes, minimal forms, and an optional polish layer.">
+  <meta name="keywords" content="CSS, classless, design system, HTML defaults, dark mode, semantic">
+  <link rel="stylesheet" href="ivy.full.min.css">
   <link rel="stylesheet" href="lattice.full.min.css">
 </head>
 <body>
-  <a class="sr-only sr-only-focusable skip-link" href="#content">Skip to content</a>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-  <!-- Site header -->
-  <header class="lattice" role="banner">
+  <header class="sticky" role="banner">
     <nav class="container d-flex justify-between" aria-label="Primary">
       <ul class="d-flex gap-2 m-0 p-0">
-        <li><a href="./">Home</a></li>
-        <li><a href="ivy-core.html">Ivy Core</a></li>
-        <li><a href="ivy-extra.html">Ivy Extra</a></li>
+        <li><a href="./" aria-current="page"><strong>Ivy CSS</strong></a></li>
+        <li><a href="ivy-core.html">Core Demo</a></li>
+        <li><a href="ivy-extra.html">Extra Demo</a></li>
       </ul>
       <dark-mode-toggle></dark-mode-toggle>
     </nav>
   </header>
 
-  <!-- Main content -->
   <main id="content">
-    <section class="container hero center px-5 py-4">
-      <p class="kicker">CSS micro-stack</p>
-      <h1 class="brand">Ivy (classless) + Lattice (layout)</h1>
-      <p>Write clean, semantic HTML with <strong>Ivy</strong>. Add tiny, semantic positioning with <strong>Lattice</strong>. Sprinkle a few custom rules and ship.</p>
-      <p>
-        <a role="button" data-variant="primary" href="#quickstart">Get started</a>
-        <a role="button" data-variant="outline" href="https://github.com/rlnorthcutt" target="_blank" rel="noopener">GitHub</a>
-      </p>
+
+    <!-- Hero -->
+    <section class="container center py-4 px-5">
+      <p class="kicker">v1.1.1 — MIT License</p>
+      <h1>Ivy CSS</h1>
+      <p>A tiny, classless CSS baseline that makes semantic HTML look great out of the box.<br>
+      Add the optional extras layer for buttons, cards, tooltips, and more — styled with <code>data-*</code> attributes, not class soup.</p>
+      <div class="btn-group" data-align="center">
+        <a role="button" data-variant="primary" href="#install">Get started</a>
+        <a role="button" data-variant="outline" href="ivy-core.html">Core demo</a>
+        <a role="button" data-variant="outline" href="ivy-extra.html">Extra demo</a>
+        <a role="button" data-variant="ghost" href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </section>
 
-      <!-- Features -->
-      <section>
-        <h2 id="features">Why this stack?</h2>
-        <div class="grid sm-col-2 md-col-3 gap-3">
-          <div class="card">
-            <header><h3>Classless first</h3></header>
-            <p>Ivy styles semantic HTML (headings, forms, tables, media) with a small, elegant baseline.</p>
+    <article>
+
+      <!-- Two layers -->
+      <section id="layers">
+        <h2>Two layers</h2>
+        <p>Ivy is split into two files so you only ship what you need.</p>
+        <div class="grid sm-col-2 gap-3">
+          <div class="card" data-variant="primary">
+            <header><h3>Core — <code>ivy.css</code></h3></header>
+            <p>Classless defaults for every HTML element. Zero classes required — just write clean semantic HTML.</p>
+            <ul>
+              <li>Fluid headings with <code>clamp()</code></li>
+              <li>Automatic light/dark mode</li>
+              <li>Forms, tables, code, media</li>
+              <li>Focus-visible, sr-only, skip link</li>
+              <li>Forced-colors and print support</li>
+            </ul>
+            <footer><a href="ivy-core.html">View core demo →</a></footer>
           </div>
-          <div class="card">
-            <header><h3>Tiny layout</h3></header>
-            <p>Lattice provides minimal, readable utilities for grids, spans, and placement. No framework lock-in.</p>
-          </div>
-          <div class="card">
-            <header><h3>Composable</h3></header>
-            <p>Use Ivy alone for blogs &amp; docs. Add Lattice when you need responsive structure or two-column layouts.</p>
+          <div class="card" data-variant="secondary">
+            <header><h3>Extra — <code>ivy.extra.css</code></h3></header>
+            <p>Optional polish and components, activated with <code>data-*</code> attributes or small semantic class names.</p>
+            <ul>
+              <li>Button variants and sizes</li>
+              <li>Cards, boxes, callouts</li>
+              <li>Tooltips, dialog, progress</li>
+              <li>Switches, range inputs, badges</li>
+              <li>Shadows, surfaces, spinner</li>
+            </ul>
+            <footer><a href="ivy-extra.html">View extra demo →</a></footer>
           </div>
         </div>
       </section>
 
-      <!-- Quick Start -->
-      <section>
-        <h2 id="quickstart">Quick start</h2>
-        <p>Add Ivy (classless) and Lattice (layout) to your page:</p>
-<pre><code>&lt;!-- Classless theme --&gt;
-&lt;link rel="stylesheet" href="/path/to/ivy.css"&gt;
-&lt;!-- Optional polish --&gt;
-&lt;link rel="stylesheet" href="/path/to/ivy.extra.css"&gt;
+      <!-- Installation -->
+      <section id="install">
+        <h2>Installation</h2>
 
-&lt;!-- Layout utilities --&gt;
-&lt;link rel="stylesheet" href="/path/to/lattice.min.css"&gt;
-&lt;!-- Optional full coverage (core + extra) --&gt;
-&lt;link rel="stylesheet" href="/path/to/lattice.full.min.css"&gt;</code></pre>
-        <p class="muted">Tip: Use <code>lattice.full.min.css</code> if you want one file; otherwise include just what you need.</p>
+        <h3>Option 1 — Core only</h3>
+        <p>Classless defaults, nothing else. Great for blogs, docs, and content-focused sites.</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rlnorthcutt/ivy/dist/ivy.min.css"&gt;</code></pre>
+
+        <h3>Option 2 — Core + Extra</h3>
+        <p>Add the optional polish layer for buttons, cards, and components.</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rlnorthcutt/ivy/dist/ivy.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rlnorthcutt/ivy/dist/ivy.extra.min.css"&gt;</code></pre>
+
+        <h3>Option 3 — Full bundle</h3>
+        <p>Core + Extra in one file. Simplest option for most projects.</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rlnorthcutt/ivy/dist/ivy.full.min.css"&gt;</code></pre>
+
+        <h3>Option 4 — With Lattice layout</h3>
+        <p>Add <a href="https://github.com/rlnorthcutt/lattice" target="_blank" rel="noopener">Lattice</a> for a minimal layout utility layer (grids, flex, spacing, positioning).</p>
+        <pre><code>&lt;link rel="stylesheet" href="ivy.full.min.css"&gt;
+&lt;link rel="stylesheet" href="lattice.full.min.css"&gt;</code></pre>
       </section>
 
-      <!-- Minimal example -->
-      <section>
-        <h2>Minimal example</h2>
-<pre><code>&lt;main class="lattice"&gt;
-  &lt;article class="container"&gt;
-    &lt;h1&gt;Hello, Ivy&lt;/h1&gt;
-    &lt;p&gt;This is clean HTML with elegant defaults.&lt;/p&gt;
-    &lt;section class="grid sm-col-2 gap-3"&gt;
-      &lt;div class="demo-card"&gt;Card A&lt;/div&gt;
-      &lt;div class="demo-card"&gt;Card B&lt;/div&gt;
-    &lt;/section&gt;
-  &lt;/article&gt;
-&lt;/main&gt;</code></pre>
-      </section>
+      <!-- Theme Configuration -->
+      <section id="config">
+        <h2>Theme configuration</h2>
+        <p>Ivy ships with both a light and a dark palette. You choose how to activate them.</p>
 
-      <!-- Live demo grid -->
-      <section>
-        <h2>Live layout demo (Lattice grid)</h2>
-        <div class="grid sm-col-2 lg-col-3 gap-3">
-          <article>
-            <h3>Article</h3>
-            <p>Semantic elements render nicely via Ivy. Add your content and go.</p>
-            <p><a href="#features">Learn more</a></p>
-          </article>
-          <article class="card">
-            <header><h3>Card</h3></header>
-            <p>Cards are just articles with a border. <code>class="card"</code></p>
-            <p><a role="button" data-variant="outline" href="#files">See files</a></p>
-          </article>
-          <article>
-            <h3>Form</h3>
-            <form>
-              <p><label>Email<br><input type="email" placeholder="you@example.com"></label></p>
-              <p><button data-variant="primary" type="button">Subscribe</button></p>
-            </form>
-          </article>
+        <h3>1. System preference (default)</h3>
+        <p>Ivy automatically follows <code>prefers-color-scheme</code> when no manual override is set. No HTML required — it just works.</p>
+
+        <h3>2. Data attribute (recommended for JS control)</h3>
+        <p>Set <code>data-theme</code> on the <code>&lt;html&gt;</code> element to force a theme. The attribute overrides the system preference.</p>
+        <pre><code>&lt;html data-theme="dark"&gt;   &lt;!-- force dark --&gt;
+&lt;html data-theme="light"&gt;  &lt;!-- force light --&gt;
+&lt;!-- remove the attribute to return to system preference --&gt;</code></pre>
+
+        <h3>3. CSS class</h3>
+        <p>Alternatively, toggle the <code>.dark</code> or <code>.light</code> class on <code>&lt;html&gt;</code>.</p>
+        <pre><code>&lt;html class="dark"&gt;   &lt;!-- force dark --&gt;
+&lt;html class="light"&gt;  &lt;!-- force light --&gt;</code></pre>
+
+        <h3>4. Dark mode toggle web component</h3>
+        <p>The bundled <code>&lt;dark-mode-toggle&gt;</code> web component renders a theme switch button that stores the user's preference in <code>localStorage</code>.</p>
+        <pre><code>&lt;!-- Place anywhere in your layout --&gt;
+&lt;dark-mode-toggle&gt;&lt;/dark-mode-toggle&gt;
+
+&lt;!-- Load the script --&gt;
+&lt;script type="module" src="dark-mode-toggle.min.js" defer&gt;&lt;/script&gt;</code></pre>
+        <div class="callout info">
+          <strong>Toggle component options</strong>
+          <p>The toggle defaults to <code>strategy="attr"</code>, which sets <code>data-theme</code> on <code>&lt;html&gt;</code>. Use <code>strategy="class"</code> to toggle a class instead. Customize the button appearance with CSS variables: <code>--track-width</code>, <code>--track-height</code>, <code>--track-bg-light</code>, <code>--track-bg-dark</code>, <code>--thumb-bg</code>.</p>
         </div>
-      </section>
 
-      <!-- Files -->
-      <section>
-        <h2 id="files">Files &amp; builds</h2>
-        <p>The CI builds minified files into <code>dist/</code>. Use a single file or compose them.</p>
-        <table class="file-table">
-          <thead><tr><th>File</th><th>What</th></tr></thead>
+        <h3>Responsive type scaling</h3>
+        <p>Ivy automatically increases the root font size as the viewport grows, keeping text comfortable on wide and high-DPI screens.</p>
+        <table>
+          <thead><tr><th>Min viewport</th><th><code>--font-size</code></th></tr></thead>
           <tbody>
-            <tr><td><code>ivy.min.css</code></td><td>Ivy core (classless library)</td><td>8.1 kb</td></tr>
-            <tr><td><code>ivy.extra.min.css</code></td><td>Extras for full coverage</td><td>12 kb</td></tr>
-            <tr><td><code>ivy.full.min.css</code></td><td>Core + Extra in one file</td><td>20 kb</td></tr>
+            <tr><td>default</td><td>100%</td></tr>
+            <tr><td>576px</td><td>110%</td></tr>
+            <tr><td>768px</td><td>115%</td></tr>
+            <tr><td>1024px</td><td>120%</td></tr>
+            <tr><td>1280px</td><td>130%</td></tr>
+            <tr><td>1536px</td><td>137.5%</td></tr>
+            <tr><td>1920px</td><td>143.75%</td></tr>
+            <tr><td>2560px</td><td>150%</td></tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          <strong>Disabling responsive type scaling</strong>
+          <p>Override <code>--font-size</code> to a fixed value in your own stylesheet. Because Ivy rules live in <code>@layer ivy-base</code>, your unlayered CSS wins without <code>!important</code>:</p>
+          <pre><code>/* Opt out of responsive type scaling */
+:root { --font-size: 100%; }</code></pre>
+        </div>
+      </section>
+
+      <!-- Customization -->
+      <section id="customize">
+        <h2>Customization</h2>
+        <p>Ivy is built entirely on CSS custom properties. Override any token in your own stylesheet. Because all Ivy rules are inside <code>@layer ivy-base</code> and <code>@layer ivy-extra</code>, your unlayered rules always take precedence — no <code>!important</code> required.</p>
+
+        <h3>How cascade layers work</h3>
+        <pre><code>&lt;!-- Ivy styles live in @layer ivy-base and @layer ivy-extra --&gt;
+&lt;link rel="stylesheet" href="ivy.full.min.css"&gt;
+
+&lt;!-- Your unlayered CSS beats any layered rule automatically --&gt;
+&lt;style&gt;
+  /* This wins even though ivy.css sets it */
+  h1 { font-weight: 400; letter-spacing: -.02em; }
+  button { border-radius: 999px; }
+&lt;/style&gt;</code></pre>
+
+        <h3>Variable override pattern</h3>
+        <p>Override the palette tokens (the ones ending in <code>-light</code> and <code>-dark</code>) to customize both themes at once.</p>
+        <div class="callout warn">
+          <strong>Override palette tokens, not applied tokens</strong>
+          <p>Override <code>--color-primary-light</code> and <code>--color-primary-dark</code>, not <code>--color-primary</code> directly. The applied token gets remapped by the theme-switching logic, so overriding it alone breaks dark mode.</p>
+        </div>
+        <pre><code>&lt;style&gt;
+  :root {
+    /* Primary brand color */
+    --color-primary-light: #7c3aed;
+    --color-primary-dark:  #a78bfa;
+    --color-primary-text-light: #ffffff;
+    --color-primary-text-dark:  #1a0030;
+
+    /* Link color (often same as primary) */
+    --color-link-light: #7c3aed;
+    --color-link-dark:  #a78bfa;
+
+    /* Secondary action color */
+    --color-secondary-light: #0369a1;
+    --color-secondary-dark:  #38bdf8;
+    --color-secondary-text-light: #ffffff;
+    --color-secondary-text-dark:  #0c1a2e;
+
+    /* Typography */
+    --font-sans: 'Your Font', system-ui, sans-serif;
+    --lh: 1.75;        /* line height */
+    --measure: 72rem;  /* max content width */
+
+    /* Spacing — scales all derived spacing tokens */
+    --m: 1.125rem;
+
+    /* Shape */
+    --radius: 0.5rem;
+  }
+&lt;/style&gt;</code></pre>
+
+        <h3>Live color theme examples</h3>
+        <p>The previews below use inline variable overrides. Copy the variable block to your own stylesheet.</p>
+
+        <!-- Purple theme -->
+        <div class="box" style="--color-primary: #7c3aed; --color-primary-text: #fff; --color-secondary: #0369a1; --color-secondary-text: #fff;">
+          <p class="eyebrow">Purple primary</p>
+          <div class="btn-group">
+            <button data-variant="primary">Primary</button>
+            <button data-variant="outline">Outline</button>
+            <button data-variant="ghost">Ghost</button>
+            <button data-variant="secondary">Secondary</button>
+          </div>
+          <details>
+            <summary>CSS variables</summary>
+            <pre><code>--color-primary-light: #7c3aed;
+--color-primary-dark:  #a78bfa;
+--color-primary-text-light: #ffffff;
+--color-primary-text-dark:  #1a0030;
+--color-link-light: #7c3aed;
+--color-link-dark:  #a78bfa;</code></pre>
+          </details>
+        </div>
+
+        <!-- Blue theme -->
+        <div class="box" style="--color-primary: #0369a1; --color-primary-text: #fff;">
+          <p class="eyebrow">Blue primary</p>
+          <div class="btn-group">
+            <button data-variant="primary">Primary</button>
+            <button data-variant="outline">Outline</button>
+            <button data-variant="ghost">Ghost</button>
+          </div>
+          <details>
+            <summary>CSS variables</summary>
+            <pre><code>--color-primary-light: #0369a1;
+--color-primary-dark:  #38bdf8;
+--color-primary-text-light: #ffffff;
+--color-primary-text-dark:  #0c1a2e;
+--color-link-light: #0369a1;
+--color-link-dark:  #38bdf8;</code></pre>
+          </details>
+        </div>
+
+        <!-- Rose theme -->
+        <div class="box" style="--color-primary: #be185d; --color-primary-text: #fff;">
+          <p class="eyebrow">Rose primary</p>
+          <div class="btn-group">
+            <button data-variant="primary">Primary</button>
+            <button data-variant="outline">Outline</button>
+            <button data-variant="ghost">Ghost</button>
+          </div>
+          <details>
+            <summary>CSS variables</summary>
+            <pre><code>--color-primary-light: #be185d;
+--color-primary-dark:  #f472b6;
+--color-primary-text-light: #ffffff;
+--color-primary-text-dark:  #2d0020;
+--color-link-light: #be185d;
+--color-link-dark:  #f472b6;</code></pre>
+          </details>
+        </div>
+
+        <!-- Slate/neutral theme -->
+        <div class="box" style="--color-primary: #334155; --color-primary-text: #fff;">
+          <p class="eyebrow">Slate (neutral)</p>
+          <div class="btn-group">
+            <button data-variant="primary">Primary</button>
+            <button data-variant="outline">Outline</button>
+            <button data-variant="ghost">Ghost</button>
+          </div>
+          <details>
+            <summary>CSS variables</summary>
+            <pre><code>--color-primary-light: #334155;
+--color-primary-dark:  #94a3b8;
+--color-primary-text-light: #ffffff;
+--color-primary-text-dark:  #0f172a;
+--color-link-light: #334155;
+--color-link-dark:  #94a3b8;</code></pre>
+          </details>
+        </div>
+      </section>
+
+      <!-- Token Reference -->
+      <section id="tokens">
+        <h2>Token reference</h2>
+        <p>All CSS custom properties defined by Ivy. Override the <code>-light</code> / <code>-dark</code> palette tokens to customize both themes. The applied tokens (without a suffix) are remapped automatically by theme switching — do not override those directly.</p>
+
+        <h3>Color palette</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Light default</th><th>Dark default</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td><code>--color-bg-*</code></td><td><code>#ffffff</code></td><td><code>#0b0d10</code></td><td>Page background</td></tr>
+            <tr><td><code>--color-text-*</code></td><td><code>#1b1f23</code></td><td><code>#e6e7e9</code></td><td>Body text</td></tr>
+            <tr><td><code>--color-muted-*</code></td><td><code>#667085</code></td><td><code>#98a2b3</code></td><td>Secondary text, captions, placeholders</td></tr>
+            <tr><td><code>--color-link-*</code></td><td><code>#166534</code></td><td><code>#4ade80</code></td><td>Anchor color, focus outlines on links</td></tr>
+            <tr><td><code>--color-primary-*</code></td><td><code>#166534</code></td><td><code>#4ade80</code></td><td>Button fill, focus rings, accents</td></tr>
+            <tr><td><code>--color-primary-text-*</code></td><td><code>#ffffff</code></td><td><code>#052e16</code></td><td>Text on primary-colored backgrounds</td></tr>
+            <tr><td><code>--color-secondary-*</code></td><td><code>#ca8c0a</code></td><td><code>#fcd34d</code></td><td>Secondary actions</td></tr>
+            <tr><td><code>--color-secondary-text-*</code></td><td><code>#1a1200</code></td><td><code>#1a1200</code></td><td>Text on secondary-colored backgrounds</td></tr>
+            <tr><td><code>--color-border-*</code></td><td><code>#e5e7eb</code></td><td><code>#23262b</code></td><td>Borders, dividers, input strokes</td></tr>
+            <tr><td><code>--color-surface-*</code></td><td><code>#fafafa</code></td><td><code>#111418</code></td><td>Card and input backgrounds</td></tr>
+            <tr><td><code>--surface-2-*</code></td><td><code>#f5f7fa</code></td><td><code>#0f1216</code></td><td>Elevated surface (ivy.extra.css)</td></tr>
+            <tr><td><code>--surface-3-*</code></td><td><code>#eef2f7</code></td><td><code>#12161b</code></td><td>Highest elevation (ivy.extra.css)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Semantic state colors</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Value</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td><code>--info</code></td><td><code>#60a5fa</code></td><td>Informational callouts and badges</td></tr>
+            <tr><td><code>--success</code></td><td><code>#22c55e</code></td><td>Success states and callouts</td></tr>
+            <tr><td><code>--warn</code></td><td><code>#f59e0b</code></td><td>Warning callouts</td></tr>
+            <tr><td><code>--danger</code></td><td><code>#ef4444</code></td><td>Errors, invalid fields, destructive callouts</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Typography</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Default</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>--font-sans</code></td><td>Inter, ui-sans-serif, system-ui…</td><td>Body and UI font stack</td></tr>
+            <tr><td><code>--font-mono</code></td><td>ui-monospace, SFMono-Regular…</td><td>Code font stack</td></tr>
+            <tr><td><code>--base-size</code></td><td><code>16px</code></td><td>Root font size (before responsive scaling)</td></tr>
+            <tr><td><code>--lh</code></td><td><code>1.6</code></td><td>Body line height</td></tr>
+            <tr><td><code>--measure</code></td><td><code>64rem</code></td><td>Max content width for <code>main</code> and <code>article</code></td></tr>
+            <tr><td><code>--fs-sm</code></td><td><code>0.875rem</code></td><td>Small text size (captions, helpers)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Spacing</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Default</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>--m</code></td><td><code>1rem</code></td><td>Base unit. Changing this scales all derived spacing.</td></tr>
+            <tr><td><code>--space-xs</code></td><td><code>0.5rem</code></td><td>Tight gaps, input vertical margin</td></tr>
+            <tr><td><code>--space-sm</code></td><td><code>0.75rem</code></td><td>Cell padding, small component spacing</td></tr>
+            <tr><td><code>--space-xl</code></td><td><code>2rem</code></td><td>Section rhythm, header/footer padding, <code>hr</code> margin</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Shape &amp; borders</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Default</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>--radius</code></td><td><code>0.375rem</code></td><td>Standard border radius for inputs, buttons, cards</td></tr>
+            <tr><td><code>--radius-sm</code></td><td><code>0.25rem</code></td><td>Tighter radius for inline code, kbd</td></tr>
+            <tr><td><code>--radius-xs</code></td><td><code>0.125rem</code></td><td>Minimal radius for focus outlines on links</td></tr>
+            <tr><td><code>--focus-ring</code></td><td><code>2px</code></td><td>Focus outline width</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Shadows <small>(ivy.extra.css)</small></h3>
+        <table>
+          <thead><tr><th>Token</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td><code>--shadow-sm-light / -dark</code></td><td>Subtle elevation (buttons, badges, tooltips)</td></tr>
+            <tr><td><code>--shadow-md-light / -dark</code></td><td>Raised elevation (hovered cards, dialogs)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Spinner <small>(ivy.extra.css)</small></h3>
+        <table>
+          <thead><tr><th>Token</th><th>Default</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>--spinner-size</code></td><td><code>1.1rem</code></td><td>Diameter of the <code>aria-busy</code> spinner</td></tr>
+            <tr><td><code>--spinner-thickness</code></td><td><code>3px</code></td><td>Border width of the spinner ring</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Range input <small>(ivy.extra.css, set via JS)</small></h3>
+        <table>
+          <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>--range-progress</code></td><td>Percentage (e.g. <code>60%</code>) of the filled portion of a range track. Must be updated via JavaScript on the <code>input</code> event.</td></tr>
           </tbody>
         </table>
       </section>
 
-      <!-- Philosophy -->
-      <section>
-        <h2>Philosophy</h2>
+      <!-- File sizes -->
+      <section id="files">
+        <h2>Files &amp; builds</h2>
+        <p>GitHub Actions minifies and bundles source files into <code>dist/</code> on every push to <code>main</code>. All minified files preserve the license banner.</p>
+        <table>
+          <thead><tr><th>File</th><th>Contents</th><th>Approx. size</th></tr></thead>
+          <tbody>
+            <tr><td><code>dist/ivy.min.css</code></td><td>Core only</td><td>~10.7 KB</td></tr>
+            <tr><td><code>dist/ivy.extra.min.css</code></td><td>Extra only (requires core)</td><td>~13.3 KB</td></tr>
+            <tr><td><code>dist/ivy.full.css</code></td><td>Core + Extra (unminified)</td><td>~33.7 KB</td></tr>
+            <tr><td><code>dist/ivy.full.min.css</code></td><td>Core + Extra combined</td><td>~24 KB</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Browser support -->
+      <section id="support">
+        <h2>Browser support</h2>
+        <p>Ivy uses modern CSS features. All are baseline-supported in every current browser (Chrome, Firefox, Safari, Edge).</p>
+        <table>
+          <thead><tr><th>Feature</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td><code>@layer</code></td><td>Cascade layers so your CSS wins without <code>!important</code></td></tr>
+            <tr><td><code>:focus-visible</code></td><td>Focus rings only for keyboard navigation</td></tr>
+            <tr><td><code>prefers-color-scheme</code></td><td>Automatic dark mode</td></tr>
+            <tr><td><code>color-mix()</code></td><td>Button hover states, callout tints, border blends</td></tr>
+            <tr><td><code>clamp()</code></td><td>Fluid heading sizes</td></tr>
+            <tr><td><code>accent-color</code></td><td>Checkbox/radio/range primary color</td></tr>
+            <tr><td><code>&lt;dialog&gt;</code></td><td>Native modal (ivy.extra.css)</td></tr>
+            <tr><td><code>backdrop-filter</code></td><td>Dialog backdrop blur (ivy.extra.css)</td></tr>
+            <tr><td><code>forced-colors</code></td><td>Windows High Contrast / OS accessibility modes</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Accessibility -->
+      <section id="a11y">
+        <h2>Accessibility</h2>
         <ul>
-          <li><strong>Classless first:</strong> Author HTML, not frameworks.</li>
-          <li><strong>Utilities, not systems:</strong> Lattice adds just enough positioning.</li>
-          <li><strong>Small layers:</strong> Core → Extra → a pinch of custom CSS.</li>
+          <li><strong>Focus visible:</strong> Ivy uses <code>:focus-visible</code> so focus rings appear only during keyboard navigation, not on mouse click.</li>
+          <li><strong>Skip link:</strong> Add <code>&lt;a class="sr-only sr-only-focusable" href="#content"&gt;Skip to content&lt;/a&gt;</code> as the first element in <code>&lt;body&gt;</code>. It becomes visible on focus.</li>
+          <li><strong>Screen reader only text:</strong> Use <code>class="sr-only"</code> to visually hide content that should still be read aloud.</li>
+          <li><strong>Forced colors:</strong> Ivy includes a <code>@media (forced-colors: active)</code> block that restores OS system colors and border visibility in Windows High Contrast mode.</li>
+          <li><strong>Reduced motion:</strong> All transitions and animations are disabled when <code>prefers-reduced-motion: reduce</code> is active.</li>
+          <li><strong>Print:</strong> Navigation is hidden, backgrounds become white, and links are underlined for print output.</li>
         </ul>
       </section>
+
+    </article>
   </main>
 
   <footer class="container center">
-    <p>© 2025 Ivy CSS Library • MIT License • <a href="https://github.com/rlnorthcutt">GitHub</a></p>
+    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js" defer></script>
