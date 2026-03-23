@@ -80,8 +80,8 @@ button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,[ty
 [data-variant=ghost]:hover{background:color-mix(in oklab,var(--color-primary) 8%,transparent);}
 [data-variant=outline-secondary]{background:transparent; color:var(--color-secondary); border-color:var(--color-secondary);}
 [data-variant=ghost-secondary]{background:transparent; border-color:transparent; color:var(--color-secondary);}
-[data-size=sm]{padding:.4em .7em; font-size:.925em;}
-[data-size=lg]{padding:.7em 1.1em; font-size:1.05em;}
+[data-size=sm]{padding:.4em .7em; font-size:.75em;}
+[data-size=lg]{padding:.7em 1.1em; font-size:1.25em;}
 
 /* ==========================================================================
    2) Details / summary — disclosure polish

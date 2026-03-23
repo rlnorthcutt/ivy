@@ -27,17 +27,17 @@
    ========================================================================== */
 :root{
   /* palette (light) */
-  --color-bg-light:#ffffff; --color-text-light:#1b1f23; --color-muted-light:#667085;
+  --color-bg-light:#f8fafc; --color-text-light:#111827; --color-muted-light:#667085;
   --color-link-light:#166534; --color-primary-light:#166534; --color-primary-text-light:#ffffff;
-  --color-secondary-light:#ca8c0a; --color-secondary-text-light:#1a1200;
-  --color-border-light:#e5e7eb; --color-surface-light:#fafafa;
-  --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7;
+  --color-secondary-light:#d4a017; --color-secondary-text-light:#1a1200;
+  --color-border-light:#dbe2ea; --color-surface-light:#ffffff;
+  --surface-2-light:#f1f5f9; --surface-3-light:#e8eef5;
   /* palette (dark) */
-  --color-bg-dark:#0b0d10; --color-text-dark:#e6e7e9; --color-muted-dark:#98a2b3;
+  --color-bg-dark:#0b0f14; --color-text-dark:#e5e7eb; --color-muted-dark:#a1aab8;
   --color-link-dark:#4ade80; --color-primary-dark:#4ade80; --color-primary-text-dark:#052e16;
-  --color-secondary-dark:#fcd34d; --color-secondary-text-dark:#1a1200;
+  --color-secondary-dark:#f5c84c; --color-secondary-text-dark:#1a1200;
   --color-border-dark:#23262b; --color-surface-dark:#111418;
-  --surface-2-dark:#0f1216; --surface-3-dark:#12161b;
+  --surface-2-dark:#18202a; --surface-3-dark:#202a36;
   /* applied palette (defaults to light; theme switch remaps these) */
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
   --color-link:var(--color-link-light); --color-primary:var(--color-primary-light); --color-primary-text:var(--color-primary-text-light);
@@ -121,7 +121,7 @@ html[data-theme="light"],html.light{
 html{font-size:100%;}
 body{margin:0; font-family:var(--font-sans); font-size:var(--base-size); line-height:var(--lh); color:var(--color-text); background:var(--color-bg); text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;}
 main,article{max-width:var(--measure); margin:0 auto; padding:0 var(--m);}
-header,footer{padding:var(--space-xl) 0;}
+header,footer{padding:var(--space-xl)}
 section{padding:var(--m) 0;}
 
 /* ==========================================================================
