@@ -159,7 +159,7 @@ header nav a{font-size:calc(var(--font-size * 1.2));} header nav{margin:0}
    4) Code, pre, kbd
    ========================================================================== */
 code,kbd,pre,samp{font-family:var(--font-mono); font-size:.95em;}
-code{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
+code{color:var(--color-text); background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
 pre{padding:var(--m); overflow:auto; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
 pre>code{background:transparent; border:0; padding:0; font-size:1em;}
 kbd{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius-sm); padding:.15em .4em;}
@@ -490,8 +490,10 @@ nav[aria-label=breadcrumb] [aria-current="page"]{color:inherit; font-weight:600;
 .btn-group[data-align=end]{justify-content:flex-end;}
 nav[data-align=center]>ul,nav[data-align=center]>ol{justify-content:center;}
 nav[data-align=end]>ul,nav[data-align=end]>ol{justify-content:flex-end;}
-/* sticky positioning — apply to header or nav to keep it fixed at the top while scrolling */
-.sticky{position:sticky; top:0; z-index:100; background:color-mix(in oklab,var(--color-bg) 92%,transparent); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:var(--bw-1) solid var(--color-border);}
+/* sticky positioning — apply to header or nav to keep it fixed at the top while scrolling.
+   Override --sticky-top (default 0) to offset below another sticky element (e.g. a sticky header).
+   Override --sticky-z (default 100) to control stacking when multiple sticky elements coexist. */
+.sticky{position:sticky; top:var(--sticky-top,0); z-index:var(--sticky-z,100); background:color-mix(in oklab,var(--color-bg) 92%,transparent); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:var(--bw-1) solid var(--color-border);}
 .center{text-align:center;}
 .eyebrow{font-size:var(--fs-sm); color:var(--color-muted); margin:0 0 var(--space-xs);}
 .kicker{font-size:var(--fs-sm); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); margin:0 0 var(--space-xs);}
