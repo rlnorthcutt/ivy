@@ -12,7 +12,7 @@
  * - No components; no layout system (use Lattice.css for placement).
  * Philosophy
  * - Keep core tiny; move polish to ivy.extra.css.
- * - Prefer variables; only keep calculated vars that "pay rent" (used ≥ 2–3×).
+ * - Prefer variables; only keep calculated vars that "pay rent" (used ≥ 2–3×). 
  */
 
 /* Declare layer order so unlayered user CSS always wins without !important. */
