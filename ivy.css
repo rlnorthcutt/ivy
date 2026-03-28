@@ -12,7 +12,7 @@
  * - No components; no layout system (use Lattice.css for placement).
  * Philosophy
  * - Keep core tiny; move polish to ivy.extra.css.
- * - Prefer variables; only keep calculated vars that "pay rent" (used ≥ 2–3×).
+ * - Prefer variables; only keep calculated vars that "pay rent" (used ≥ 2–3×). 
  */
 
 /* Declare layer order so unlayered user CSS always wins without !important. */
@@ -159,7 +159,7 @@ header nav a{font-size:calc(var(--font-size * 1.2));} header nav{margin:0}
    4) Code, pre, kbd
    ========================================================================== */
 code,kbd,pre,samp{font-family:var(--font-mono); font-size:.95em;}
-code{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
+code{color:var(--color-text); background:var(--color-surface); border:var(--bw-1) solid var(--color-border); padding:.1em .35em; border-radius:var(--radius-sm);}
 pre{padding:var(--m); overflow:auto; background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius);}
 pre>code{background:transparent; border:0; padding:0; font-size:1em;}
 kbd{background:var(--color-surface); border:var(--bw-1) solid var(--color-border); border-radius:var(--radius-sm); padding:.15em .4em;}

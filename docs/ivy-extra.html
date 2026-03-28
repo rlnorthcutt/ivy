@@ -17,6 +17,7 @@
         <li><a href="./">Ivy CSS</a></li>
         <li><a href="ivy-core.html">Core Demo</a></li>
         <li><a href="ivy-extra.html" aria-current="page">Extra Demo</a></li>
+        <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
       <dark-mode-toggle></dark-mode-toggle>
     </nav>
@@ -29,28 +30,27 @@
       <p>Optional polish activated with <code>data-*</code> attributes and a handful of semantic class names. Requires <code>ivy.css</code> core.</p>
     </section>
 
-    <article class="container">
+    <!-- On-page nav: sticky below the main header (--sticky-top matches header height) -->
+    <nav class="sticky py-2" aria-label="On this page" style="--sticky-top:6rem; --sticky-z:99;">
+      <ul class="container d-flex flex-wrap gap-2 m-0 p-0" style="padding-block:.4rem">
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#tooltips">Tooltips</a></li>
+        <li><a href="#dialog">Dialog</a></li>
+        <li><a href="#progress">Progress</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+        <li><a href="#badges">Badges</a></li>
+        <li><a href="#spinner">Spinner</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#callouts">Callouts</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+      </ul>
+    </nav>
 
-      <!-- In-page nav -->
-      <nav aria-label="On this page">
-        <ul>
-          <li><a href="#buttons">Buttons</a></li>
-          <li><a href="#details">Details</a></li>
-          <li><a href="#tooltips">Tooltips</a></li>
-          <li><a href="#dialog">Dialog</a></li>
-          <li><a href="#progress">Progress</a></li>
-          <li><a href="#tables">Tables</a></li>
-          <li><a href="#forms">Forms</a></li>
-          <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="#badges">Badges</a></li>
-          <li><a href="#spinner">Spinner</a></li>
-          <li><a href="#cards">Cards</a></li>
-          <li><a href="#callouts">Callouts</a></li>
-          <li><a href="#groups">Groups</a></li>
-          <li><a href="#utilities">Utilities</a></li>
-        </ul>
-      </nav>
-      <hr>
+    <article class="container">
 
       <!-- ================================================================
            BUTTONS
