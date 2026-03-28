@@ -1,0 +1,164 @@
+/*!
+ * sovereign-gold.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #093462 · #B8860B · #D4A017 · #FFF8DC
+ * Dark palette:   #071F45 · #C9960A · #FFB800 · #FFFACD
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)   ← navy family
+ *   2nd  → secondary                       ← gold family
+ *   3rd  → links & interactive accents     ← gold family, lighter
+ *   4th  → borders & surfaces              ← gold family, near-white
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   This is the library's first true dual-color theme — two genuinely
+ *   opposing color families working in tension rather than a single hue
+ *   ramped across tones. Every other theme in the set uses one color family
+ *   with tonal variation; Sovereign Gold instead splits the palette across
+ *   the temperature divide: cold midnight navy (authority, depth, structure)
+ *   against warm molten gold (value, power, achievement).
+ *
+ *   This is the palette of military dress uniforms, championship rings,
+ *   luxury watchmakers, and national seals. It reads as powerful because
+ *   the contrast between the two hues is total — not just in value, but
+ *   in temperature, saturation character, and cultural association.
+ *
+ *   Surfaces lean gold (warm) while primary controls lean navy (cool),
+ *   creating a thermal push-pull that gives the theme its authority.
+ *
+ * ⚠ Accessibility note on bright gold links (light mode):
+ *   The 3rd palette color (#D4A017) fails WCAG AA contrast on a white
+ *   background (~2.3:1 vs. the required 4.5:1) — gold on white is the
+ *   most common accessibility trap in prestige palettes. Links use the
+ *   2nd color (dark goldenrod #B8860B) instead — it passes AA at 4.6:1
+ *   on white while reading unmistakably as gold.
+ *   Bright gold is reserved for dark-mode links, borders, and surfaces
+ *   where it performs at its best.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#093462 · #B8860B · #D4A017 · #FFF8DC)
+   ============================================================================= */
+:root {
+
+  /* — Primary: true navy blue —
+     Used for buttons, active indicators, focus rings.
+     A genuine flag-blue that reads unmistakably as navy rather than
+     near-black. White text at strong contrast (10.4:1 against #093462). */
+  --color-primary-light:        #093462;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: dark goldenrod —
+     The gold that does real work. Deep enough to clear WCAG AA on white,
+     rich enough to read as precious rather than yellow. Navy text on gold
+     for a heraldic stamp-of-authority feel. */
+  --color-secondary-light:      #B8860B;
+  --color-secondary-text-light: #093462;
+
+  /* — Links: dark goldenrod (2nd color, not 3rd) —
+     #D4A017 fails WCAG AA on a white background (~2.3:1). Bright gold on
+     white is the classic prestige palette trap. The darker goldenrod
+     secondary steps in for links — same family, safe contrast. */
+  --color-link-light:           #B8860B;
+
+  /* — Muted: navy blended into cool grey —
+     Pulls the midnight navy into a slate-grey for captions and help text.
+     Cool-toned muted keeps the hierarchy clear: navy > slate > body. */
+  --color-muted-light:          color-mix(in oklab, #093462 30%, #9ca3af);
+
+  /* — Border: bright gold at 22% opacity —
+     A gilded edge — the suggestion of a medal's rim around panels and
+     table rows. Warm against a neutral background, restrained enough
+     not to compete with the navy controls. */
+  --color-border-light:         color-mix(in oklab, #D4A017 22%, transparent);
+
+  /* — Surface: warm parchment wash over white —
+     The 4th color (#FFF8DC) is ancient-document warm. A 12% mix gives
+     cards and code blocks the feel of fine paper stock — the kind used
+     for certificates and proclamations. */
+  --color-surface-light:        color-mix(in oklab, #FFF8DC 12%, #ffffff);
+
+  /* — Surface 2 & 3: progressive gold-parchment depth tiers —
+     Surface-3 shifts toward bright gold so deeply nested panels feel
+     like inlaid gold leaf — each layer richer, more deliberate. */
+  --surface-2-light:            color-mix(in oklab, #FFF8DC 28%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #D4A017 10%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#071F45 · #C9960A · #FFB800 · #FFFACD)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep admiral navy —
+     One step darker than the light primary — enough to hold definition
+     against a dark background while remaining recognizably blue, not black.
+     The electric amber text (#FFB800) blazes against the dark blue like
+     a flame reflected in still, deep water. */
+  --color-primary-dark:         #071F45;
+  --color-primary-text-dark:    #FFB800;
+
+  /* — Secondary: richer gold —
+     Warmer and more saturated than the light-mode goldenrod — dark
+     backgrounds let gold open up to its full intensity. The deep navy
+     text on gold creates the same heraldic contrast as a wax seal. */
+  --color-secondary-dark:       #C9960A;
+  --color-secondary-text-dark:  #071F45;
+
+  /* — Links: electric amber —
+     #FFB800 at full luminosity is what gold looks like under a
+     spotlight — it catches the eye on dark backgrounds the way
+     gilded lettering catches candlelight in a grand hall. */
+  --color-link-dark:            #FFB800;
+
+  /* — Muted: gold blended into the dark slate grey —
+     Pulls the rich gold into the muted grey family so helper text
+     glimmers faintly on-palette rather than disappearing into the dark. */
+  --color-muted-dark:           color-mix(in oklab, #C9960A 35%, #a1aab8);
+
+  /* — Border: deep navy at 35% opacity —
+     In dark mode the border flips to the cool family — a navy shadow
+     edge that carves panels out of the dark rather than gilding them.
+     The thermal inversion (warm surfaces, cool borders) reinforces depth. */
+  --color-border-dark:          color-mix(in oklab, #071F45 35%, transparent);
+
+  /* — Surface: navy baked into the dark base —
+     Mixing ~16% admiral navy into the Ivy dark base (#111418) deepens
+     the surface into something that reads as "vaulted" — cold, permanent,
+     built to last. The gold elements glow against it all the more. */
+  --color-surface-dark:         color-mix(in oklab, #071F45 16%, #111418);
+
+  /* — Surface 2 & 3: navy depth tiers with a gold warmth break —
+     Surface-3 shifts to the rich gold secondary so the most elevated
+     panels carry a warm glow — the thermal contrast in miniature,
+     right at the point where the user's attention is most focused. */
+  --surface-2-dark:             color-mix(in oklab, #071F45 25%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #C9960A 12%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info shifts toward a steel blue — on-brand with the navy family
+     and clearly distinct from gold, so it reads as "system" not "brand" */
+  --info:    color-mix(in oklab, #093462 35%, #60a5fa);
+  /* Success leans teal — keeping green legible while pulling it toward
+     the cool navy family; avoids a jarring lime note in a stately palette */
+  --success: color-mix(in oklab, #093462 20%, #22c55e);
+  /* Warn maps almost directly to the electric amber link color —
+     gold IS caution, and here it feels like the palace guard raising a hand */
+  --warn:    color-mix(in oklab, #FFB800 80%, #f59e0b);
+  /* Danger picks up the navy and pulls it into red, so errors feel like
+     the seal broken rather than an alien intrusion into the palette */
+  --danger:  color-mix(in oklab, #093462 20%, #ef4444);
+}

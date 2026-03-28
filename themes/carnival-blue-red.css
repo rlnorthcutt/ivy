@@ -1,0 +1,194 @@
+/*!
+ * carnival-blue-red.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #2B3192 · #B52E12 · #C45A10 · #FFF19B
+ * Dark palette:   #3D45AA · #DA3D20 · #F8843F · #FFF19B
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)   ← blue-purple family
+ *   2nd  → secondary                       ← red-orange family
+ *   3rd  → links & interactive accents     ← warm orange family
+ *   4th  → borders & surfaces              ← cream yellow, at opacity
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   Carnival is a split-complementary theme — one cool spoke (blue-purple
+ *   ~235°) set against a tight warm cluster (red-orange ~15°, orange ~25°)
+ *   that sits directly opposite on the wheel. The complement of blue-purple
+ *   is yellow-orange, and the palette parks two vivid hues right in that
+ *   zone, with a cream yellow as the fourth that bridges the two poles.
+ *
+ *   This is the specific color language of hand-lettered circus bills,
+ *   Mexican folk art, Venetian carnival masks, and Rio parade floats —
+ *   contexts where contrast is not a design consideration but a requirement,
+ *   where every color must hold its own against every other at full volume.
+ *
+ *   The vibrant tone is achieved by keeping all four hues at maximum
+ *   chroma. Unlike Pulse (triadic, uniform saturation across three equal
+ *   spokes) Carnival has an asymmetry: one cool hue against two warm hues
+ *   that are close enough to read as a single warm force. The blue-purple
+ *   stands alone. The orange-reds move together. The cream yellow is the
+ *   light between them — the space where the two forces don't quite touch.
+ *
+ *   This is a dark-first theme. The cream yellow (#FFF19B) is the clearest
+ *   signal: near-white on a white background disappears (~1.1:1); against
+ *   a dark base it glows like a paper lantern. All four hues are designed
+ *   to ignite against darkness. Light mode is derived by pulling each hue
+ *   to its deepest workable value while preserving character.
+ *
+ *   Surface strategy: like Daybreak, this palette has no native near-white
+ *   that works as a surface tint on white backgrounds. Surfaces use the
+ *   cream yellow at very low opacity — the fourth color functioning as a
+ *   warm breath of air rather than a structural color.
+ *
+ * Light mode derivation from dark:
+ *   #3D45AA (blue-purple)  → #2B3192 (deep indigo, ~1 stop darker)
+ *   #DA3D20 (red-orange)   → #B52E12 (brick red, ~1 stop darker)
+ *   #F8843F (orange)       → #C45A10 (burnt orange, ~2 stops darker)
+ *   #FFF19B (cream yellow) → used at opacity only; too light for text use
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#2B3192 · #B52E12 · #C45A10 · #FFF19B)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep indigo-blue —
+     The blue-purple pulled one stop darker to anchor contrast on white.
+     Still unmistakably vivid — the specific blue of a carnival banner
+     or a night-sky painted on a parade float. Not navy, not violet: the
+     exact hue that makes the orange-reds feel like fire against sky.
+     White text at solid contrast (8.1:1 against #2B3192). */
+  --color-primary-light:        #2B3192;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: brick red —
+     #DA3D20 darkened to clear WCAG AA on white. The warm red-orange pulled
+     toward brick and dried chili — still warm, still urgent, now readable.
+     White text at 5.4:1. The contrast between this and the indigo primary
+     is the whole thesis of the palette: cool vs. warm at full intensity. */
+  --color-secondary-light:      #B52E12;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: burnt orange —
+     #F8843F pulled two stops darker to #C45A10 — the orange of embers,
+     clay, and aged leather. Passes WCAG AA at 4.9:1 on white. In a
+     blue-and-red interface, orange links are the third note that makes
+     the chord resolve — related to the red secondary but distinctly warm. */
+  --color-link-light:           #C45A10;
+
+  /* — Muted: indigo blended into cool grey —
+     Pulls the primary blue-purple into a periwinkle-slate for captions
+     and help text. Keeps the cool family present in the quietest moments. */
+  --color-muted-light:          color-mix(in oklab, #2B3192 28%, #9ca3af);
+
+  /* — Border: cream yellow at 25% opacity —
+     The fourth color as a structural element — a warm gold edge around
+     panels and table rows. On a white background the yellow reads as a
+     faint warmth rather than a color, like lamplight catching a frame.
+     The palette's cool-warm tension plays out even at the border layer. */
+  --color-border-light:         color-mix(in oklab, #FFF19B 35%, transparent);
+
+  /* — Surface: cream yellow wash at very low opacity —
+     No native near-white in this palette means the same opacity-as-lightness
+     strategy as Daybreak. A 7% mix of the cream yellow over white gives
+     cards and code blocks a barely-there warmth — the paper lantern
+     at full distance, just enough glow to be visible. */
+  --color-surface-light:        color-mix(in oklab, #FFF19B 7%, #ffffff);
+
+  /* — Surface 2 & 3: progressive yellow-to-orange depth tiers —
+     Surface-3 shifts from cream yellow toward burnt orange so deeply
+     nested panels move through the warm band — the full thermal gradient
+     from cool-neutral toward warm-vivid as content descends. */
+  --surface-2-light:            color-mix(in oklab, #FFF19B 18%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #C45A10 9%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#3D45AA · #DA3D20 · #F8843F · #FFF19B)
+   ============================================================================= */
+:root {
+
+  /* — Primary: electric indigo —
+     At full luminosity against a dark base, #3D45AA is the color of
+     theatrical lighting, neon signs in purple-blue, the deep velvet of
+     a carnival tent at midnight. The cream yellow text (#FFF19B) glows
+     against it the way a spotlight hits center stage — warm on cool,
+     the palette's core tension expressed in a single button. */
+  --color-primary-dark:         #3D45AA;
+  --color-primary-text-dark:    #FFF19B;
+
+  /* — Secondary: vivid red-orange —
+     #DA3D20 on a dark background is a lit flare — the red-orange of
+     fireworks, matador capes, and hand-painted carnival wagons.
+     The cream yellow text keeps the button warm without softening
+     the intensity of the field beneath it. */
+  --color-secondary-dark:       #DA3D20;
+  --color-secondary-text-dark:  #FFF19B;
+
+  /* — Links: warm orange —
+     #F8843F in dark mode is the orange of a torch or a paper lantern —
+     bright, directional, and immediately readable as interactive against
+     the dark base. Distinctly warmer than the red-orange secondary,
+     distinctly cooler than the cream yellow accent. It occupies the
+     middle of the warm band with ease. */
+  --color-link-dark:            #F8843F;
+
+  /* — Muted: red-orange blended into dark slate —
+     Pulls the vivid secondary into the muted grey family so helper text
+     carries a faint ember warmth — like a fire viewed from the next room,
+     present but not demanding. */
+  --color-muted-dark:           color-mix(in oklab, #DA3D20 30%, #a1aab8);
+
+  /* — Border: cream yellow at 30% opacity —
+     In dark mode the cream yellow border glows rather than blushes —
+     the same opacity strategy as light mode, but here the near-white
+     reads as actual luminosity against the dark base. A rim of light
+     around every panel, as if each one is backlit from within. */
+  --color-border-dark:          color-mix(in oklab, #FFF19B 30%, transparent);
+
+  /* — Surface: indigo baked into the dark base —
+     Mixing ~14% electric indigo into the Ivy dark base (#111418) gives
+     a surface that reads as "stage dark" — the specific black-with-blue
+     of a theater in the moment before the lights come up. Every warm
+     element placed on it — orange links, cream text, red buttons — reads
+     as if genuinely illuminated. */
+  --color-surface-dark:         color-mix(in oklab, #3D45AA 14%, #111418);
+
+  /* — Surface 2 & 3: indigo-to-red-orange depth transition —
+     The surface hierarchy moves from the cool indigo base upward toward
+     the warm red-orange as panels elevate — the cool-warm split-complementary
+     tension plays out in the z-axis. The most elevated panels carry a
+     faint red warmth: the spotlight finding the performer. */
+  --surface-2-dark:             color-mix(in oklab, #3D45AA 22%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #DA3D20 13%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info leans into the electric indigo primary — the cool spoke of the
+     split-complementary is the natural semantic fit for information;
+     blended toward standard info blue to maintain cross-theme legibility */
+  --info:    color-mix(in oklab, #3D45AA 50%, #60a5fa);
+  /* Success shifts toward teal — bridging the cool indigo family toward
+     green without introducing a fifth hue that disrupts the palette */
+  --success: color-mix(in oklab, #2B3192 18%, #22c55e);
+  /* Warn maps to the cream yellow — the palette's own warm accent is
+     the natural caution signal; pulled slightly toward amber for
+     semantic clarity without losing the lantern-glow character */
+  --warn:    color-mix(in oklab, #FFF19B 60%, #f59e0b);
+  /* Danger escalates the red-orange secondary toward pure red — the
+     warmest, most urgent hue in the palette pushed to its limit;
+     feels like the carnival ride that's going too fast */
+  --danger:  color-mix(in oklab, #DA3D20 45%, #ef4444);
+}

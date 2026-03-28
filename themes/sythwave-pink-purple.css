@@ -1,0 +1,121 @@
+/*!
+ * ivy-theme.css — Custom palette override for Ivy.css
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #3F0071 · #FB2576 · #332FD0 · #0002A1
+ * Dark palette:   #4531B1 · #A836AD · #F16896 · #FFF0A4
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)
+ *   2nd  → secondary
+ *   3rd  → links & interactive accents (high contrast on bg)
+ *   4th  → borders & surfaces (applied at reduced opacity)
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#3F0071 · #FB2576 · #332FD0 · #0002A1)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep violet —
+     Used for buttons, active indicators, focus rings.
+     White text gives max contrast (7.5:1 against #3F0071). */
+  --color-primary-light:        #3F0071;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: vivid pink-red —
+     Punchy call-to-action accent. White text still readable. */
+  --color-secondary-light:      #FB2576;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: electric blue —
+     Classic link hue that reads clearly against the light bg.
+     Distinct from primary so visited/unvisited states are obvious. */
+  --color-link-light:           #332FD0;
+
+  /* — Muted: desaturated violet-slate —
+     Blend of primary hue into a mid-grey so captions/help text
+     feel related but recede from body copy. */
+  --color-muted-light:          color-mix(in oklab, #3F0071 30%, #9ca3af);
+
+  /* — Border: navy ink at 20% opacity —
+     Enough weight to define edges without fighting the content.
+     Uses the 4th accent so borders feel "in family" with surfaces. */
+  --color-border-light:         color-mix(in oklab, #0002A1 20%, transparent);
+
+  /* — Surface: barely-there blue-violet wash —
+     Cards, code blocks, inputs all sit on white bg; the 5 % tint
+     lifts them off the page without introducing a competing hue. */
+  --color-surface-light:        color-mix(in oklab, #332FD0 5%, #ffffff);
+
+  /* — Surface 2 & 3: progressive depth tiers —
+     Hover states, nested panels, alternating rows. */
+  --surface-2-light:            color-mix(in oklab, #332FD0 9%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #0002A1 13%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#4531B1 · #A836AD · #F16896 · #FFF0A4)
+   ============================================================================= */
+:root {
+
+  /* — Primary: indigo-violet —
+     Deep enough not to blow out on dark bg; the warm cream text
+     (#FFF0A4) gives a distinctive jewel-tone feel. */
+  --color-primary-dark:         #4531B1;
+  --color-primary-text-dark:    #FFF0A4;
+
+  /* — Secondary: electric magenta —
+     High-chroma purple-pink that contrasts the indigo primary.
+     Cream text stays on-palette and avoids a harsh white pop. */
+  --color-secondary-dark:       #A836AD;
+  --color-secondary-text-dark:  #FFF0A4;
+
+  /* — Links: warm coral-pink —
+     #F16896 reads immediately as "interactive" on dark bg
+     and bridges the indigo/magenta primaries with warmth. */
+  --color-link-dark:            #F16896;
+
+  /* — Muted: blended magenta-slate —
+     Pulls the secondary hue into the muted gray family so
+     helper text echoes the palette without demanding attention. */
+  --color-muted-dark:           color-mix(in oklab, #A836AD 40%, #a1aab8);
+
+  /* — Border: primary indigo at 28% opacity —
+     Visible enough to outline controls; transparent enough to
+     let the dark bg breathe through. */
+  --color-border-dark:          color-mix(in oklab, #4531B1 28%, transparent);
+
+  /* — Surface: primary hue baked into the dark surface base —
+     The ivy default base is #111418; mixing in ~12% indigo gives
+     a richly tinted dark surface that still reads as "near-black". */
+  --color-surface-dark:         color-mix(in oklab, #4531B1 12%, #111418);
+
+  /* — Surface 2 & 3: escalating indigo/magenta depth tiers —
+     Slightly warmer surface-3 (magenta tint) creates a subtle
+     hierarchical shift for deeply nested or elevated panels. */
+  --surface-2-dark:             color-mix(in oklab, #4531B1 18%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #A836AD 17%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Shift info blue toward the brand blue so it feels less "system UI" */
+  --info:    #332FD0;
+  /* Soften success green — unchanged, green is universal */
+  /* --success: #22c55e; */
+  /* Warm up warn to echo the secondary pink */
+  --warn:    #f59e0b;
+  /* Danger stays vivid red but with a pink lean toward the brand */
+  --danger:  color-mix(in oklab, #FB2576 35%, #ef4444);
+}

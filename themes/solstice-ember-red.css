@@ -1,0 +1,149 @@
+/*!
+ * solstice-ember-red.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #5C0F17 · #B02D0A · #E55C00 · #FDEEE0
+ * Dark palette:   #7A1A28 · #BF4010 · #F07020 · #FFF6D0
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)
+ *   2nd  → secondary
+ *   3rd  → links & interactive accents
+ *   4th  → borders & surfaces (applied at reduced opacity)
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   The warm half of the spectrum (reds, oranges, corals) is the clearest
+ *   gap in a theme repo that already covers violet, forest green, and ocean
+ *   blue. Solstice Ember fills that gap with a palette that runs from deep
+ *   wine-crimson through molten brick to vivid tangerine — the color range
+ *   of a midsummer bonfire at its peak. The 4th accent (warm sand cream)
+ *   keeps the theme from reading as "danger/error" by grounding it in warmth
+ *   rather than alarm.
+ *
+ * ⚠ Accessibility note on tangerine links (light mode):
+ *   The 3rd palette color (#E55C00) falls short of WCAG AA contrast on
+ *   a white background (~3.4:1 vs. the required 4.5:1), so links use the
+ *   2nd color (brick flame #B02D0A) instead — it clears AA at 5.7:1 on
+ *   white while remaining unmistakably on-palette.
+ *   Tangerine is reserved for border tinting and surface washes where
+ *   text-contrast rules do not apply.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#5C0F17 · #B02D0A · #E55C00 · #FDEEE0)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep wine-crimson —
+     Used for buttons, active indicators, focus rings.
+     White text gives strong contrast (11.8:1 against #5C0F17). */
+  --color-primary-light:        #5C0F17;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: brick flame —
+     Rich red-orange that bridges the deep crimson and tangerine.
+     Reads as "ember" rather than "error" — warm, not alarming.
+     White text clears AA at 5.7:1. */
+  --color-secondary-light:      #B02D0A;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: brick flame (2nd color, not 3rd) —
+     #E55C00 fails WCAG AA on a white background (~3.4:1), so the
+     2nd color doubles as the link hue in light mode. See note above. */
+  --color-link-light:           #B02D0A;
+
+  /* — Muted: crimson blended into warm grey —
+     Pulls the primary deep crimson into the neutral grey family so
+     captions and help text feel rooted without triggering alert associations. */
+  --color-muted-light:          color-mix(in oklab, #5C0F17 28%, #9ca3af);
+
+  /* — Border: tangerine at 22% opacity —
+     The warm orange edge feels like late-afternoon light catching a surface
+     edge — present enough to structure the layout, subtle enough to glow. */
+  --color-border-light:         color-mix(in oklab, #E55C00 22%, transparent);
+
+  /* — Surface: warm sand wash over white —
+     The 4th color (#FDEEE0) is already near-white, so a 10% mix creates
+     the gentlest ember-glow lift on cards, code blocks, and inputs. */
+  --color-surface-light:        color-mix(in oklab, #FDEEE0 10%, #ffffff);
+
+  /* — Surface 2 & 3: progressive warm-sand depth tiers —
+     Surface-3 shifts toward tangerine so deeply nested panels feel
+     like stepping closer to the heat source. */
+  --surface-2-light:            color-mix(in oklab, #FDEEE0 24%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #E55C00 10%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#7A1A28 · #BF4010 · #F07020 · #FFF6D0)
+   ============================================================================= */
+:root {
+
+  /* — Primary: ember red —
+     Deep ruby that holds authority against a dark background without
+     reading as a pure error state. The warm cream text (#FFF6D0)
+     evokes the color of firelight caught on pale stone. */
+  --color-primary-dark:         #7A1A28;
+  --color-primary-text-dark:    #FFF6D0;
+
+  /* — Secondary: molten orange —
+     A high-energy red-orange that pairs with the ember primary the
+     way the outer flame pairs with the coal — brighter, more kinetic.
+     Cream text stays on-palette and avoids a jarring white pop. */
+  --color-secondary-dark:       #BF4010;
+  --color-secondary-text-dark:  #FFF6D0;
+
+  /* — Links: amber flame —
+     #F07020 reads immediately as "interactive" on a dark background —
+     it has the luminosity of a live coal and guides the eye naturally
+     without competing with the primary button hue. */
+  --color-link-dark:            #F07020;
+
+  /* — Muted: molten orange blended into dark slate —
+     Pulls the secondary hue into the muted grey family so helper text
+     echoes the warmth of the palette without flaring up. */
+  --color-muted-dark:           color-mix(in oklab, #BF4010 35%, #a1aab8);
+
+  /* — Border: ember red at 32% opacity —
+     Like ash at the edge of a fire — just enough warmth to outline
+     panels and rows without pulling the eye from the content. */
+  --color-border-dark:          color-mix(in oklab, #7A1A28 32%, transparent);
+
+  /* — Surface: ember hue baked into the dark base —
+     Mixing ~15% ember red into the Ivy dark base (#111418) gives a
+     surface that reads as "warm night" rather than "cold void" —
+     the kind of dark that feels lit from within. */
+  --color-surface-dark:         color-mix(in oklab, #7A1A28 15%, #111418);
+
+  /* — Surface 2 & 3: escalating ember depth tiers —
+     Surface-3 shifts toward the molten orange secondary, so the most
+     elevated panels carry a faint glow — like coals rising to the surface. */
+  --surface-2-dark:             color-mix(in oklab, #7A1A28 22%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #BF4010 14%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info cools down slightly — a blue-shifted amber keeps it readable
+     as "informational" rather than "fire" while staying warm-adjacent */
+  --info:    color-mix(in oklab, #F07020 20%, #60a5fa);
+  /* Success leans into cooler green to provide clear contrast relief
+     from the warm palette — the most important semantic departure */
+  --success: #22c55e;
+  /* Warn maps almost directly to the amber flame link color —
+     this palette's most natural "caution" hue */
+  --warn:    color-mix(in oklab, #F07020 70%, #f59e0b);
+  /* Danger stays red but shifts toward the palette's own crimson
+     so errors feel like escalated brand moments, not foreign intrusions */
+  --danger:  color-mix(in oklab, #7A1A28 40%, #ef4444);
+}
