@@ -121,7 +121,7 @@ html[data-theme="light"],html.light{
 html{font-size:100%;}
 body{margin:0; font-family:var(--font-sans); font-size:var(--base-size); line-height:var(--lh); color:var(--color-text); background:var(--color-bg); text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;}
 main,article{max-width:var(--measure); margin:0 auto; padding:0 var(--m);}
-header,footer{padding:var(--space-xl)}
+body > header, body > footer{padding:var(--space-xl)}
 section{padding:var(--m) 0;}
 
 /* ==========================================================================
@@ -197,7 +197,7 @@ select{
 }
 input::placeholder,textarea::placeholder{color:var(--color-muted);}
 fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radius); padding:var(--m); margin:0 0 var(--m);}
-button,[type=button],[type=submit],[type=reset],a[role=button]{display:inline-block; width:auto; padding:.5em .8em; border:var(--bw-1) solid color-mix(in oklab,var(--color-primary) 55%,var(--color-border)); border-radius:var(--radius); background:var(--color-primary); color:var(--color-primary-text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease,color .15s ease; text-decoration:none;}
+button,[type=button],[type=submit],[type=reset],a[role=button]{display:inline-block; width:auto; padding:.25em .75em; border:var(--bw-1) solid color-mix(in oklab,var(--color-primary) 55%,var(--color-border)); border-radius:var(--radius); background:var(--color-primary); color:var(--color-primary-text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease,color .15s ease; text-decoration:none;}
 button:hover,[type=button]:hover,[type=submit]:hover,[type=reset]:hover,a[role=button]:hover{background:color-mix(in oklab,var(--color-primary) 85%,var(--color-bg));}
 button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{background:color-mix(in oklab,var(--color-primary) 75%,var(--color-bg));}
 button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled,a[role=button][aria-disabled=true]{opacity:.6; cursor:not-allowed;}
