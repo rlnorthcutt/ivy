@@ -200,7 +200,7 @@ fieldset{border:var(--bw-1) solid var(--color-border); border-radius:var(--radiu
 button,[type=button],[type=submit],[type=reset],a[role=button]{display:inline-block; width:auto; padding:.25em .75em; border:var(--bw-1) solid color-mix(in oklab,var(--color-primary) 55%,var(--color-border)); border-radius:var(--radius); background:var(--color-primary); color:var(--color-primary-text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease,color .15s ease; text-decoration:none;}
 button:hover,[type=button]:hover,[type=submit]:hover,[type=reset]:hover,a[role=button]:hover{background:color-mix(in oklab,var(--color-primary) 85%,var(--color-bg));}
 button:active,[type=button]:active,[type=submit]:active,[type=reset]:active,a[role=button]:active{background:color-mix(in oklab,var(--color-primary) 75%,var(--color-bg));}
-button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled,a[role=button][aria-disabled=true]{opacity:.6; cursor:not-allowed;}
+button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disabled,a[role=button][aria-disabled=true]{opacity:.5;background: var(--text-muted); cursor:not-allowed;}
 :focus-visible{outline:var(--focus-ring) solid var(--color-primary); outline-offset:2px;}
 :is(input,select,textarea)[aria-invalid=true],:is(input,select,textarea):invalid{border-color:color-mix(in oklab,var(--danger) 60%,var(--color-border));}
 .form-help{font-size:var(--fs-sm); color:var(--color-muted);}
