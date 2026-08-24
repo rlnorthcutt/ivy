@@ -28,7 +28,7 @@
   --shadow-sm-light:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
   --shadow-md-light:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
   /* dark surfaces + shadows (with light glow stroke) */
-  --surface-2-dark:#0f1216; --surface-3-dark:#12161b;
+  --surface-2-dark:#18202a; --surface-3-dark:#202a36;
   --shadow-sm-dark:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10),0 0 8px rgba(255,255,255,.08);
   --shadow-md-dark:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.10),0 0 22px rgba(255,255,255,.10);
 
@@ -225,6 +225,7 @@ nav[aria-label=breadcrumb] [aria-current="page"]{color:inherit; font-weight:600;
 .card>header{margin:calc(var(--m)*-1) calc(var(--m)*-1) var(--m); padding:var(--m); border-bottom:var(--bw-1) solid var(--color-border); border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;}
 .card>footer{margin:var(--m) calc(var(--m)*-1) calc(var(--m)*-1); padding:var(--m); border-top:var(--bw-1) solid var(--color-border); border-radius:0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);}
 .card>header :is(h1,h2,h3,h4,h5,h6){margin:0;}
+.box>header,.box>footer{padding:var(--m);}
 .card[data-variant=soft],.box[data-variant=soft]{background:var(--surface-2);}
 .card[data-variant=primary],.box[data-variant=primary]{border-color:color-mix(in oklab,var(--color-primary) 45%,var(--color-border)); box-shadow:0 0 0 1px color-mix(in oklab,var(--color-primary) 20%,transparent),var(--shadow-sm);}
 .card[data-variant=secondary],.box[data-variant=secondary]{border-color:color-mix(in oklab,var(--color-secondary) 45%,var(--color-border)); box-shadow:0 0 0 1px color-mix(in oklab,var(--color-secondary) 20%,transparent),var(--shadow-sm);}

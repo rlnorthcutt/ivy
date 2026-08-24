@@ -167,6 +167,18 @@
   button { border-radius: 999px; }
 &lt;/style&gt;</code></pre>
 
+        <div class="callout warn">
+          <strong>Watch out: unlayered resets silently win too</strong>
+          <p>The same rule that lets your CSS override Ivy without <code>!important</code> also means <em>any</em> unlayered CSS beats Ivy's rules &mdash; on purpose, and regardless of specificity. A CMS theme's <code>body { background: transparent; }</code>, a third-party reset, or a leftover unlayered stylesheet will silently strip Ivy's <code>--color-bg</code> from <code>&lt;body&gt;</code>, since that rule lives inside <code>@layer ivy-base</code>. There's no specificity fight and no warning &mdash; the page ground just goes missing, which is easiest to notice in dark mode or a themed CMS.</p>
+          <p>If a host page ships its own reset or theme CSS, wrap it in a layer too so precedence stays intentional:</p>
+          <pre><code>&lt;style&gt;
+  @layer reset, ivy-base, ivy-extra, theme;
+&lt;/style&gt;
+&lt;link rel="stylesheet" href="reset.css"&gt;    &lt;!-- wrap in @layer reset { ... } --&gt;
+&lt;link rel="stylesheet" href="ivy.full.min.css"&gt;
+&lt;link rel="stylesheet" href="theme.css"&gt;    &lt;!-- wrap in @layer theme { ... } --&gt;</code></pre>
+        </div>
+
         <h3>Variable override pattern</h3>
         <p>Override the palette tokens (the ones ending in <code>-light</code> and <code>-dark</code>) to customize both themes at once.</p>
         <div class="callout warn">
