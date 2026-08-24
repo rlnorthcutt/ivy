@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Article Example — Ivy CSS</title>
+<meta name="description" content="A long-form article built with Ivy CSS, testing the default measure, line height and type scale at reading length.">
+<link rel="stylesheet" href="ivy.full.min.css">
+<link rel="stylesheet" href="lattice.full.min.css">
+</head>
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+<header class="sticky" role="banner">
+  <nav class="container d-flex justify-between" aria-label="Primary">
+    <ul class="d-flex gap-2 m-0 p-0">
+      <li><a href="./">Ivy CSS</a></li>
+      <li><a href="ivy-core.html">Core Demo</a></li>
+      <li><a href="ivy-extra.html">Extra Demo</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ul>
+    <dark-mode-toggle></dark-mode-toggle>
+  </nav>
+</header>
+
+<nav class="container" aria-label="Examples">
+  <ul>
+    <li><a href="examples.html">All examples</a></li>
+    <li><a href="example-landing.html">Landing page</a></li>
+    <li><a href="example-article.html" aria-current="page">Article</a></li>
+    <li><a href="example-app.html">App screen</a></li>
+  </ul>
+</nav>
+
+<article id="content">
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="#" aria-current="page">On defaults</a></li>
+    </ol>
+  </nav>
+  <p class="kicker">Example · Article · 12 minute read</p>
+  <h1>Everything ordinary, arranged carefully</h1>
+  <p class="muted">A test of long-form reading at the library's default measure, line height and responsive root size. Written to be read, not skimmed.</p>
+  <p><small>Sample copy · filed under defaults, rhythm, restraint</small></p>
+
+  <p>The first paragraph of an article carries a disproportionate share of the work. It sets the measure, establishes the color of the text against its ground, and tells the reader how much effort the rest will ask of them. Under a classless stylesheet it also does something else: it shows, without any assistance, whether the defaults were chosen or merely inherited.</p>
+  <p>What follows is ordinary prose at ordinary length, arranged to put pressure on the elements a document actually uses. There are headings at three levels, lists of both kinds, a quotation, a figure, a table, a code sample, and a footnoted aside. Nothing here is unusual. That is the point — an article is the most common thing a stylesheet is ever asked to render, and the least forgiving.</p>
+
+  <h2>The measure and the ground</h2>
+  <p>A wide column reads faster until it doesn't. Somewhere past seventy-five characters the eye loses the line return, and the reader begins to re-read openings without noticing. The default here is sixty-four rem against a root size that climbs from one hundred percent up across seven breakpoints, which means the effective character count stays roughly constant as the window grows — provided the steps are gentle enough that nobody notices the type jump.</p>
+  <p>The ground matters as much as the width. A near-white that is not white gives the text something to sit on rather than float above, and it keeps surfaces distinguishable without borders. The one thing worth checking on your own screen: that the surface, the ground and the second surface stay distinguishable at low brightness, not just on a calibrated monitor.</p>
+  <blockquote>
+    <p>A default is an argument you have already won, or one you will keep having forever.</p>
+  </blockquote>
+  <p>Which is the case for the quotation above: it takes italics, a muted color and a left rule. Three signals for one job, deliberately — a quote should be unmistakable at a glance, even skimmed.</p>
+
+  <h3>What a heading has to do</h3>
+  <p>A heading has one job in prose and a different job in an interface. In prose it interrupts. It needs enough space above it that the eye stops, and enough weight that the stop registers before the words are read. The scale here runs from two and a half rem down to a flat sixteen pixels across six levels, with the fifth level matching body copy in size and the sixth smaller and muted.</p>
+  <p>That compression at the bottom relies on weight alone to carry the hierarchy — five hundred weight against four hundred is a subtle instrument. In a document that only ever goes three heading levels deep it never comes up; in dense reference material, it's worth watching for.</p>
+
+  <h3>Rhythm, and where it breaks</h3>
+  <p>Vertical rhythm is arithmetic until two margin-bearing elements meet. A list after a paragraph, a figure after a quote, a table after a heading — each junction either collapses to a single interval or stacks to a double one, and the difference is visible at a glance even to readers who could not name it.</p>
+  <ul>
+    <li>A paragraph followed by a list, the most common junction in any document.</li>
+    <li>A list item long enough to wrap, so the hanging indent can be judged against the paragraph edge above it rather than in isolation.</li>
+    <li>A third item, because two items rarely look like a list and four begin to look like an outline.</li>
+  </ul>
+  <p>Then the reverse junction: prose resuming after a list, which is where a shortfall shows most clearly, because the reader expects the paragraph to be more separated from the list than the list items were from each other.</p>
+  <ol>
+    <li>An ordered sequence, when the order is the content.</li>
+    <li>A second step, with a nested clarification beneath it.
+      <ul>
+        <li>The nested level inherits the parent indent plus its own.</li>
+      </ul>
+    </li>
+    <li>A final step to close the sequence.</li>
+  </ol>
+
+  <h2>An interruption in the middle</h2>
+  <figure>
+    <img src="https://picsum.photos/seed/ivy-article/1400/560" alt="An open notebook and pencil on a plain surface">
+    <figcaption>A full-measure figure, centred caption, muted and small. Images are block-level and capped at the container width.</figcaption>
+  </figure>
+  <p>A figure at full measure is the strongest interruption a document can make short of a heading. It resets the reader's position on the page entirely, which is useful once or twice and destructive if repeated. The caption below it is the only centred text in the library's defaults — worth remembering when you're deciding whether to center something else.</p>
+  <div class="callout info">
+    <strong>An aside, set as a callout</strong>
+    Callouts sit outside the reading flow but inside the measure, on a tinted ground. In an article they carry the material a footnote would carry in print: a qualification, a source, a warning that the paragraph above is true only most of the time.
+  </div>
+
+  <h3>Evidence, in a table</h3>
+  <p>Tabular material inside prose is the junction most stylesheets get wrong, because a table wants to be wider than the reading measure and cannot be.</p>
+  <table data-striped>
+    <caption>Root font size by breakpoint, and the resulting measure</caption>
+    <thead>
+      <tr><th>Breakpoint</th><th>Root size</th><th>Measure</th><th>Approx. characters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Base</td><td>100%</td><td>64rem</td><td>~118</td></tr>
+      <tr><td>1024px</td><td>105%</td><td>64rem</td><td>~118</td></tr>
+      <tr><td>1280px</td><td>107.5%</td><td>64rem</td><td>~118</td></tr>
+      <tr><td>1920px</td><td>112.5%</td><td>64rem</td><td>~118</td></tr>
+      <tr><td>2560px</td><td>115%</td><td>64rem</td><td>~118</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="4">The measure is defined in rem, so it scales with the root and the character count holds — the type simply gets larger.</td></tr>
+    </tfoot>
+  </table>
+  <p>The count holding constant is the intended behaviour. It also means the column stays roughly a hundred and eighteen characters wide at every size, which is comfortably past where line-return errors begin.</p>
+
+  <h3>And in code</h3>
+  <p>Technical prose mixes inline code into sentences — <code>--measure</code>, <code>--lh</code>, <code>--font-size</code> — at a rate that can turn a paragraph into a fence of little boxes. Block samples have the opposite problem: they are quiet enough to skip.</p>
+  <pre><code>/* the measure, and the rhythm it sits in */
+main, article {
+  max-width: var(--measure);   /* 64rem */
+  margin: 0 auto;
+  padding: 0 var(--m);         /* 1rem */
+}
+p { margin: 0 0 var(--m); }</code></pre>
+  <p>Three declarations describing the entire page geometry of the library. The economy is the appeal; the consequence is that a change to <code>--m</code> moves paragraph spacing, page gutters, card padding and panel padding at once.</p>
+
+  <h2>Closing</h2>
+  <p>An article ends by releasing the reader rather than concluding. The last paragraph should be short, the space beneath it generous, and whatever follows — a rule, a byline, a set of links — should read as furniture rather than as more content.</p>
+  <p>This one ends here.</p>
+  <hr>
+  <p class="muted"><small>Written for the Ivy examples set. All copy is filler; the layout is not.</small></p>
+  <div class="btn-group">
+    <a href="example-app.html" role="button">Next: app screen</a>
+    <a href="examples.html" role="button" data-variant="ghost">Back to examples</a>
+  </div>
+</article>
+
+<script type="module" src="dark-mode-toggle.min.js"></script>
+</body>
+</html>

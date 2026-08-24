@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landing Page Example — Ivy CSS</title>
+<meta name="description" content="A marketing landing page built with Ivy CSS — no layout classes, just semantic HTML and the extra layer's components.">
+<link rel="stylesheet" href="ivy.full.min.css">
+<link rel="stylesheet" href="lattice.full.min.css">
+</head>
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+<header class="sticky" role="banner">
+  <nav class="container d-flex justify-between" aria-label="Primary">
+    <ul class="d-flex gap-2 m-0 p-0">
+      <li><a href="./">Ivy CSS</a></li>
+      <li><a href="ivy-core.html">Core Demo</a></li>
+      <li><a href="ivy-extra.html">Extra Demo</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ul>
+    <dark-mode-toggle></dark-mode-toggle>
+  </nav>
+</header>
+
+<nav class="container" aria-label="Examples">
+  <ul>
+    <li><a href="examples.html">All examples</a></li>
+    <li><a href="example-landing.html" aria-current="page">Landing page</a></li>
+    <li><a href="example-article.html">Article</a></li>
+    <li><a href="example-app.html">App screen</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <section>
+    <p class="kicker">Example · Landing page</p>
+    <h1>Write plain HTML. Get a finished page.</h1>
+    <p>A product page built without a single layout class, to see how far semantic markup and a classless sheet get on their own. Everything below is <code>section</code>, <code>h2</code>, <code>p</code>, <code>ul</code>, <code>table</code>, <code>.card</code> and <code>.btn-group</code>.</p>
+    <div class="btn-group">
+      <a href="#start" role="button" data-size="lg">Get started</a>
+      <a href="ivy-extra.html" role="button" data-variant="outline" data-size="lg">See the components</a>
+    </div>
+    <p><small>No build step. No dependencies. Two files, or one if you concatenate them.</small></p>
+  </section>
+
+  <section>
+    <figure>
+      <img src="https://picsum.photos/seed/ivy-landing/1400/560" alt="A plain workspace with a laptop and a lamp">
+      <figcaption>The hero image, at full measure, as an ordinary figure.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Three claims, three cards</h2>
+    <div class="card">
+      <p class="eyebrow">Small</p>
+      <h3>The core stays out of the way</h3>
+      <p>Readable defaults for every element a document uses, minimal color tokens, and light and dark palettes that switch on a single attribute. No components, no layout system, nothing to unlearn.</p>
+      <p><a href="ivy-core.html">Read the core reference →</a></p>
+    </div>
+    <div class="card">
+      <p class="eyebrow">Optional</p>
+      <h3>The extra layer adds polish, not weight</h3>
+      <p>Buttons with variants, cards, callouts, disclosure panels, tooltips, badges and a dialog — all driven by <code>data-*</code> attributes on the elements you already wrote.</p>
+      <p><a href="ivy-extra.html">Browse the components →</a></p>
+    </div>
+    <div class="card">
+      <p class="eyebrow">Predictable</p>
+      <h3>Your CSS always wins</h3>
+      <p>Both layers are declared in <code>@layer</code>, so unlayered author styles override them without a single <code>!important</code>. Override anything, keep everything else.</p>
+      <p><a href="./#layers">See the two layers →</a></p>
+    </div>
+    <p class="muted"><small>Three cards, stacked full width — that's what the core layer gives you on its own. Pair Ivy with <a href="https://github.com/rlnorthcutt/lattice" target="_blank" rel="noopener">Lattice</a> (or your own grid) when you want them placed side by side.</small></p>
+  </section>
+
+  <section>
+    <h2>What you get</h2>
+    <ul>
+      <li>Element defaults for typography, code, tables, forms and media</li>
+      <li>Light and dark palettes with a shared applied-token layer</li>
+      <li>Focus-visible rings, a skip-link helper and screen-reader utilities</li>
+      <li>Print styles, forced-colors safety and reduced-motion handling</li>
+      <li>Responsive root type across seven breakpoints</li>
+      <li>Attribute-driven variants for every component in the extra layer</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Compare</h2>
+    <table data-striped>
+      <caption>The split between the two layers</caption>
+      <thead>
+        <tr><th>Feature</th><th>Core only</th><th>Core + extra</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Element defaults</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Light and dark themes</td><td>Yes</td><td>Yes, plus surface and shadow tokens</td></tr>
+        <tr><td>Button variants and sizes</td><td>Primary only</td><td>Six variants, three sizes</td></tr>
+        <tr><td>Cards, callouts, dialog</td><td>—</td><td>Yes</td></tr>
+        <tr><td>Table striping and density</td><td>—</td><td>Four modes</td></tr>
+        <tr><td>Tooltips, badges, spinner</td><td>—</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Questions people ask</h2>
+    <details>
+      <summary>Does it need a build step?</summary>
+      <p>No. Link the stylesheet and write HTML. If you want only the core, link only the core file.</p>
+    </details>
+    <details>
+      <summary>How do I override a default?</summary>
+      <p>Write ordinary CSS. Because both layers are inside <code>@layer</code>, any unlayered rule of yours takes precedence regardless of specificity.</p>
+      <pre><code>/* wins, no !important needed */
+button { border-radius: 999px; }</code></pre>
+    </details>
+    <details>
+      <summary>How do I change the palette?</summary>
+      <p>Reassign the light and dark palette variables on <code>:root</code>. The applied tokens read from them, so both themes update together.</p>
+    </details>
+    <details>
+      <summary>What about layout?</summary>
+      <p>Deliberately out of scope. Placement is left to a companion sheet like Lattice, or to your own grid.</p>
+    </details>
+  </section>
+
+  <section>
+    <blockquote>
+      <p>Sample testimonial copy, set as a quote because a classless sheet has no testimonial component and probably shouldn't grow one.</p>
+      <footer><small>— A placeholder name, placeholder title</small></footer>
+    </blockquote>
+  </section>
+
+  <section id="start">
+    <h2>Start</h2>
+    <div class="box" data-variant="soft" data-padding="lg">
+      <h3>Install</h3>
+      <pre><code>&lt;link rel="stylesheet" href="ivy.css"&gt;
+&lt;link rel="stylesheet" href="ivy.extra.css"&gt;</code></pre>
+      <p>Then set a theme when you want to override the system preference:</p>
+      <pre><code>&lt;html data-theme="dark"&gt;</code></pre>
+    </div>
+    <form>
+      <fieldset>
+        <legend>Or get release notes</legend>
+        <p>
+          <label for="l-email">Email</label>
+          <input id="l-email" type="email" placeholder="name@example.com">
+          <span class="form-help">One message per release. Nothing else.</span>
+        </p>
+        <p><label><input type="checkbox"> Include pre-release builds</label></p>
+        <div class="btn-group">
+          <button type="submit">Subscribe</button>
+          <button type="button" data-variant="ghost">No thanks</button>
+        </div>
+      </fieldset>
+    </form>
+    <div class="callout success">
+      <strong>MIT licensed</strong>
+      Use it anywhere, change anything, ship it in commercial work.
+    </div>
+  </section>
+</main>
+<footer>
+  <hr>
+  <nav>
+    <ul>
+      <li><a href="examples.html">← All examples</a></li>
+      <li><a href="example-article.html">Article →</a></li>
+    </ul>
+  </nav>
+  <p class="muted"><small>Ivy CSS — MIT. This page is example copy for design reference.</small></p>
+</footer>
+
+<script type="module" src="dark-mode-toggle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ivy Examples — Real-World Pages</title>
+  <meta name="description" content="Full pages built with Ivy CSS — a marketing landing page, a long-form article, and a dense application screen.">
+  <link rel="stylesheet" href="ivy.full.min.css">
+  <link rel="stylesheet" href="lattice.full.min.css">
+</head>
+<body>
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+  <header class="sticky" role="banner">
+    <nav class="container d-flex justify-between" aria-label="Primary">
+      <ul class="d-flex gap-2 m-0 p-0">
+        <li><a href="./">Ivy CSS</a></li>
+        <li><a href="ivy-core.html">Core Demo</a></li>
+        <li><a href="ivy-extra.html">Extra Demo</a></li>
+        <li><a href="examples.html" aria-current="page">Examples</a></li>
+        <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
+      </ul>
+      <dark-mode-toggle></dark-mode-toggle>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="container center py-4 px-5">
+      <p class="kicker">Ivy CSS in practice</p>
+      <h1>Examples</h1>
+      <p>The element and component references show what each piece looks like on its own. These pages show what happens when you put the pieces together — three full layouts, built only with semantic HTML, the core defaults, and a handful of <code>data-*</code> attributes from the extra layer.</p>
+    </section>
+
+    <article class="container">
+      <div class="grid sm-col-3 gap-3">
+        <div class="card">
+          <header><h3>Landing page</h3></header>
+          <p>A marketing page — hero, feature cards, a comparison table, an FAQ and a signup form. The case that puts the button, card and callout variants to work.</p>
+          <footer><a href="example-landing.html">View example →</a></footer>
+        </div>
+        <div class="card">
+          <header><h3>Article</h3></header>
+          <p>Long-form reading at the library's default measure and line height — headings, lists, a blockquote, a figure, a table and a code sample, in the order a real article uses them.</p>
+          <footer><a href="example-article.html">View example →</a></footer>
+        </div>
+        <div class="card">
+          <header><h3>App screen</h3></header>
+          <p>A dense records screen — filters, a data table, a detail panel and a settings form. The case where a document-first stylesheet has to behave like application chrome.</p>
+          <footer><a href="example-app.html">View example →</a></footer>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <strong>Reading these pages</strong>
+        <p>Nothing on any of the three pages uses a layout framework. Structure comes from ordinary elements — <code>section</code>, <code>article</code>, <code>table</code>, <code>form</code> — and the only classes in play are the small set of utilities and components documented on the <a href="ivy-extra.html">extra demo page</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="container center">
+    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
+  </footer>
+
+  <script type="module" src="dark-mode-toggle.min.js"></script>
+</body>
+</html>

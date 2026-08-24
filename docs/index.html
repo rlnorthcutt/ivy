@@ -18,6 +18,7 @@
         <li><a href="./" aria-current="page"><strong>Ivy CSS</strong></a></li>
         <li><a href="ivy-core.html">Core Demo</a></li>
         <li><a href="ivy-extra.html">Extra Demo</a></li>
+        <li><a href="examples.html">Examples</a></li>
         <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
       <dark-mode-toggle></dark-mode-toggle>
@@ -122,7 +123,7 @@
 &lt;dark-mode-toggle&gt;&lt;/dark-mode-toggle&gt;
 
 &lt;!-- Load the script --&gt;
-&lt;script type="module" src="dark-mode-toggle.min.js" defer&gt;&lt;/script&gt;</code></pre>
+&lt;script type="module" src="dark-mode-toggle.min.js"&gt;&lt;/script&gt;</code></pre>
         <div class="callout info">
           <strong>Toggle component options</strong>
           <p>The toggle defaults to <code>strategy="attr"</code>, which sets <code>data-theme</code> on <code>&lt;html&gt;</code>. Use <code>strategy="class"</code> to toggle a class instead. Customize the button appearance with CSS variables: <code>--track-width</code>, <code>--track-height</code>, <code>--track-bg-light</code>, <code>--track-bg-dark</code>, <code>--thumb-bg</code>.</p>
@@ -134,13 +135,12 @@
           <thead><tr><th>Min viewport</th><th><code>--font-size</code></th></tr></thead>
           <tbody>
             <tr><td>default</td><td>100%</td></tr>
-            <tr><td>576px</td><td>110%</td></tr>
-            <tr><td>768px</td><td>115%</td></tr>
-            <tr><td>1024px</td><td>120%</td></tr>
-            <tr><td>1280px</td><td>130%</td></tr>
-            <tr><td>1536px</td><td>137.5%</td></tr>
-            <tr><td>1920px</td><td>143.75%</td></tr>
-            <tr><td>2560px</td><td>150%</td></tr>
+            <tr><td>768px</td><td>102.5%</td></tr>
+            <tr><td>1024px</td><td>105%</td></tr>
+            <tr><td>1280px</td><td>107.5%</td></tr>
+            <tr><td>1536px</td><td>110%</td></tr>
+            <tr><td>1920px</td><td>112.5%</td></tr>
+            <tr><td>2560px</td><td>115%</td></tr>
           </tbody>
         </table>
         <div class="callout">
@@ -449,6 +449,6 @@
     <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
-  <script type="module" src="dark-mode-toggle.min.js" defer></script>
+  <script type="module" src="dark-mode-toggle.min.js"></script>
 </body>
 </html>

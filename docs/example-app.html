@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Screen Example — Ivy CSS</title>
+<meta name="description" content="A dense application screen built with Ivy CSS — filters, a data table, a detail panel and settings, all from library defaults.">
+<link rel="stylesheet" href="ivy.full.min.css">
+<link rel="stylesheet" href="lattice.full.min.css">
+</head>
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+
+<header class="sticky" role="banner">
+  <nav class="container d-flex justify-between" aria-label="Primary">
+    <ul class="d-flex gap-2 m-0 p-0">
+      <li><a href="./">Ivy CSS</a></li>
+      <li><a href="ivy-core.html">Core Demo</a></li>
+      <li><a href="ivy-extra.html">Extra Demo</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ul>
+    <dark-mode-toggle></dark-mode-toggle>
+  </nav>
+</header>
+
+<nav class="container" aria-label="Examples">
+  <ul>
+    <li><a href="examples.html">All examples</a></li>
+    <li><a href="example-landing.html">Landing page</a></li>
+    <li><a href="example-article.html">Article</a></li>
+    <li><a href="example-app.html" aria-current="page">App screen</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li><a href="#">Workspace</a></li>
+      <li><a href="#">Records</a></li>
+      <li><a href="#" aria-current="page">All items</a></li>
+    </ol>
+  </nav>
+  <p class="kicker">Example · App screen</p>
+  <h1>Records</h1>
+  <p class="muted">A dense screen assembled only from library defaults — the case where an airy document sheet has to behave like application chrome.</p>
+
+  <section>
+    <div class="btn-group">
+      <button type="button">New record</button>
+      <button type="button" data-variant="outline">Import</button>
+      <button type="button" data-variant="ghost" aria-label="Activity, 4 new" data-badge="4">Activity</button>
+      <button type="button" data-variant="ghost" data-tooltip="Refreshing the list" aria-busy="true">Refresh</button>
+      <button type="button" data-variant="outline">Sync</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="box" data-variant="soft" data-padding="sm">
+      <form>
+        <p>
+          <label for="a-q">Search records</label>
+          <input id="a-q" type="search" placeholder="Name, owner or reference…">
+        </p>
+        <p>
+          <label for="a-status">Status</label>
+          <select id="a-status">
+            <option>All statuses</option>
+            <option>Active</option>
+            <option>Pending review</option>
+            <option>Archived</option>
+          </select>
+        </p>
+        <p>
+          <label for="a-from">Created between</label>
+          <input id="a-from" type="date" aria-label="Created after">
+          <input type="date" aria-label="Created before">
+        </p>
+        <p><label><input type="checkbox" role="switch" checked> Only records assigned to me</label></p>
+        <p><label><input type="checkbox" role="switch"> Include archived</label></p>
+        <div class="btn-group" data-align="end">
+          <button type="reset" data-variant="ghost" data-size="sm">Clear</button>
+          <button type="submit" data-size="sm">Apply filters</button>
+        </div>
+      </form>
+      <p class="form-help">Filter forms are where full-width inputs and a one-rem rhythm cost the most vertical space — five fields here occupy most of a viewport.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Quota</h2>
+    <p>Storage used — 72 of 100 GB</p>
+    <progress value="72" max="100"></progress>
+    <p>Seats assigned — 18 of 40</p>
+    <progress value="18" max="40" data-variant="secondary"></progress>
+  </section>
+
+  <section>
+    <h2>All items</h2>
+    <table data-dense data-striped data-stack>
+      <thead>
+        <tr><th>Reference</th><th>Name</th><th>Owner</th><th>Updated</th><th>Status</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Reference"><code>REC-1041</code></td>
+          <td data-label="Name"><a href="#">Quarterly reconciliation</a></td>
+          <td data-label="Owner">A. Placeholder</td>
+          <td data-label="Updated">2 hours ago</td>
+          <td data-label="Status"><span class="text-primary">Active</span></td>
+          <td data-label="Actions"><button type="button" data-variant="ghost" data-size="sm">Edit</button> <button type="button" data-variant="ghost-secondary" data-size="sm">Archive</button></td>
+        </tr>
+        <tr>
+          <td data-label="Reference"><code>REC-1040</code></td>
+          <td data-label="Name"><a href="#">Vendor onboarding packet</a></td>
+          <td data-label="Owner">B. Placeholder</td>
+          <td data-label="Updated">Yesterday</td>
+          <td data-label="Status"><span class="muted">Pending review</span></td>
+          <td data-label="Actions"><button type="button" data-variant="ghost" data-size="sm">Edit</button> <button type="button" data-variant="ghost-secondary" data-size="sm">Archive</button></td>
+        </tr>
+        <tr>
+          <td data-label="Reference"><code>REC-1038</code></td>
+          <td data-label="Name"><a href="#">Annual policy revision, third draft</a></td>
+          <td data-label="Owner">C. Placeholder</td>
+          <td data-label="Updated">3 days ago</td>
+          <td data-label="Status"><span class="text-primary">Active</span></td>
+          <td data-label="Actions"><button type="button" data-variant="ghost" data-size="sm">Edit</button> <button type="button" data-variant="ghost-secondary" data-size="sm">Archive</button></td>
+        </tr>
+        <tr>
+          <td data-label="Reference"><code>REC-1031</code></td>
+          <td data-label="Name"><a href="#">Deprecated import mapping</a></td>
+          <td data-label="Owner">A. Placeholder</td>
+          <td data-label="Updated">Last month</td>
+          <td data-label="Status"><span class="muted">Archived</span></td>
+          <td data-label="Actions"><button type="button" data-variant="ghost" data-size="sm">Edit</button> <button type="button" data-variant="ghost-secondary" data-size="sm" disabled>Archive</button></td>
+        </tr>
+        <tr>
+          <td data-label="Reference"><code>REC-1029</code></td>
+          <td data-label="Name"><a href="#">Access review, region two</a></td>
+          <td data-label="Owner">D. Placeholder</td>
+          <td data-label="Updated">Last month</td>
+          <td data-label="Status"><span class="text-secondary">Needs owner</span></td>
+          <td data-label="Actions"><button type="button" data-variant="ghost" data-size="sm">Edit</button> <button type="button" data-variant="ghost-secondary" data-size="sm">Archive</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="6">Showing 5 of 214 records</td></tr>
+      </tfoot>
+    </table>
+    <nav data-align="end">
+      <ul>
+        <li><a href="#">← Previous</a></li>
+        <li><a href="#" aria-current="page">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">43</a></li>
+        <li><a href="#">Next →</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section>
+    <h2>Detail panel</h2>
+    <div class="card">
+      <header>
+        <p class="eyebrow">REC-1041</p>
+        <h3>Quarterly reconciliation</h3>
+      </header>
+      <table data-compact>
+        <tbody>
+          <tr><th>Owner</th><td>A. Placeholder</td></tr>
+          <tr><th>Created</th><td>14 March</td></tr>
+          <tr><th>Reviewers</th><td>Two assigned, one responded</td></tr>
+          <tr><th>Attachments</th><td>3 files, 4.2 MB</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <strong>One reviewer has not responded</strong>
+        The record cannot close until both reviews are recorded.
+      </div>
+      <details>
+        <summary>Activity log</summary>
+        <ul>
+          <li>Status set to active — 2 hours ago</li>
+          <li>Attachment added — yesterday</li>
+          <li>Record created — 14 March</li>
+        </ul>
+      </details>
+      <footer>
+        <div class="btn-group" data-align="end">
+          <button type="button" data-variant="ghost" data-size="sm">Duplicate</button>
+          <button type="button" data-variant="outline" data-size="sm">Request review</button>
+          <button type="button" data-size="sm" id="open-close-dialog">Close record</button>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <section>
+    <h2>Settings</h2>
+    <fieldset>
+      <legend>Notifications</legend>
+      <p><label><input type="checkbox" role="switch" checked> Email me when a record changes status</label></p>
+      <p><label><input type="checkbox" role="switch" checked> Weekly digest</label></p>
+      <p><label><input type="checkbox" role="switch"> Mention alerts</label></p>
+      <p>
+        <label for="a-rows">Rows per page — <span id="rows-out">30</span></label>
+        <input id="a-rows" type="range" min="10" max="100" step="10" value="30">
+      </p>
+      <p>
+        <label for="a-accent">Accent override</label>
+        <input id="a-accent" type="color" value="#166534">
+      </p>
+      <div class="btn-group">
+        <button type="button" data-size="sm">Save settings</button>
+        <button type="button" data-variant="ghost" data-size="sm">Revert</button>
+      </div>
+    </fieldset>
+  </section>
+
+  <dialog id="close-record-dialog">
+    <article>
+      <h3>Close this record?</h3>
+      <p>Closing REC-1041 locks its attachments and removes it from the active queue. This can be undone by an administrator within thirty days.</p>
+      <div class="callout danger">
+        <strong>One review is still outstanding</strong>
+        Closing now records the review as waived.
+      </div>
+      <div class="btn-group" data-align="end">
+        <button type="button" data-variant="ghost" id="cancel-close-dialog">Cancel</button>
+        <button type="button" data-variant="secondary" id="confirm-close-dialog">Close and waive</button>
+      </div>
+    </article>
+  </dialog>
+</main>
+<footer>
+  <hr>
+  <nav>
+    <ul>
+      <li><a href="example-article.html">← Article</a></li>
+      <li><a href="examples.html">All examples</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script type="module" src="dark-mode-toggle.min.js"></script>
+<script>
+  // Range input fill — set --range-progress as a dimensionless ratio (0–1)
+  function initRange(el) {
+    function update() {
+      const min = parseFloat(el.min) || 0;
+      const max = parseFloat(el.max) || 100;
+      const ratio = (parseFloat(el.value) - min) / (max - min);
+      el.style.setProperty('--range-progress', ratio);
+    }
+    update();
+    el.addEventListener('input', update);
+  }
+  document.querySelectorAll('input[type=range]').forEach(initRange);
+
+  // Live "rows per page" value display
+  const rowsRange = document.getElementById('a-rows');
+  const rowsOut = document.getElementById('rows-out');
+  if (rowsRange && rowsOut) {
+    rowsRange.addEventListener('input', () => { rowsOut.textContent = rowsRange.value; });
+  }
+
+  // Close-record dialog
+  const closeDialog = document.getElementById('close-record-dialog');
+  document.getElementById('open-close-dialog').addEventListener('click', () => closeDialog.showModal());
+  document.getElementById('cancel-close-dialog').addEventListener('click', () => closeDialog.close());
+  document.getElementById('confirm-close-dialog').addEventListener('click', () => closeDialog.close());
+  closeDialog.addEventListener('click', e => { if (e.target === closeDialog) closeDialog.close(); });
+</script>
+</body>
+</html>
