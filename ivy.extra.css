@@ -224,7 +224,7 @@ nav[aria-label=breadcrumb] [aria-current="page"]{color:inherit; font-weight:600;
 /* header/footer bleed to card edges */
 .card>header{margin:calc(var(--m)*-1) calc(var(--m)*-1) var(--m); padding:var(--m); border-bottom:var(--bw-1) solid var(--color-border); border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;}
 .card>footer{margin:var(--m) calc(var(--m)*-1) calc(var(--m)*-1); padding:var(--m); border-top:var(--bw-1) solid var(--color-border); border-radius:0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);}
-.card>header :is(h1,h2,h3,h4,h5,h6){margin:0;}
+.card>header :is(h1,h2,h3,h4,h5,h6),.card>footer :is(h1,h2,h3,h4,h5,h6),.card>footer .btn-group{margin:0;}
 .box>header,.box>footer{padding:var(--m);}
 .card[data-variant=soft],.box[data-variant=soft]{background:var(--surface-2);}
 .card[data-variant=primary],.box[data-variant=primary]{border-color:color-mix(in oklab,var(--color-primary) 45%,var(--color-border)); box-shadow:0 0 0 1px color-mix(in oklab,var(--color-primary) 20%,transparent),var(--shadow-sm);}
