@@ -29,7 +29,7 @@
 
     <!-- Hero -->
     <section class="container center py-4 px-5">
-      <p class="kicker">v1.1.1 — MIT License</p>
+      <p class="kicker">v1.2.0 — MIT License</p>
       <h1>Ivy CSS</h1>
       <p>A tiny, classless CSS baseline that makes semantic HTML look great out of the box.<br>
       Add the optional extras layer for buttons, cards, tooltips, and more — styled with <code>data-*</code> attributes, not class soup.</p>
@@ -217,7 +217,7 @@
 &lt;/style&gt;</code></pre>
 
         <h3>Live color theme examples</h3>
-        <p>The previews below use inline variable overrides. Copy the variable block to your own stylesheet.</p>
+        <p>Each preview box below sets the <em>applied</em> token (<code>--color-primary</code>) directly, inline, scoped to that one box — a shortcut that only works for a local preview like this. For your own site-wide theme, don't copy the inline <code>style</code> attribute; use the <code>-light</code> / <code>-dark</code> pair on <code>:root</code> shown in the "CSS variables" details under each preview (same pattern as the variable override block above), so dark mode gets the right color too.</p>
 
         <!-- Purple theme -->
         <div class="box" style="--color-primary: #7c3aed; --color-primary-text: #fff; --color-secondary: #0369a1; --color-secondary-text: #fff;">
@@ -306,18 +306,18 @@
         <table>
           <thead><tr><th>Token</th><th>Light default</th><th>Dark default</th><th>Used for</th></tr></thead>
           <tbody>
-            <tr><td><code>--color-bg-*</code></td><td><code>#ffffff</code></td><td><code>#0b0d10</code></td><td>Page background</td></tr>
-            <tr><td><code>--color-text-*</code></td><td><code>#1b1f23</code></td><td><code>#e6e7e9</code></td><td>Body text</td></tr>
-            <tr><td><code>--color-muted-*</code></td><td><code>#667085</code></td><td><code>#98a2b3</code></td><td>Secondary text, captions, placeholders</td></tr>
-            <tr><td><code>--color-link-*</code></td><td><code>#166534</code></td><td><code>#4ade80</code></td><td>Anchor color, focus outlines on links</td></tr>
-            <tr><td><code>--color-primary-*</code></td><td><code>#166534</code></td><td><code>#4ade80</code></td><td>Button fill, focus rings, accents</td></tr>
-            <tr><td><code>--color-primary-text-*</code></td><td><code>#ffffff</code></td><td><code>#052e16</code></td><td>Text on primary-colored backgrounds</td></tr>
-            <tr><td><code>--color-secondary-*</code></td><td><code>#ca8c0a</code></td><td><code>#fcd34d</code></td><td>Secondary actions</td></tr>
-            <tr><td><code>--color-secondary-text-*</code></td><td><code>#1a1200</code></td><td><code>#1a1200</code></td><td>Text on secondary-colored backgrounds</td></tr>
-            <tr><td><code>--color-border-*</code></td><td><code>#e5e7eb</code></td><td><code>#23262b</code></td><td>Borders, dividers, input strokes</td></tr>
-            <tr><td><code>--color-surface-*</code></td><td><code>#fafafa</code></td><td><code>#111418</code></td><td>Card and input backgrounds</td></tr>
-            <tr><td><code>--surface-2-*</code></td><td><code>#f5f7fa</code></td><td><code>#0f1216</code></td><td>Elevated surface (ivy.extra.css)</td></tr>
-            <tr><td><code>--surface-3-*</code></td><td><code>#eef2f7</code></td><td><code>#12161b</code></td><td>Highest elevation (ivy.extra.css)</td></tr>
+            <tr><td><code>--color-bg-*</code></td><td><code>#f8fafc</code></td><td><code>#0b0f14</code></td><td>Page background</td></tr>
+            <tr><td><code>--color-text-*</code></td><td><code>#111827</code></td><td><code>#e5e7eb</code></td><td>Body text</td></tr>
+            <tr><td><code>--color-muted-*</code></td><td><code>#667085</code></td><td><code>#a1aab8</code></td><td>Secondary text, captions, placeholders</td></tr>
+            <tr><td><code>--color-link-*</code></td><td><code>oklch(0.54 0.152 250)</code></td><td><code>oklch(0.80 0.102 250)</code></td><td>Anchor color, focus outlines on links</td></tr>
+            <tr><td><code>--color-primary-*</code></td><td><code>oklch(0.53 0.144 150)</code></td><td><code>oklch(0.84 0.215 152)</code></td><td>Button fill, focus rings, accents</td></tr>
+            <tr><td><code>--color-primary-text-*</code></td><td><code>#ffffff</code></td><td><code>#00220c</code></td><td>Text on primary-colored backgrounds</td></tr>
+            <tr><td><code>--color-secondary-*</code></td><td><code>oklch(0.55 0.22 355)</code></td><td><code>oklch(0.80 0.126 355)</code></td><td>Secondary actions</td></tr>
+            <tr><td><code>--color-secondary-text-*</code></td><td><code>#ffffff</code></td><td><code>#2f0c1c</code></td><td>Text on secondary-colored backgrounds</td></tr>
+            <tr><td><code>--color-border-*</code></td><td><code>#dbe2ea</code></td><td><code>#23262b</code></td><td>Borders, dividers, input strokes</td></tr>
+            <tr><td><code>--color-surface-*</code></td><td><code>#ffffff</code></td><td><code>#111418</code></td><td>Card and input backgrounds</td></tr>
+            <tr><td><code>--surface-2-*</code></td><td><code>#f5f7fa</code></td><td><code>#18202a</code></td><td>Elevated surface (ivy.extra.css)</td></tr>
+            <tr><td><code>--surface-3-*</code></td><td><code>#eef2f7</code></td><td><code>#202a36</code></td><td>Highest elevation (ivy.extra.css)</td></tr>
           </tbody>
         </table>
 
@@ -389,7 +389,7 @@
         <table>
           <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
           <tbody>
-            <tr><td><code>--range-progress</code></td><td>Percentage (e.g. <code>60%</code>) of the filled portion of a range track. Must be updated via JavaScript on the <code>input</code> event.</td></tr>
+            <tr><td><code>--range-progress</code></td><td>Dimensionless ratio between 0 and 1 (e.g. <code>0.6</code>, not <code>60%</code>) representing the filled portion of a range track. Must be updated via JavaScript on the <code>input</code> event.</td></tr>
           </tbody>
         </table>
       </section>
@@ -446,7 +446,7 @@
   </main>
 
   <footer class="container center">
-    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
+    <p>Ivy CSS v1.2.0 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js"></script>

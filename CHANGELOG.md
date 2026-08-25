@@ -5,6 +5,30 @@ Follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.2.0] — 2026-08-25
+
+### Changed
+- **Palette moved to OKLCH**, and links now get their own hue instead of duplicating the primary color: link is blue (`oklch(0.54 0.152 250)` light / `oklch(0.80 0.102 250)` dark), primary is green (`oklch(0.53 0.144 150)` / `oklch(0.84 0.215 152)`), secondary is rose (`oklch(0.55 0.22 355)` / `oklch(0.80 0.126 355)`). Replaces the 1.1.1 forest-green/amber palette. Requires `oklch()` support (same browser tier as `color-mix()`).
+- Responsive root type scale gentled to a six-step, +2.5%-per-step curve (100%→115% across 768px–2560px), replacing the old seven-step curve that went as high as +50%.
+
+### Fixed
+- Responsive root type scaling never actually applied — `--font-size` was updated by the breakpoint media queries, but `html` was hardcoded to `font-size:100%` and `body` read a static `--base-size` instead. `html` now reads `var(--font-size)`.
+- `header nav a` used `calc(var(--font-size * 1.2))`, which is invalid CSS (`var()` can't hold a math expression) and did nothing — replaced with a flat `1.05rem`.
+- `button:disabled` referenced an undefined `--text-muted` token — now uses `--color-muted` for background and border.
+- Header/footer padding bled into `article`/`section`/`table`/`figure`/etc. when one of those was nested inside a `header`/`footer` — selector narrowed to page-level header/footer only.
+- `--surface-2` / `--surface-3` were never assigned in the default (light, no `data-theme`) state — only inside the dark-media query and the `[data-theme]` blocks. Any page using Ivy without the `<dark-mode-toggle>` component saw unstyled soft/card/callout backgrounds in light mode. Now set in the base `:root` alongside the other applied tokens.
+- `:invalid` painted a danger border on required-but-empty fields immediately on page load, before any user interaction — switched to `:user-invalid`.
+- `ivy.extra.css`'s `--surface-2` / `--surface-3` values had drifted out of sync with `ivy.css`; both now match.
+
+### Docs
+- Corrected several stale values that no longer matched the code: the color palette reference table (was showing the pre-OKLCH hex palette), the responsive type-scaling table (was showing the old seven-step scale), `--range-progress` (documented as a percentage; it's a dimensionless 0–1 ratio), disabled-button opacity (documented as `0.6`; actual is `.5`), header nav link size (documented as `1rem`; actual is `1.05rem`), and a false `pointer-events: none` claim on the breadcrumb separator.
+- Clarified that the live color-theme preview boxes on the docs homepage use a local, scoped override of the applied token for demo purposes only — real site-wide theming should still use the `-light`/`-dark` token pairs shown above them.
+- Added three new example pages under `docs/` — a landing page, a long-form article, and a dense app screen — demonstrating the library on assembled real-world layouts, linked from a new `docs/examples.html` gallery.
+- README: added `--surface-2`/`--surface-3` to the token reference, added `oklch()` to the browser support table, documented the `<dark-mode-toggle>` component and the full-bundle install option, and fixed a broken relative link to Lattice.
+- Removed `CLAUDE.md` (project instructions no longer needed).
+
+---
+
 ## [1.1.1] — 2026-03-23
 
 ### Added

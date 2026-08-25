@@ -7,7 +7,7 @@ Tracked items for future releases. Not in priority order.
 ## Before next release
 
 - [ ] **CDN / npm publishing** — Publish to npm so jsDelivr and unpkg links work out of the box. Update README with CDN `<link>` tags once available.
-- [ ] **Docs update** — Refresh `docs/` pages to reflect 1.1.1 changes: new green palette, button behavior, renamed tokens (`--space-xs` etc.), `--success`.
+- [x] **Docs update** — Refresh `docs/` pages to reflect the 1.2.0 OKLCH palette, corrected token reference and browser-support tables, and new example pages.
 - [ ] **Lattice docs** — Finalize Lattice CSS, then add joint usage examples in `docs/`.
 - [ ] **`color-mix()` fallbacks** — Investigate whether graceful degradation is needed for older Safari (<16.2). Current browser support is ~93%. Add a note or polyfill guidance if targeting broader audiences.
 

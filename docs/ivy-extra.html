@@ -346,7 +346,7 @@ dialog.addEventListener('click', e =&gt; {
           <tbody>
             <tr>
               <td data-label="Name">ivy.css</td>
-              <td data-label="Version">1.1.1</td>
+              <td data-label="Version">1.2.0</td>
               <td data-label="License">MIT</td>
             </tr>
             <tr>
@@ -367,7 +367,7 @@ dialog.addEventListener('click', e =&gt; {
     &lt;tr&gt;
       &lt;!-- Each td needs data-label matching the column heading --&gt;
       &lt;td data-label="Name"&gt;ivy.css&lt;/td&gt;
-      &lt;td data-label="Version"&gt;1.1.1&lt;/td&gt;
+      &lt;td data-label="Version"&gt;1.2.0&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
@@ -543,7 +543,7 @@ dialog.addEventListener('click', e =&gt; {
 
         <div class="callout success">
           <strong>Accessibility</strong>
-          <p>The <code>aria-label="breadcrumb"</code> on the <code>&lt;nav&gt;</code> identifies it to screen readers. <code>aria-current="page"</code> on the last item tells screen readers it represents the current location. The CSS-generated <code>&gt;</code> separator is purely decorative (<code>pointer-events: none</code>) and not read aloud.</p>
+          <p>The <code>aria-label="breadcrumb"</code> on the <code>&lt;nav&gt;</code> identifies it to screen readers. <code>aria-current="page"</code> on the last item tells screen readers it represents the current location. The CSS-generated <code>&gt;</code> separator is a <code>::before</code> pseudo-element — purely decorative and not read aloud.</p>
         </div>
       </section>
 
@@ -888,7 +888,7 @@ el.removeAttribute('aria-busy');</code></pre>
   </main>
 
   <footer class="container center">
-    <p>Ivy CSS v1.1.1 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
+    <p>Ivy CSS v1.2.0 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js"></script>

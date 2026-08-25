@@ -8,7 +8,7 @@ It gives you elegant defaults for typography, links, code, media, tables, and ba
 * **Classless first.** Style semantic tags, not div soup.
 * **Small & composable.** Keep just the core, or add a light "extra" layer.
 * **No JS.** Works anywhere, pairs nicely with any layout approach.
-* **Optional companion:** [Lattice](../) (minimal layout/positioning utilities).
+* **Optional companion:** [Lattice](https://github.com/rlnorthcutt/lattice) (minimal layout/positioning utilities).
 
 <p align="center">
   <img alt="CSS Only" src="https://img.shields.io/badge/CSS-Only-0?style=flat&color=0aa" />
@@ -26,7 +26,7 @@ Ivy ships in two layers:
 | `ivy.css`       | **Core** classless defaults: type rhythm, links, lists, code/pre, media, minimal tables & forms, a11y helpers.                                                  |
 | `ivy.extra.css` | **Extra** optional polish: buttons via data-attributes, details/summary, tooltips, dialog, progress, striped tables, small form niceties, badges, busy spinner. |
 
-> If you minify in CI, you may also have `ivy.min.css` / `ivy.extra.min.css` in `dist/`.
+CI minifies these into `dist/`: `ivy.min.css` (core only), `ivy.extra.min.css` (extra only), and `ivy.full.min.css` / `ivy.full.css` (core + extra combined — the simplest option if you don't need to ship the two separately).
 
 ---
 
@@ -40,6 +40,12 @@ Add Ivy to your page:
 
 <!-- Optional polish layer -->
 <link rel="stylesheet" href="/path/to/ivy.extra.css" />
+```
+
+Or link the pre-combined bundle instead of the two files above:
+
+```html
+<link rel="stylesheet" href="/path/to/ivy.full.min.css" />
 ```
 
 > Using Lattice for layout? Include it after Ivy:
@@ -105,6 +111,19 @@ No classes required—just semantic HTML.
 
 ---
 
+## Dark mode
+
+Ivy follows `prefers-color-scheme` automatically — no markup required. To let users override the system preference, either set `data-theme="dark"` / `data-theme="light"` on `<html>` yourself, or drop in the bundled `<dark-mode-toggle>` web component (in `docs/dark-mode-toggle.min.js`), which renders a toggle switch and persists the choice to `localStorage`:
+
+```html
+<dark-mode-toggle></dark-mode-toggle>
+<script type="module" src="/path/to/dark-mode-toggle.min.js"></script>
+```
+
+It defaults to setting `data-theme` on `<html>` (`strategy="attr"`); pass `strategy="class"` to toggle `.dark`/`.light` instead. Appearance is customizable via `--track-width`, `--track-height`, `--track-bg-light`, `--track-bg-dark`, and `--thumb-bg`.
+
+---
+
 ## Customize (tokens)
 
 Ivy uses a two-tier token system. Each color has a `-light` and `-dark` variant; the *applied* token (e.g. `--color-bg`) switches between them based on the active theme.
@@ -143,6 +162,8 @@ Ivy uses a two-tier token system. Each color has a `-light` and `-dark` variant;
 --color-secondary-text-light / --color-secondary-text-dark
 --color-border-light / --color-border-dark
 --color-surface-light / --color-surface-dark
+--surface-2-light / --surface-2-dark   /* elevated surface, e.g. card/callout bg */
+--surface-3-light / --surface-3-dark   /* highest elevation, e.g. open <details> */
 
 /* Semantic states */
 --info  --success  --warn  --danger
@@ -214,6 +235,7 @@ Ivy uses a two-tier token system. Each color has a `-light` and `-dark` variant;
 
 * `docs/ivy-core.html` — element showcase (zero classes)
 * `docs/ivy-extra.html` — optional patterns
+* `docs/examples.html` — real assembled pages: a landing page, a long-form article, and a dense app screen
 
 ---
 
@@ -226,10 +248,11 @@ Modern evergreen browsers. Requires support for:
 | `:focus-visible` | 86 | 85 | 15.4 | 86 |
 | `prefers-color-scheme` | 76 | 67 | 12.1 | 79 |
 | `color-mix()` | 111 | 113 | 16.2 | 111 |
+| `oklch()` | 111 | 113 | 15.4 | 111 |
 | `@layer` | 99 | 97 | 15.4 | 99 |
 | `<dialog>` | 37 | 98 | 15.4 | 79 |
 
-> `color-mix()` is the most recent requirement (~93% global support as of early 2026). No JavaScript required except where you wire up native `<dialog>` open/close or the optional range input fill.
+> `color-mix()` and `oklch()` (used for the palette itself) are the most recent requirements. No JavaScript required except where you wire up native `<dialog>` open/close, the optional range input fill, or the optional `<dark-mode-toggle>` component (see below).
 
 ---
 
