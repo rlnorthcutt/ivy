@@ -1,3 +1,8 @@
+<p align="center">
+  <img alt="CSS Only" src="https://img.shields.io/badge/CSS-Only-0?style=flat&color=0aa" />
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-000?style=flat&color=333" />
+</p>
+
 [![Sample screenshot of Ivy site](image.png)](https://rlnorthcutt.github.io/ivy/)
 
 # Ivy.css
@@ -9,11 +14,6 @@ It gives you elegant defaults for typography, links, code, media, tables, and ba
 * **Small & composable.** Keep just the core, or add a light "extra" layer.
 * **No JS.** Works anywhere, pairs nicely with any layout approach.
 * **Optional companion:** [Lattice](https://github.com/rlnorthcutt/lattice) (minimal layout/positioning utilities).
-
-<p align="center">
-  <img alt="CSS Only" src="https://img.shields.io/badge/CSS-Only-0?style=flat&color=0aa" />
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-000?style=flat&color=333" />
-</p>
 
 ---
 
