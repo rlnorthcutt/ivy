@@ -1,3 +1,5 @@
+[![Sample screenshot of Ivy site](image.png)](https://rlnorthcutt.github.io/ivy/)
+
 # Ivy.css
 
 **Ivy** is a tiny, classless CSS baseline for clean, semantic HTML.
@@ -12,8 +14,6 @@ It gives you elegant defaults for typography, links, code, media, tables, and ba
   <img alt="CSS Only" src="https://img.shields.io/badge/CSS-Only-0?style=flat&color=0aa" />
   <img alt="License" src="https://img.shields.io/badge/License-MIT-000?style=flat&color=333" />
 </p>
-
-![](image.png)
 
 ---
 
