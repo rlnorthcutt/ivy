@@ -25,19 +25,19 @@
    - Define both light AND dark palettes here.
    - "Applied" tokens (e.g. --color-bg) default to light and are remapped by theme.
    ========================================================================== */
-:root{
+:root {
   /* palette (light) */
-  --color-bg-light:#f8fafc; --color-text-light:#111827; --color-muted-light:#667085;
-  --color-link-light:oklch(0.54 0.152 250); --color-primary-light:oklch(0.53 0.144 150); --color-primary-text-light:#ffffff;
-  --color-secondary-light:oklch(0.55 0.22 355); --color-secondary-text-light:#ffffff;
-  --color-border-light:#dbe2ea; --color-surface-light:#ffffff;
-  --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7;
+  --color-bg-light:#f8faf8; --color-text-light:#141a17; --color-muted-light:#5b6a63;
+  --color-link-light:#1a5f43; --color-primary-light:#1e6f47; --color-primary-text-light:#ffffff;
+  --color-secondary-light:#3f4a54; --color-secondary-text-light:#ffffff;
+  --color-border-light:#dde5e0; --color-surface-light:#ffffff;
+  --surface-2-light:#f1f5f2; --surface-3-light:#e9efeb;
   /* palette (dark) */
-  --color-bg-dark:#0b0f14; --color-text-dark:#e5e7eb; --color-muted-dark:#a1aab8;
-  --color-link-dark:oklch(0.80 0.102 250); --color-primary-dark:oklch(0.84 0.215 152); --color-primary-text-dark:#00220c;
-  --color-secondary-dark:oklch(0.80 0.126 355); --color-secondary-text-dark:#2f0c1c;
-  --color-border-dark:#23262b; --color-surface-dark:#111418;
-  --surface-2-dark:#18202a; --surface-3-dark:#202a36;
+  --color-bg-dark:#0b100e; --color-text-dark:#e6ecea; --color-muted-dark:#9aa9a3;
+  --color-link-dark:#79dcae; --color-primary-dark:#5fd39b; --color-primary-text-dark:#04231a;
+  --color-secondary-dark:#a9b7c1; --color-secondary-text-dark:#101418;
+  --color-border-dark:#232b27; --color-surface-dark:#121815;
+  --surface-2-dark:#161d1a; --surface-3-dark:#1c2521;
   /* applied palette (defaults to light; theme switch remaps these) */
   --color-bg:var(--color-bg-light); --color-text:var(--color-text-light); --color-muted:var(--color-muted-light);
   --color-link:var(--color-link-light); --color-primary:var(--color-primary-light); --color-primary-text:var(--color-primary-text-light);
@@ -265,12 +265,10 @@ button:disabled,[type=button]:disabled,[type=submit]:disabled,[type=reset]:disab
    - Dark shadows include a soft halo for visibility on dark backgrounds.
    ========================================================================== */
 :root{
-  /* light surfaces + shadows */
-  --surface-2-light:#f5f7fa; --surface-3-light:#eef2f7;
+  /* light shadows (surface-2/3 palette is owned by ivy.css core) */
   --shadow-sm-light:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
   --shadow-md-light:0 4px 10px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
-  /* dark surfaces + shadows (with light glow stroke) */
-  --surface-2-dark:#18202a; --surface-3-dark:#202a36;
+  /* dark shadows (with light glow stroke) */
   --shadow-sm-dark:0 1px 2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10),0 0 8px rgba(255,255,255,.08);
   --shadow-md-dark:0 8px 24px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.10),0 0 22px rgba(255,255,255,.10);
 
