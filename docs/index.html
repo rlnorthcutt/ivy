@@ -8,47 +8,152 @@
   <meta name="keywords" content="CSS, classless, design system, HTML defaults, dark mode, semantic">
   <link rel="stylesheet" href="ivy.full.min.css">
   <link rel="stylesheet" href="lattice.full.min.css">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
   <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-  <header class="sticky" role="banner">
-    <nav class="container d-flex justify-between" aria-label="Primary">
-      <ul class="d-flex gap-2 m-0 p-0">
-        <li><a href="./" aria-current="page"><strong>Ivy CSS</strong></a></li>
-        <li><a href="ivy-core.html">Core Demo</a></li>
-        <li><a href="ivy-extra.html">Extra Demo</a></li>
-        <li><a href="examples.html">Examples</a></li>
-        <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
-      </ul>
-      <dark-mode-toggle></dark-mode-toggle>
-    </nav>
+  <header role="banner">
+    <div class="container d-flex items-center justify-between gap-3">
+      <a href="./" style="display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--color-text); font-weight:600; letter-spacing:-.01em">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" style="color:var(--color-primary); flex:none"><path d="M12.75 22c0-6.2 3.9-9.6 9.25-9.6 0 5.4-4.1 9.6-9.25 9.6Z"></path><path d="M11.25 22c0-6.2-3.9-9.6-9.25-9.6 0 5.4 4.1 9.6 9.25 9.6Z"></path><path d="M11.3 22V8.6c0-3 1.3-5.4 3.9-6.6-1 1.9-1.4 3.7-1.4 5.5V22Z"></path></svg>
+        <span>Ivy CSS</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="ivy-core.html">Core</a></li>
+          <li><a href="ivy-extra.html">Extra</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener" aria-label="Ivy on GitHub" title="Ivy on GitHub" style="display:inline-flex; align-items:center"><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.07-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a></li>
+          <li><select id="palette" aria-label="Palette" data-size="sm" style="width:auto; min-width:9.5rem; margin:0; font-size:var(--fs-sm); padding-right:2rem"></select></li>
+          <li><dark-mode-toggle></dark-mode-toggle></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="content">
 
-    <!-- Hero -->
-    <section class="container center py-4 px-5">
-      <p class="kicker">v1.2.0 — MIT License</p>
-      <h1>Ivy CSS</h1>
-      <p>A tiny, classless CSS baseline that makes semantic HTML look great out of the box.<br>
-      Add the optional extras layer for buttons, cards, tooltips, and more — styled with <code>data-*</code> attributes, not class soup.</p>
-      <div class="btn-group" data-align="center">
-        <a role="button" data-variant="primary" href="#install">Get started</a>
-        <a role="button" data-variant="outline" href="ivy-core.html">Core demo</a>
-        <a role="button" data-variant="outline" href="ivy-extra.html">Extra demo</a>
-        <a role="button" data-variant="ghost" href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a>
+    <section class="hero py-5 grid md-col-2 gap-5 items-center" id="top">
+      <div>
+        <p class="kicker">v1.2.0 — MIT License</p>
+        <h1>Semantic HTML,<br>already designed.</h1>
+        <p class="lede">A tiny, classless CSS baseline that makes semantic HTML look great out of the box. Add the optional extras layer for buttons, cards, tooltips, and more — styled with <code>data-*</code> attributes, not class soup.</p>
+        <div class="btn-group">
+          <a role="button" data-variant="primary" href="#install">Get started</a>
+          <a role="button" data-variant="outline" href="ivy-core.html">See the demos</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="d-flex items-center justify-between gap-3 mb-2" style="flex-wrap:wrap">
+          <p class="eyebrow" style="margin:0">One stylesheet, no classes</p>
+          <div class="btn-group" role="group" aria-label="Show preview or source">
+            <button id="btn-preview" type="button" data-size="sm" data-variant="primary" aria-pressed="true">Preview</button>
+            <button id="btn-source" type="button" data-size="sm" data-variant="ghost" aria-pressed="false">Source</button>
+          </div>
+        </div>
+
+        <div class="box">
+          <div id="hero-preview">
+            <h2 style="margin-top:0">Field notes</h2>
+            <p>No classes, no wrappers — just <a href="#top">semantic markup</a>.</p>
+            <blockquote>Ship the HTML. Skip the CSS.</blockquote>
+            <label>Email
+              <input type="email" placeholder="you@example.com">
+            </label>
+            <button type="button">Subscribe</button>
+          </div>
+          <pre id="hero-source" hidden style="margin:0"><code>&lt;article&gt;
+  &lt;h2&gt;Field notes&lt;/h2&gt;
+  &lt;p&gt;No classes, no wrappers —
+  just &lt;a href="#"&gt;semantic markup&lt;/a&gt;.&lt;/p&gt;
+  &lt;blockquote&gt;
+    Ship the HTML. Skip the CSS.
+  &lt;/blockquote&gt;
+  &lt;label&gt;Email
+    &lt;input type="email"
+      placeholder="you@example.com"&gt;
+  &lt;/label&gt;
+  &lt;button&gt;Subscribe&lt;/button&gt;
+&lt;/article&gt;</code></pre>
+        </div>
       </div>
     </section>
 
-    <article>
+    <div class="shell">
+      <nav aria-label="On this page">
+        <p class="eyebrow">On this page</p>
+        <ul>
+          <li><a href="#showcase">Out of the box</a></li>
+          <li><a href="#layers">Two layers</a></li>
+          <li><a href="#install">Installation</a></li>
+          <li><a href="#config">Theme configuration</a></li>
+          <li><a href="#customize">Customization</a></li>
+          <li><a href="#tokens">Token reference</a></li>
+          <li><a href="#files">Files &amp; builds</a></li>
+          <li><a href="#support">Browser support</a></li>
+          <li><a href="#a11y">Accessibility</a></li>
+        </ul>
+      </nav>
 
-      <!-- Two layers -->
+      <div>
+      <article>
+
+      <section id="showcase">
+        <h2>Out of the box</h2>
+        <p>Every panel below is plain HTML with no classes on it — tables, forms, code and quotes styled by <code>ivy.css</code> alone.</p>
+        <div class="grid md-col-2 gap-4">
+          <div class="box">
+            <p class="eyebrow">Type scale</p>
+            <h3 style="margin-top:0">Fluid headings</h3>
+            <p>Headings use <code>clamp()</code>, so the scale keeps its proportions from phone to display. Body copy holds a comfortable measure of <code>64rem</code>.</p>
+            <p class="muted">Muted text for captions and asides.</p>
+          </div>
+          <div class="box">
+            <p class="eyebrow">Forms</p>
+            <label>Name<input placeholder="Ada Lovelace"></label>
+            <label>Role
+              <select>
+                <option>Maintainer</option>
+                <option>Contributor</option>
+              </select>
+            </label>
+            <label><input type="checkbox" checked> Watch releases</label>
+            <div class="btn-group">
+              <button data-variant="primary">Save</button>
+              <button data-variant="ghost">Cancel</button>
+            </div>
+          </div>
+          <div class="box">
+            <p class="eyebrow">Tables</p>
+            <table data-compact>
+              <thead><tr><th>File</th><th>Size</th></tr></thead>
+              <tbody>
+                <tr><td><code>ivy.min.css</code></td><td>10.7 KB</td></tr>
+                <tr><td><code>ivy.extra.min.css</code></td><td>13.3 KB</td></tr>
+                <tr><td><code>ivy.full.min.css</code></td><td>24 KB</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box">
+            <p class="eyebrow">Extras</p>
+            <div class="btn-group">
+              <button data-variant="primary">Primary</button>
+              <button data-variant="outline" aria-label="Outline, 3 new" data-badge="3">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+            </div>
+            <p>Badges, tooltips and callouts arrive with <code>ivy.extra.css</code>.</p>
+            <div class="callout info"><p style="margin:0">Activated with <code>data-*</code> attributes — no class soup.</p></div>
+          </div>
+        </div>
+      </section>
+
       <section id="layers">
         <h2>Two layers</h2>
         <p>Ivy is split into two files so you only ship what you need.</p>
         <div class="grid sm-col-2 gap-3">
-          <div class="card" data-variant="primary">
+          <div class="card">
             <header><h3>Core — <code>ivy.css</code></h3></header>
             <p>Classless defaults for every HTML element. Zero classes required — just write clean semantic HTML.</p>
             <ul>
@@ -60,7 +165,7 @@
             </ul>
             <footer><a href="ivy-core.html">View core demo →</a></footer>
           </div>
-          <div class="card" data-variant="secondary">
+          <div class="card">
             <header><h3>Extra — <code>ivy.extra.css</code></h3></header>
             <p>Optional polish and components, activated with <code>data-*</code> attributes or small semantic class names.</p>
             <ul>
@@ -75,7 +180,6 @@
         </div>
       </section>
 
-      <!-- Installation -->
       <section id="install">
         <h2>Installation</h2>
 
@@ -98,7 +202,6 @@
 &lt;link rel="stylesheet" href="lattice.full.min.css"&gt;</code></pre>
       </section>
 
-      <!-- Theme Configuration -->
       <section id="config">
         <h2>Theme configuration</h2>
         <p>Ivy ships with both a light and a dark palette. You choose how to activate them.</p>
@@ -151,7 +254,6 @@
         </div>
       </section>
 
-      <!-- Customization -->
       <section id="customize">
         <h2>Customization</h2>
         <p>Ivy is built entirely on CSS custom properties. Override any token in your own stylesheet. Because all Ivy rules are inside <code>@layer ivy-base</code> and <code>@layer ivy-extra</code>, your unlayered rules always take precedence — no <code>!important</code> required.</p>
@@ -169,7 +271,7 @@
 
         <div class="callout warn">
           <strong>Watch out: unlayered resets silently win too</strong>
-          <p>The same rule that lets your CSS override Ivy without <code>!important</code> also means <em>any</em> unlayered CSS beats Ivy's rules &mdash; on purpose, and regardless of specificity. A CMS theme's <code>body { background: transparent; }</code>, a third-party reset, or a leftover unlayered stylesheet will silently strip Ivy's <code>--color-bg</code> from <code>&lt;body&gt;</code>, since that rule lives inside <code>@layer ivy-base</code>. There's no specificity fight and no warning &mdash; the page ground just goes missing, which is easiest to notice in dark mode or a themed CMS.</p>
+          <p>The same rule that lets your CSS override Ivy without <code>!important</code> also means <em>any</em> unlayered CSS beats Ivy's rules — on purpose, and regardless of specificity. A CMS theme's <code>body { background: transparent; }</code>, a third-party reset, or a leftover unlayered stylesheet will silently strip Ivy's <code>--color-bg</code> from <code>&lt;body&gt;</code>, since that rule lives inside <code>@layer ivy-base</code>. There's no specificity fight and no warning — the page ground just goes missing, which is easiest to notice in dark mode or a themed CMS.</p>
           <p>If a host page ships its own reset or theme CSS, wrap it in a layer too so precedence stays intentional:</p>
           <pre><code>&lt;style&gt;
   @layer reset, ivy-base, ivy-extra, theme;
@@ -219,85 +321,82 @@
         <h3>Live color theme examples</h3>
         <p>Each preview box below sets the <em>applied</em> token (<code>--color-primary</code>) directly, inline, scoped to that one box — a shortcut that only works for a local preview like this. For your own site-wide theme, don't copy the inline <code>style</code> attribute; use the <code>-light</code> / <code>-dark</code> pair on <code>:root</code> shown in the "CSS variables" details under each preview (same pattern as the variable override block above), so dark mode gets the right color too.</p>
 
-        <!-- Purple theme -->
-        <div class="box" style="--color-primary: #7c3aed; --color-primary-text: #fff; --color-secondary: #0369a1; --color-secondary-text: #fff;">
-          <p class="eyebrow">Purple primary</p>
-          <div class="btn-group">
-            <button data-variant="primary">Primary</button>
-            <button data-variant="outline">Outline</button>
-            <button data-variant="ghost">Ghost</button>
-            <button data-variant="secondary">Secondary</button>
-          </div>
-          <details>
-            <summary>CSS variables</summary>
-            <pre><code>--color-primary-light: #7c3aed;
+        <div class="grid sm-col-2 gap-3">
+          <div class="box" style="--color-primary: #7c3aed; --color-primary-text: #fff; --color-secondary: #0369a1; --color-secondary-text: #fff">
+            <p class="eyebrow">Purple primary</p>
+            <div class="btn-group">
+              <button data-variant="primary">Primary</button>
+              <button data-variant="outline">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+              <button data-variant="secondary">Secondary</button>
+            </div>
+            <details>
+              <summary>CSS variables</summary>
+              <pre><code>--color-primary-light: #7c3aed;
 --color-primary-dark:  #a78bfa;
 --color-primary-text-light: #ffffff;
 --color-primary-text-dark:  #1a0030;
 --color-link-light: #7c3aed;
 --color-link-dark:  #a78bfa;</code></pre>
-          </details>
-        </div>
-
-        <!-- Blue theme -->
-        <div class="box" style="--color-primary: #0369a1; --color-primary-text: #fff;">
-          <p class="eyebrow">Blue primary</p>
-          <div class="btn-group">
-            <button data-variant="primary">Primary</button>
-            <button data-variant="outline">Outline</button>
-            <button data-variant="ghost">Ghost</button>
+            </details>
           </div>
-          <details>
-            <summary>CSS variables</summary>
-            <pre><code>--color-primary-light: #0369a1;
+
+          <div class="box" style="--color-primary: #0369a1; --color-primary-text: #fff">
+            <p class="eyebrow">Blue primary</p>
+            <div class="btn-group">
+              <button data-variant="primary">Primary</button>
+              <button data-variant="outline">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+            </div>
+            <details>
+              <summary>CSS variables</summary>
+              <pre><code>--color-primary-light: #0369a1;
 --color-primary-dark:  #38bdf8;
 --color-primary-text-light: #ffffff;
 --color-primary-text-dark:  #0c1a2e;
 --color-link-light: #0369a1;
 --color-link-dark:  #38bdf8;</code></pre>
-          </details>
-        </div>
-
-        <!-- Rose theme -->
-        <div class="box" style="--color-primary: #be185d; --color-primary-text: #fff;">
-          <p class="eyebrow">Rose primary</p>
-          <div class="btn-group">
-            <button data-variant="primary">Primary</button>
-            <button data-variant="outline">Outline</button>
-            <button data-variant="ghost">Ghost</button>
+            </details>
           </div>
-          <details>
-            <summary>CSS variables</summary>
-            <pre><code>--color-primary-light: #be185d;
+
+          <div class="box" style="--color-primary: #be185d; --color-primary-text: #fff">
+            <p class="eyebrow">Rose primary</p>
+            <div class="btn-group">
+              <button data-variant="primary">Primary</button>
+              <button data-variant="outline">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+            </div>
+            <details>
+              <summary>CSS variables</summary>
+              <pre><code>--color-primary-light: #be185d;
 --color-primary-dark:  #f472b6;
 --color-primary-text-light: #ffffff;
 --color-primary-text-dark:  #2d0020;
 --color-link-light: #be185d;
 --color-link-dark:  #f472b6;</code></pre>
-          </details>
-        </div>
-
-        <!-- Slate/neutral theme -->
-        <div class="box" style="--color-primary: #334155; --color-primary-text: #fff;">
-          <p class="eyebrow">Slate (neutral)</p>
-          <div class="btn-group">
-            <button data-variant="primary">Primary</button>
-            <button data-variant="outline">Outline</button>
-            <button data-variant="ghost">Ghost</button>
+            </details>
           </div>
-          <details>
-            <summary>CSS variables</summary>
-            <pre><code>--color-primary-light: #334155;
+
+          <div class="box" style="--color-primary: #334155; --color-primary-text: #fff">
+            <p class="eyebrow">Slate (neutral)</p>
+            <div class="btn-group">
+              <button data-variant="primary">Primary</button>
+              <button data-variant="outline">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+            </div>
+            <details>
+              <summary>CSS variables</summary>
+              <pre><code>--color-primary-light: #334155;
 --color-primary-dark:  #94a3b8;
 --color-primary-text-light: #ffffff;
 --color-primary-text-dark:  #0f172a;
 --color-link-light: #334155;
 --color-link-dark:  #94a3b8;</code></pre>
-          </details>
+            </details>
+          </div>
         </div>
       </section>
 
-      <!-- Token Reference -->
       <section id="tokens">
         <h2>Token reference</h2>
         <p>All CSS custom properties defined by Ivy. Override the <code>-light</code> / <code>-dark</code> palette tokens to customize both themes. The applied tokens (without a suffix) are remapped automatically by theme switching — do not override those directly.</p>
@@ -394,7 +493,6 @@
         </table>
       </section>
 
-      <!-- File sizes -->
       <section id="files">
         <h2>Files &amp; builds</h2>
         <p>GitHub Actions minifies and bundles source files into <code>dist/</code> on every push to <code>main</code>. All minified files preserve the license banner.</p>
@@ -409,7 +507,6 @@
         </table>
       </section>
 
-      <!-- Browser support -->
       <section id="support">
         <h2>Browser support</h2>
         <p>Ivy uses modern CSS features. All are baseline-supported in every current browser (Chrome, Firefox, Safari, Edge).</p>
@@ -429,7 +526,6 @@
         </table>
       </section>
 
-      <!-- Accessibility -->
       <section id="a11y">
         <h2>Accessibility</h2>
         <ul>
@@ -442,13 +538,37 @@
         </ul>
       </section>
 
-    </article>
+      </article>
+      </div>
+    </div>
   </main>
 
-  <footer class="container center">
-    <p>Ivy CSS v1.2.0 — MIT License — <a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></p>
+  <footer>
+    <div class="container d-flex justify-between items-center gap-3" style="flex-wrap:wrap">
+      <p class="muted" style="margin:0">Ivy CSS v1.2.0 — MIT License</p>
+      <p style="margin:0"><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub&nbsp;↗</a></p>
+    </div>
   </footer>
 
   <script type="module" src="dark-mode-toggle.min.js"></script>
+  <script src="site.js"></script>
+  <script>
+    // Hero preview/source toggle
+    const btnPreview = document.getElementById('btn-preview');
+    const btnSource = document.getElementById('btn-source');
+    const heroPreview = document.getElementById('hero-preview');
+    const heroSource = document.getElementById('hero-source');
+    function showPane(pane) {
+      const isPreview = pane === 'preview';
+      heroPreview.hidden = !isPreview;
+      heroSource.hidden = isPreview;
+      btnPreview.setAttribute('aria-pressed', String(isPreview));
+      btnPreview.setAttribute('data-variant', isPreview ? 'primary' : 'ghost');
+      btnSource.setAttribute('aria-pressed', String(!isPreview));
+      btnSource.setAttribute('data-variant', !isPreview ? 'primary' : 'ghost');
+    }
+    btnPreview.addEventListener('click', () => showPane('preview'));
+    btnSource.addEventListener('click', () => showPane('source'));
+  </script>
 </body>
 </html>

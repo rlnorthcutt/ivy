@@ -7,24 +7,31 @@
 <meta name="description" content="A marketing landing page built with Ivy CSS — no layout classes, just semantic HTML and the extra layer's components.">
 <link rel="stylesheet" href="ivy.full.min.css">
 <link rel="stylesheet" href="lattice.full.min.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
 
-<header class="sticky" role="banner">
-  <nav class="container d-flex justify-between" aria-label="Primary">
-    <ul class="d-flex gap-2 m-0 p-0">
-      <li><a href="./">Ivy CSS</a></li>
-      <li><a href="ivy-core.html">Core Demo</a></li>
-      <li><a href="ivy-extra.html">Extra Demo</a></li>
-      <li><a href="examples.html">Examples</a></li>
-      <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub ↗</a></li>
-    </ul>
-    <dark-mode-toggle></dark-mode-toggle>
-  </nav>
+<header role="banner">
+  <div class="container d-flex items-center justify-between gap-3">
+    <a href="./" style="display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--color-text); font-weight:600; letter-spacing:-.01em">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" style="color:var(--color-primary); flex:none"><path d="M12.75 22c0-6.2 3.9-9.6 9.25-9.6 0 5.4-4.1 9.6-9.25 9.6Z"></path><path d="M11.25 22c0-6.2-3.9-9.6-9.25-9.6 0 5.4 4.1 9.6 9.25 9.6Z"></path><path d="M11.3 22V8.6c0-3 1.3-5.4 3.9-6.6-1 1.9-1.4 3.7-1.4 5.5V22Z"></path></svg>
+      <span>Ivy CSS</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="ivy-core.html">Core</a></li>
+        <li><a href="ivy-extra.html">Extra</a></li>
+        <li><a href="examples.html" aria-current="page">Examples</a></li>
+        <li><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener" aria-label="Ivy on GitHub" title="Ivy on GitHub" style="display:inline-flex; align-items:center"><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.07-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a></li>
+        <li><select id="palette" aria-label="Palette" data-size="sm" style="width:auto; min-width:9.5rem; margin:0; font-size:var(--fs-sm); padding-right:2rem"></select></li>
+        <li><dark-mode-toggle></dark-mode-toggle></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<nav class="container" aria-label="Examples">
+<nav class="subnav" aria-label="Examples">
   <ul>
     <li><a href="examples.html">All examples</a></li>
     <li><a href="example-landing.html" aria-current="page">Landing page</a></li>
@@ -165,16 +172,13 @@ button { border-radius: 999px; }</code></pre>
   </section>
 </main>
 <footer>
-  <hr>
-  <nav>
-    <ul>
-      <li><a href="examples.html">← All examples</a></li>
-      <li><a href="example-article.html">Article →</a></li>
-    </ul>
-  </nav>
-  <p class="muted"><small>Ivy CSS — MIT. This page is example copy for design reference.</small></p>
+  <div class="container d-flex justify-between items-center gap-3" style="flex-wrap:wrap">
+    <p class="muted" style="margin:0">Ivy CSS v1.2.0 — MIT License</p>
+    <p style="margin:0"><a href="https://github.com/rlnorthcutt/ivy" target="_blank" rel="noopener">GitHub&nbsp;↗</a></p>
+  </div>
 </footer>
 
 <script type="module" src="dark-mode-toggle.min.js"></script>
+<script src="site.js"></script>
 </body>
 </html>

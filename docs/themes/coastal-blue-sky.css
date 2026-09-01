@@ -1,0 +1,133 @@
+/*!
+ * coastal-blue-sky.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #0F2854 · #1C4D8D · #4988C4 · #BDE8F5
+ * Dark palette:   #154D71 · #1C6EA4 · #33A1E0 · #FFF9AF
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)
+ *   2nd  → secondary
+ *   3rd  → links & interactive accents
+ *   4th  → borders & surfaces (applied at reduced opacity)
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * ⚠ Accessibility note on mid-blue links (light mode):
+ *   The 3rd palette color (#4988C4) falls short of WCAG AA contrast on
+ *   a white background (~3.2:1 vs. the required 4.5:1), so links use the
+ *   2nd color (deep ocean blue #1C4D8D) instead — it passes AA at 8.1:1
+ *   on white while remaining clearly on-palette.
+ *   The sky blue (#4988C4) is reserved for border tinting and surface
+ *   washes where text-contrast rules do not apply.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#0F2854 · #1C4D8D · #4988C4 · #BDE8F5)
+   ============================================================================= */
+:root {
+
+  /* — Primary: midnight navy —
+     Used for buttons, active indicators, focus rings.
+     White text delivers excellent contrast (12.6:1 against #0F2854). */
+  --color-primary-light:        #0F2854;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: ocean blue —
+     A warmer, more accessible mid-deep blue that pairs cleanly with
+     the near-black primary. White text still reads well at 8.1:1. */
+  --color-secondary-light:      #1C4D8D;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: ocean blue (2nd color, not 3rd) —
+     #4988C4 fails WCAG AA on a white background (~3.2:1), so the
+     2nd color doubles as the link hue in light mode. See note above. */
+  --color-link-light:           #1C4D8D;
+
+  /* — Muted: navy-slate blend —
+     Pulls the primary midnight navy into the neutral grey family so
+     captions and help text feel anchored without competing with headings. */
+  --color-muted-light:          color-mix(in oklab, #0F2854 30%, #9ca3af);
+
+  /* — Border: sky blue at 25% opacity —
+     The pale sky hue draws a soft horizon line around panels and rows —
+     present enough to define structure, light enough to feel airy. */
+  --color-border-light:         color-mix(in oklab, #4988C4 25%, transparent);
+
+  /* — Surface: pale sky wash over white —
+     Cards, code blocks, and inputs get a subtle ~8% sky-blue tint;
+     the 4th color (#BDE8F5) is already near-white, so a 12% mix
+     lifts elements off the page without adding visual weight. */
+  --color-surface-light:        color-mix(in oklab, #BDE8F5 12%, #ffffff);
+
+  /* — Surface 2 & 3: progressive sky-blue depth tiers —
+     Hover states, nested panels, alternating rows. Surface-3 deepens
+     toward the mid ocean blue for a sense of descending into water. */
+  --surface-2-light:            color-mix(in oklab, #BDE8F5 24%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #4988C4 12%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#154D71 · #1C6EA4 · #33A1E0 · #FFF9AF)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep teal-blue —
+     Rich but not overpowering against a dark background; the warm
+     cream text (#FFF9AF) evokes a lighthouse beam cutting through
+     still water at night. */
+  --color-primary-dark:         #154D71;
+  --color-primary-text-dark:    #FFF9AF;
+
+  /* — Secondary: cerulean —
+     A brighter, more saturated mid-blue that pairs with the deeper primary
+     like a sun-lit wave against deep ocean. Cream text stays on-palette. */
+  --color-secondary-dark:       #1C6EA4;
+  --color-secondary-text-dark:  #FFF9AF;
+
+  /* — Links: bright azure —
+     #33A1E0 reads immediately as "interactive" on a dark background —
+     high luminosity without washing out, like sunlight on open water. */
+  --color-link-dark:            #33A1E0;
+
+  /* — Muted: cerulean blended into dark slate —
+     Pulls the secondary hue into the muted grey family so helper
+     text echoes the palette without demanding attention. */
+  --color-muted-dark:           color-mix(in oklab, #1C6EA4 38%, #a1aab8);
+
+  /* — Border: primary teal-blue at 30% opacity —
+     Visible enough to outline controls and define table rows; transparent
+     enough to read as depth rather than a hard grid. */
+  --color-border-dark:          color-mix(in oklab, #154D71 30%, transparent);
+
+  /* — Surface: teal hue baked into the dark base —
+     Mixing ~14% deep teal into the Ivy dark base (#111418) gives a
+     richly cool surface that reads as "ocean floor" not just "dark grey". */
+  --color-surface-dark:         color-mix(in oklab, #154D71 14%, #111418);
+
+  /* — Surface 2 & 3: escalating blue depth tiers —
+     Surface-3 shifts slightly toward the cerulean secondary for a faint
+     luminescent shimmer on the most elevated panels. */
+  --surface-2-dark:             color-mix(in oklab, #154D71 22%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #1C6EA4 16%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info leans fully into the bright azure link — already the right hue */
+  --info:    #33A1E0;
+  /* Success stays mostly green but gains a faint ocean-blue lean */
+  --success: color-mix(in oklab, #154D71 20%, #22c55e);
+  /* Warn echoes the warm cream accent — the palette's only warm note */
+  --warn:    color-mix(in oklab, #FFF9AF 55%, #f59e0b);
+  /* Danger keeps vivid red but with a slight ocean-blue shift to stay on-palette */
+  --danger:  color-mix(in oklab, #1C4D8D 12%, #ef4444);
+}

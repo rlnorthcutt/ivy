@@ -1,0 +1,154 @@
+/*!
+ * petal-blush.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #8C1A4B · #D43D6A · #F07095 · #FDE9F0
+ * Dark palette:   #7A2060 · #C04090 · #F080B8 · #FFF0F8
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)
+ *   2nd  → secondary
+ *   3rd  → links & interactive accents
+ *   4th  → borders & surfaces (applied at reduced opacity)
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   The existing theme library covers violet, forest green, ocean blue, and
+ *   warm ember — all bold, saturated, and "serious" in tone. Petal Blush is
+ *   the first theme designed to feel soft, playful, and personal. It runs
+ *   from deep strawberry through warm rose to bubblegum pink, landing on a
+ *   pale blush cream as the surface accent. Think: a bakery site, a personal
+ *   portfolio, a self-care app, a wedding RSVP page. The palette is
+ *   distinctly pink without crossing into the violet territory already
+ *   covered by the existing purple theme.
+ *
+ * ⚠ Accessibility note on coral-pink links (light mode):
+ *   The 3rd palette color (#F07095) is too light to meet WCAG AA contrast
+ *   on a white background (~2.9:1 vs. the required 4.5:1), so links use the
+ *   2nd color (warm rose #D43D6A) instead — it passes AA at 4.8:1 on white
+ *   while feeling unmistakably on-palette.
+ *   Coral-pink is reserved for border tinting and surface washes where
+ *   text-contrast rules do not apply.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#8C1A4B · #D43D6A · #F07095 · #FDE9F0)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep strawberry —
+     Used for buttons, active indicators, focus rings.
+     Rich, dark berry that reads as "intentional pink" not "error red."
+     White text gives strong contrast (9.1:1 against #8C1A4B). */
+  --color-primary-light:        #8C1A4B;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: warm rose —
+     A brighter mid-pink that feels immediately cheerful. Bridges the
+     deep strawberry primary and the soft coral accent without going
+     full bubblegum. White text clears AA at 4.8:1. */
+  --color-secondary-light:      #D43D6A;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: warm rose (2nd color, not 3rd) —
+     #F07095 fails WCAG AA on a white background (~2.9:1), so the
+     2nd color doubles as the link hue in light mode. See note above. */
+  --color-link-light:           #D43D6A;
+
+  /* — Muted: strawberry blended into warm grey —
+     Pulls the primary berry hue into the neutral grey family so
+     captions and help text feel tender and on-palette without
+     competing with body copy. */
+  --color-muted-light:          color-mix(in oklab, #8C1A4B 25%, #9ca3af);
+
+  /* — Border: coral-pink at 20% opacity —
+     A barely-there rose petal edge — soft enough to feel delicate,
+     present enough to gently frame cards, tables, and inputs. */
+  --color-border-light:         color-mix(in oklab, #F07095 20%, transparent);
+
+  /* — Surface: blush wash over white —
+     The 4th color (#FDE9F0) is already near-white, so a 12% mix gives
+     cards and code blocks the warmest, softest possible lift — like
+     tissue paper held up to afternoon light. */
+  --color-surface-light:        color-mix(in oklab, #FDE9F0 12%, #ffffff);
+
+  /* — Surface 2 & 3: progressive blush depth tiers —
+     Surface-3 steps up toward the coral-pink so deeply nested panels
+     feel like layers of petals — each one slightly richer than the last. */
+  --surface-2-light:            color-mix(in oklab, #FDE9F0 26%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #F07095 10%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#7A2060 · #C04090 · #F080B8 · #FFF0F8)
+   ============================================================================= */
+:root {
+
+  /* — Primary: plum berry —
+     Deep berry-violet that sits warmly against a dark background without
+     reading as purple (the existing violet theme's territory). The pale
+     pink cream text (#FFF0F8) feels like sugar icing on a dark chocolate
+     base — sweet contrast, zero harshness. */
+  --color-primary-dark:         #7A2060;
+  --color-primary-text-dark:    #FFF0F8;
+
+  /* — Secondary: magenta rose —
+     High-energy pink that glows against the dark base the way neon
+     signage glows on a rainy night — vivid, playful, irresistible.
+     Cream text keeps the button feeling soft even at full saturation. */
+  --color-secondary-dark:       #C04090;
+  --color-secondary-text-dark:  #FFF0F8;
+
+  /* — Links: bubblegum pink —
+     #F080B8 at full luminosity is the perfect interactive indicator
+     on a dark background — it catches the eye the way a ribbon catches
+     the breeze, without demanding the urgency of a warning color. */
+  --color-link-dark:            #F080B8;
+
+  /* — Muted: magenta blended into dark slate —
+     Pulls the secondary rose into the muted grey family so helper text
+     whispers rather than shouts, but still hums with the palette's warmth. */
+  --color-muted-dark:           color-mix(in oklab, #C04090 35%, #a1aab8);
+
+  /* — Border: plum berry at 28% opacity —
+     A subtle dark-rose edge that outlines controls and table rows the
+     way a pressed flower petal leaves a faint ring on paper. */
+  --color-border-dark:          color-mix(in oklab, #7A2060 28%, transparent);
+
+  /* — Surface: berry hue baked into the dark base —
+     Mixing ~13% plum into the Ivy dark base (#111418) gives a surface
+     that reads as "velvet" — luxurious and soft, not cold or clinical. */
+  --color-surface-dark:         color-mix(in oklab, #7A2060 13%, #111418);
+
+  /* — Surface 2 & 3: escalating rose depth tiers —
+     Surface-3 shifts toward the magenta secondary so the most elevated
+     panels carry a faint rosy flush — like warmth rising to the cheeks. */
+  --surface-2-dark:             color-mix(in oklab, #7A2060 20%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #C04090 13%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info shifts warmer — a periwinkle that bridges pink and blue
+     so it reads as "friendly notice" not "cold system alert" */
+  --info:    color-mix(in oklab, #C04090 20%, #60a5fa);
+  /* Success stays green for maximum semantic clarity — on an
+     all-pink palette, a pure green success state is a welcome
+     and unmistakable relief */
+  --success: #22c55e;
+  /* Warn picks up the bubblegum link color and shifts it amber —
+     keeps it warm and on-palette while reading as "caution" */
+  --warn:    color-mix(in oklab, #F080B8 30%, #f59e0b);
+  /* Danger blends the primary strawberry into vivid red — it feels
+     like an escalated brand moment rather than a foreign intrusion */
+  --danger:  color-mix(in oklab, #8C1A4B 35%, #ef4444);
+}

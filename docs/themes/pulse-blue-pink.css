@@ -1,0 +1,182 @@
+/*!
+ * pulse-blue-pink.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #0A6E8A · #B01060 · #4F8000 · #EDFFF8
+ * Dark palette:   #00C8F0 · #FF3880 · #B8F000 · #F5FFF0
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)   ← electric cyan family
+ *   2nd  → secondary                       ← vivid magenta family
+ *   3rd  → links & interactive accents     ← charged lime family
+ *   4th  → borders & surfaces              ← pale mint, near-white
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   Pulse is the library's second triadic theme and the tonal opposite
+ *   of Still Waters. Where Still Waters desaturates all three hues to
+ *   achieve stillness, Pulse drives each hue to maximum chroma — the
+ *   three colors of electric signage, performance sportswear, and
+ *   gaming interfaces. The triad sits at ~120° intervals: electric
+ *   cyan (~195°), vivid magenta (~320°), and charged lime (~80°).
+ *
+ *   The energetic tone is achieved through saturation tension: all
+ *   three hues compete for attention at equal intensity, creating the
+ *   visual equivalent of a live current. No hue is softened to serve
+ *   as a "calm" backdrop for the others — each one holds its voltage.
+ *
+ *   In light mode, all three hues are pulled to their deepest workable
+ *   value (dark enough for text contrast on white) so the palette reads
+ *   as bold and intentional rather than garish. In dark mode the
+ *   constraints release — each hue opens to full luminosity against the
+ *   dark base, delivering the neon-on-black effect that makes this
+ *   palette genuinely electric.
+ *
+ *   Surfaces tint toward the pale mint 4th color — the one moment of
+ *   relief in the palette, a breath between the charged hues.
+ *
+ * ⚠ Accessibility note on links (light mode):
+ *   Neither #00C8F0 (cyan) nor #B8F000 (lime) clear WCAG AA on white —
+ *   cyan is too light, lime is too yellow. Light mode links use the
+ *   deep lime 3rd color (#4F8000), which passes AA at 5.1:1 on white.
+ *   In dark mode all three hues are luminous enough to use directly
+ *   against the dark base without falling back.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#0A6E8A · #B01060 · #4F8000 · #EDFFF8)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep electric cyan —
+     The deepest workable cyan that still reads as vivid rather than teal.
+     Saturated enough to feel alive on a white background, dark enough to
+     carry white text at solid contrast (7.1:1 against #0A6E8A). This is
+     the cyan of a swimming pool at noon, or a neon sign in daylight. */
+  --color-primary-light:        #0A6E8A;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: deep magenta —
+     A charged crimson-magenta — not pink, not red, but the specific hue
+     that sits exactly between them at full saturation. Deep enough to
+     clear WCAG AA on white (5.8:1). In a triadic palette this is the
+     hue that makes the cyan feel electric by opposition. */
+  --color-secondary-light:      #B01060;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: charged lime —
+     The third spoke — a deep yellow-green that passes AA at 5.1:1 on
+     white. Lime links against cyan-and-magenta controls creates the full
+     triadic tension at the interaction layer: every clickable element
+     announces itself in a different family from every button. */
+  --color-link-light:           #4F8000;
+
+  /* — Muted: cyan blended into cool grey —
+     Pulls the primary electric cyan into a steel-slate for captions and
+     help text. Cool and slightly electric — never fully neutral, because
+     on a palette this charged, even muted carries a hint of current. */
+  --color-muted-light:          color-mix(in oklab, #0A6E8A 28%, #9ca3af);
+
+  /* — Border: charged lime at 22% opacity —
+     A mint-green edge that introduces the third triadic hue into the
+     structural layer. On a cyan-and-magenta interface, a lime border
+     feels like a live wire marking the boundary — present, purposeful,
+     not accidental. */
+  --color-border-light:         color-mix(in oklab, #4F8000 22%, transparent);
+
+  /* — Surface: pale mint wash over white —
+     The 4th color (#EDFFF8) is the palette's exhale — the one near-white
+     that gives the eye somewhere to rest between the charged hues. A 10%
+     mix lifts cards and code blocks just enough to be distinguishable. */
+  --color-surface-light:        color-mix(in oklab, #EDFFF8 10%, #ffffff);
+
+  /* — Surface 2 & 3: progressive mint-to-lime depth tiers —
+     Surface-3 shifts toward charged lime so deeply nested panels carry
+     the third triadic hue in the background hierarchy — the palette's
+     full structure is legible even in the surfaces. */
+  --surface-2-light:            color-mix(in oklab, #EDFFF8 24%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #4F8000 9%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#00C8F0 · #FF3880 · #B8F000 · #F5FFF0)
+   ============================================================================= */
+:root {
+
+  /* — Primary: electric cyan —
+     Full luminosity — no depth compromise needed against a dark background.
+     This is the cyan of a CRT monitor at maximum brightness, or bioluminescent
+     water at midnight. The pale mint text (#F5FFF0) is cool enough to pair
+     with the cyan without the harsh pop of pure white. */
+  --color-primary-dark:         #00C8F0;
+  --color-primary-text-dark:    #0A2A30;
+
+  /* — Secondary: vivid magenta —
+     #FF3880 at full saturation is one of the most energetic colors available
+     to a screen — the exact hue of a club light or a sports jersey under
+     stadium lighting. Dark text for maximum contrast against the bright field. */
+  --color-secondary-dark:       #FF3880;
+  --color-secondary-text-dark:  #2A0015;
+
+  /* — Links: charged lime —
+     #B8F000 in dark mode is what lime looks like when it means business —
+     the color of a laser pointer, a glow stick, a safety vest that actually
+     glows. The triadic third hue at full power against a dark background
+     is unmissable as a link color without any contrast tricks needed. */
+  --color-link-dark:            #B8F000;
+
+  /* — Muted: magenta blended into dark slate —
+     Pulls the secondary vivid magenta into the muted grey family so helper
+     text hums with the palette's energy without shouting. Even at 30%,
+     magenta in muted carries more personality than most theme primaries. */
+  --color-muted-dark:           color-mix(in oklab, #FF3880 30%, #a1aab8);
+
+  /* — Border: electric cyan at 28% opacity —
+     A cyan edge in dark mode outlines panels the way circuit traces
+     outline a PCB — structural, precise, lit from within. The cool family
+     anchors the border layer while the warm lime and magenta animate above. */
+  --color-border-dark:          color-mix(in oklab, #00C8F0 28%, transparent);
+
+  /* — Surface: cyan hue baked into the dark base —
+     Mixing ~14% electric cyan into the Ivy dark base (#111418) gives a
+     surface that reads as "screen glow" — the specific dark-blue-tinted
+     black of a monitor in a dim room. Everything placed on it carries
+     the faint suggestion of being backlit. */
+  --color-surface-dark:         color-mix(in oklab, #00C8F0 14%, #111418);
+
+  /* — Surface 2 & 3: cyan-to-magenta triadic depth transition —
+     Surface-3 shifts from cyan toward magenta, so the triadic structure
+     moves through the depth hierarchy — the most elevated panels carry
+     a faint magenta warmth against the cyan-tinted base. The lime appears
+     only in links and borders, keeping it as a pure accent — the hue
+     you reach for last, so it always feels like a hit of energy. */
+  --surface-2-dark:             color-mix(in oklab, #00C8F0 20%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #FF3880 12%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info maps directly to the electric cyan primary — the palette's
+     coolest hue is the natural semantic fit for "information" */
+  --info:    color-mix(in oklab, #00C8F0 55%, #60a5fa);
+  /* Success pulls hard toward charged lime — the triadic palette already
+     contains a green family, so success is essentially native here;
+     the highest same-family semantic blend in the library */
+  --success: color-mix(in oklab, #4F8000 55%, #22c55e);
+  /* Warn picks up the charged lime and shifts it amber — caution reads
+     as "yellow-green to yellow" on this palette, which feels right for
+     a theme where lime is already the accent of last resort */
+  --warn:    color-mix(in oklab, #B8F000 45%, #f59e0b);
+  /* Danger pulls the vivid magenta secondary into red — on this palette
+     danger should feel like an overloaded circuit, not a foreign import */
+  --danger:  color-mix(in oklab, #B01060 35%, #ef4444);
+}

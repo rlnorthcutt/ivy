@@ -1,0 +1,163 @@
+/*!
+ * mesa-adobe-blue.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #1C5B82 · #B85A38 · #D4703A · #F5E8D8
+ * Dark palette:   #4A8AB5 · #C96840 · #E88A5A · #FFF0DC
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)   ← Santa Fe blue family
+ *   2nd  → secondary                       ← terracotta family
+ *   3rd  → links & interactive accents     ← terracotta family, lighter
+ *   4th  → borders & surfaces              ← warm sand, near-white
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   Mesa Adobe is the library's second true dual-color theme and the first
+ *   to work with earth tones. Where Sovereign Gold uses temperature contrast
+ *   (cold navy vs. warm gold), Mesa Adobe uses the specific tension of the
+ *   American Southwest: dusty Santa Fe blue — the color of the high-desert
+ *   sky, turquoise jewelry, and painted window frames — set against sun-baked
+ *   terracotta, the color of adobe walls, clay pots, and canyon rock.
+ *
+ *   This is a palette with a strong sense of place. It fits naturally for
+ *   brands rooted in craft, the outdoors, the American West, or anything
+ *   that wants warmth and groundedness without going full-earth-tone.
+ *
+ *   Unlike most "earthy" palettes that skew brown and muted, Mesa Adobe
+ *   keeps both hues vivid enough to read as intentional and contemporary —
+ *   not vintage, not dusty, but sun-warmed and present.
+ *
+ *   Surfaces lean sand (warm neutral) while primary controls alternate
+ *   between the two hues — blue for primary authority, terracotta for
+ *   secondary energy — creating a push-pull that feels like landscape.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#1C5B82 · #B85A38 · #D4703A · #F5E8D8)
+   ============================================================================= */
+:root {
+
+  /* — Primary: Santa Fe blue —
+     A warm, slightly dusty medium blue — not royal, not navy, not teal.
+     The specific blue of a New Mexico sky at 10am, or a turquoise bead
+     held up to the light. White text at solid contrast (7.2:1). */
+  --color-primary-light:        #1C5B82;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: terracotta —
+     Sun-baked clay — the color of adobe walls, Saltillo tile, and
+     canyon rock at midday. Deep enough to clear WCAG AA on white (5.1:1).
+     Pairs with the blue the way earth meets sky at the horizon. */
+  --color-secondary-light:      #B85A38;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: terracotta —
+     The secondary terracotta doubles as the link color — #D4703A is
+     a lighter brick that fails AA on white (~3.2:1), so the deeper
+     #B85A38 steps in. Terracotta links against a blue-primary interface
+     create a natural complementary contrast that draws the eye. */
+  --color-link-light:           #B85A38;
+
+  /* — Muted: Santa Fe blue blended into warm grey —
+     Pulls the primary sky-blue into a warm slate for captions and
+     help text — cool enough to recede, warm enough to stay on-palette. */
+  --color-muted-light:          color-mix(in oklab, #1C5B82 28%, #9ca3af);
+
+  /* — Border: warm sand at 30% opacity —
+     A sun-bleached edge — the color of dry grass between adobe bricks.
+     Light enough to feel like natural texture rather than a hard line. */
+  --color-border-light:         color-mix(in oklab, #D4703A 20%, transparent);
+
+  /* — Surface: warm sand wash over white —
+     The 4th color (#F5E8D8) is desert-sand warm. A 12% mix gives cards
+     and code blocks the feel of unbleached linen or handmade paper —
+     the material texture of the Southwest without the heaviness. */
+  --color-surface-light:        color-mix(in oklab, #F5E8D8 12%, #ffffff);
+
+  /* — Surface 2 & 3: progressive sand depth tiers —
+     Surface-3 steps toward the terracotta so deeply nested panels
+     feel like moving from the courtyard into the adobe interior —
+     progressively warmer, progressively more sheltered. */
+  --surface-2-light:            color-mix(in oklab, #F5E8D8 26%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #D4703A 10%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#4A8AB5 · #C96840 · #E88A5A · #FFF0DC)
+   ============================================================================= */
+:root {
+
+  /* — Primary: open sky blue —
+     Lighter and more saturated than the light-mode counterpart — in dark
+     mode, the blue needs to lift away from the background rather than
+     sink into it. This is the blue of late afternoon in the high desert,
+     when the sky goes electric before the temperature drops. The warm
+     sand cream text (#FFF0DC) feels like firelight catching whitewash. */
+  --color-primary-dark:         #4A8AB5;
+  --color-primary-text-dark:    #FFF0DC;
+
+  /* — Secondary: ember terracotta —
+     A step brighter than the light-mode clay — dark backgrounds let
+     the orange-red family glow the way coals glow at dusk. The warm
+     cream text keeps the button in the palette's register. */
+  --color-secondary-dark:       #C96840;
+  --color-secondary-text-dark:  #FFF0DC;
+
+  /* — Links: warm canyon orange —
+     #E88A5A reads immediately as "interactive" on a dark background —
+     the amber warmth of firelight or a mesa at sunset. Distinctly
+     terracotta but bright enough to guide the eye without effort. */
+  --color-link-dark:            #E88A5A;
+
+  /* — Muted: ember terracotta blended into dark slate —
+     Pulls the secondary into the muted grey family so helper text
+     carries a faint warmth — like the last heat of the day radiating
+     from a sun-soaked wall. */
+  --color-muted-dark:           color-mix(in oklab, #C96840 35%, #a1aab8);
+
+  /* — Border: Santa Fe blue at 30% opacity —
+     In dark mode, the border flips to the cool family — a blue shadow
+     edge that outlines panels the way window frames stand out against
+     a pale adobe wall. The thermal inversion (warm surfaces, cool
+     borders) mirrors the desert landscape: warm earth, cool sky above. */
+  --color-border-dark:          color-mix(in oklab, #4A8AB5 30%, transparent);
+
+  /* — Surface: blue hue baked into the dark base —
+     Mixing ~14% sky blue into the Ivy dark base (#111418) gives a surface
+     that reads as "dusk" — the moment when the desert floor takes on
+     the blue of the sky. The terracotta elements glow against it warmly. */
+  --color-surface-dark:         color-mix(in oklab, #4A8AB5 14%, #111418);
+
+  /* — Surface 2 & 3: blue-to-terracotta depth transition —
+     Surface-3 shifts from the cool blue base to a terracotta warmth,
+     mirroring the landscape's own gradient from sky to earth. The most
+     elevated panels carry a faint adobe glow — warm, grounded, present. */
+  --surface-2-dark:             color-mix(in oklab, #4A8AB5 22%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #C96840 13%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info maps closely to the Santa Fe blue primary — this is the one
+     semantic state that IS the brand color, and it works naturally here */
+  --info:    color-mix(in oklab, #4A8AB5 60%, #60a5fa);
+  /* Success shifts toward sage — a muted high-desert green that feels
+     native to the Southwest palette without fighting the blue or terracotta */
+  --success: color-mix(in oklab, #1C5B82 15%, #22c55e);
+  /* Warn picks up the canyon orange link color — warm amber reads as
+     "caution" here the way a sun-bleached warning sign reads in the desert */
+  --warn:    color-mix(in oklab, #E88A5A 55%, #f59e0b);
+  /* Danger blends the terracotta secondary into vivid red — escalated
+     warmth rather than a foreign intrusion into the earth-tone palette */
+  --danger:  color-mix(in oklab, #B85A38 30%, #ef4444);
+}

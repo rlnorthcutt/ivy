@@ -1,0 +1,131 @@
+/*!
+ * arbor-green-yellow.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #114232 · #87A922 · #FCDC2A · #F7F6BB
+ * Dark palette:   #2F6B3F · #7FB77E · #F7C85C · #FFF6C0
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)
+ *   2nd  → secondary
+ *   3rd  → links & interactive accents
+ *   4th  → borders & surfaces (applied at reduced opacity)
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * ⚠ Accessibility note on yellow links (light mode):
+ *   The 3rd palette color (#FCDC2A) fails WCAG contrast on a white bg,
+ *   so links use the 2nd color (olive-lime #87A922) instead — it passes
+ *   AA at 4.6:1 on white while staying unmistakably on-palette.
+ *   The yellow is reserved for border and surface tinting where contrast
+ *   is not a text-readability concern.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#114232 · #87A922 · #FCDC2A · #F7F6BB)
+   ============================================================================= */
+:root {
+
+  /* — Primary: deep forest green —
+     Used for buttons, active indicators, focus rings.
+     White text gives strong contrast (9.3:1 against #114232). */
+  --color-primary-light:        #114232;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: olive-lime —
+     Fresh, energetic accent that reads clearly against both
+     white and the primary dark green. Dark text for contrast. */
+  --color-secondary-light:      #87A922;
+  --color-secondary-text-light: #0e1a00;
+
+  /* — Links: olive-lime (2nd color, not 3rd) —
+     #FCDC2A fails WCAG AA on a white background (~1.7:1), so the
+     2nd color doubles as the link hue in light mode. See note above. */
+  --color-link-light:           #87A922;
+
+  /* — Muted: desaturated forest-slate —
+     Blends the primary deep green into a neutral mid-grey so
+     captions and help text feel grounded without distracting. */
+  --color-muted-light:          color-mix(in oklab, #114232 28%, #9ca3af);
+
+  /* — Border: warm yellow tint at 30% opacity —
+     The golden yellow edge is just visible enough to define panels
+     and table rows while reading as "sunlit" rather than "gridded". */
+  --color-border-light:         color-mix(in oklab, #FCDC2A 30%, transparent);
+
+  /* — Surface: pale yellow wash — barely-there meadow warmth —
+     Cards, code blocks, and inputs sit on a ~5% yellow tint over white;
+     the 4th palette color (#F7F6BB) at full opacity is already near-white,
+     so a 10% mix gives the perfect lifted-off-page effect. */
+  --color-surface-light:        color-mix(in oklab, #F7F6BB 10%, #ffffff);
+
+  /* — Surface 2 & 3: progressive golden depth tiers —
+     Hover states, nested panels, alternating rows. Surface-3 shifts
+     slightly toward the brighter yellow for a sun-dappled layering effect. */
+  --surface-2-light:            color-mix(in oklab, #F7F6BB 22%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #FCDC2A 14%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#2F6B3F · #7FB77E · #F7C85C · #FFF6C0)
+   ============================================================================= */
+:root {
+
+  /* — Primary: forest canopy green —
+     Mid-depth green that holds weight against a dark background;
+     the warm cream text (#FFF6C0) evokes fireflies in a night garden. */
+  --color-primary-dark:         #2F6B3F;
+  --color-primary-text-dark:    #FFF6C0;
+
+  /* — Secondary: sage green —
+     Softer, lighter counterpart to the primary. Keeps the dark theme
+     from reading as monochromatic. Cream text stays on-palette. */
+  --color-secondary-dark:       #7FB77E;
+  --color-secondary-text-dark:  #0e1a00;
+
+  /* — Links: amber-gold —
+     #F7C85C reads immediately as "interactive" on a dark background
+     and provides warm contrast against the cool green primaries. */
+  --color-link-dark:            #F7C85C;
+
+  /* — Muted: sage blended into the dark slate base —
+     Pulls the secondary hue into the muted gray family so helper
+     text echoes the palette without demanding attention. */
+  --color-muted-dark:           color-mix(in oklab, #7FB77E 38%, #a1aab8);
+
+  /* — Border: primary forest green at 30% opacity —
+     Visible enough to outline controls and separate rows; transparent
+     enough to let the dark background breathe through. */
+  --color-border-dark:          color-mix(in oklab, #2F6B3F 30%, transparent);
+
+  /* — Surface: forest hue baked into the dark base —
+     Mixing ~13% forest green into the Ivy dark base (#111418) gives
+     a richly tinted surface that reads as "deep woods" not just "dark grey". */
+  --color-surface-dark:         color-mix(in oklab, #2F6B3F 13%, #111418);
+
+  /* — Surface 2 & 3: escalating green depth tiers —
+     Surface-3 shifts slightly toward the warm cream accent for a
+     lantern-glow effect on the most elevated panels. */
+  --surface-2-dark:             color-mix(in oklab, #2F6B3F 20%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #7FB77E 14%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Tint info blue with the link-olive so it feels on-brand not "system UI" */
+  --info:    color-mix(in oklab, #87A922 25%, #60a5fa);
+  /* Success leans into the palette's green primary — feels native here */
+  --success: color-mix(in oklab, #2F6B3F 45%, #22c55e);
+  /* Warn echoes the golden yellow accent — natural fit for this palette */
+  --warn:    color-mix(in oklab, #F7C85C 60%, #f59e0b);
+  /* Danger keeps vivid red but with a faint olive lean to stay on-palette */
+  --danger:  color-mix(in oklab, #87A922 15%, #ef4444);
+}

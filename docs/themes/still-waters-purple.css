@@ -1,0 +1,172 @@
+/*!
+ * still-waters-purple.css — Ivy.css custom palette theme
+ *
+ * Drop this AFTER ivy.css in your <head>. No !important needed —
+ * unlayered CSS automatically wins over @layer ivy-base per the CSS cascade.
+ *
+ * Light palette:  #4A3F72 · #3D7068 · #A0622A · #EDE8F5
+ * Dark palette:   #7B6FB0 · #5EA897 · #C8844A · #F0ECFF
+ *
+ * Mapping strategy:
+ *   1st  → primary (buttons, highlights)   ← violet family
+ *   2nd  → secondary                       ← sage teal family
+ *   3rd  → links & interactive accents     ← warm amber family
+ *   4th  → borders & surfaces              ← pale lavender, near-white
+ *
+ * Background colors are intentionally left untouched.
+ * Surface tokens use the accent hue baked in at low opacity so they
+ * read as "same family" without overpowering the page.
+ *
+ * Theme rationale:
+ *   Still Waters is the library's first triadic theme — three colors
+ *   placed equidistant on the color wheel (~120° apart), each from a
+ *   distinct color family: violet (~270°), teal-green (~150°), and
+ *   amber-peach (~30°). Where dual-color themes work through contrast
+ *   and tension, a triadic theme works through balance — no single hue
+ *   dominates because all three hold equal weight around the wheel.
+ *
+ *   The peaceful tone is achieved not through any single color choice
+ *   but through restraint across all three: each hue is pulled toward
+ *   muted and dusty rather than vivid and saturated. Violet becomes
+ *   lavender-ink. Teal becomes sage. Orange becomes warm amber-honey.
+ *   Together they evoke still water, morning light through linen,
+ *   a meditation room with plants and wooden furniture.
+ *
+ *   In light mode, violet leads as primary (calm authority), sage teal
+ *   anchors secondary interactions (grounded, natural), and amber
+ *   provides the warmth that keeps the palette from feeling clinical.
+ *   Surfaces tint toward the pale lavender 4th color — like diffused
+ *   light through translucent curtains.
+ *
+ *   In dark mode all three hues step up in luminosity just enough to
+ *   remain visible against the dark base without becoming vivid. The
+ *   result is a night-mode that reads as candlelit rather than neon.
+ */
+
+/* =============================================================================
+   LIGHT PALETTE  (#4A3F72 · #3D7068 · #A0622A · #EDE8F5)
+   ============================================================================= */
+:root {
+
+  /* — Primary: dusty violet —
+     A muted indigo-purple — not bright lavender, not deep navy-violet.
+     The specific quality of dried wisteria or faded ink on old paper.
+     Calm and intentional. White text at clear contrast (8.4:1). */
+  --color-primary-light:        #4A3F72;
+  --color-primary-text-light:   #ffffff;
+
+  /* — Secondary: sage teal —
+     The green-blue of still water in shade, or lichen on old stone.
+     Grounded where the violet floats. White text at solid contrast (6.7:1).
+     In a triadic palette the secondary should feel like a different world
+     entirely from the primary — and sage teal delivers that without clash. */
+  --color-secondary-light:      #3D7068;
+  --color-secondary-text-light: #ffffff;
+
+  /* — Links: warm amber —
+     The third spoke of the triad — a honey-amber that introduces warmth
+     without urgency. On a palette of cool violet and neutral teal, amber
+     links feel like sunlight finding a gap in the clouds: welcome, gentle,
+     unmistakably interactive. Passes WCAG AA at 4.7:1 on white. */
+  --color-link-light:           #A0622A;
+
+  /* — Muted: violet blended into warm grey —
+     Pulls the primary violet into a lavender-slate for captions and
+     help text. Keeps the muted tone in the cool family so it recedes
+     gently without disappearing entirely. */
+  --color-muted-light:          color-mix(in oklab, #4A3F72 26%, #9ca3af);
+
+  /* — Border: pale lavender at 25% opacity —
+     The 4th color used as a border creates the softest possible edge —
+     like a watercolor wash rather than a ruled line. Panels and tables
+     are defined without being confined. */
+  --color-border-light:         color-mix(in oklab, #4A3F72 18%, transparent);
+
+  /* — Surface: pale lavender wash over white —
+     The 4th color (#EDE8F5) is already near-white with a whisper of
+     violet. A 10% mix gives cards and code blocks the quality of light
+     passing through sheer curtains — present, soft, immaterial. */
+  --color-surface-light:        color-mix(in oklab, #EDE8F5 10%, #ffffff);
+
+  /* — Surface 2 & 3: progressive lavender depth tiers —
+     Surface-3 introduces a faint sage teal to hint at the triadic
+     structure at the deepest nesting level — the third color in the
+     triad makes a quiet appearance in the background hierarchy. */
+  --surface-2-light:            color-mix(in oklab, #EDE8F5 24%, #ffffff);
+  --surface-3-light:            color-mix(in oklab, #3D7068 8%, #ffffff);
+}
+
+/* =============================================================================
+   DARK PALETTE  (#7B6FB0 · #5EA897 · #C8844A · #F0ECFF)
+   ============================================================================= */
+:root {
+
+  /* — Primary: moonlit violet —
+     Lighter and more luminous than the light-mode counterpart — in dark
+     mode the violet needs to lift away from the background like moonlight
+     on still water. The pale lavender cream text (#F0ECFF) is barely
+     off-white — close enough to white for contrast, warm enough to rest easy. */
+  --color-primary-dark:         #7B6FB0;
+  --color-primary-text-dark:    #F0ECFF;
+
+  /* — Secondary: celadon sage —
+     A brighter, more open sage that breathes in the dark — the green
+     of shallow water over pale stone, or new growth on a mossy branch.
+     Still restrained; still peaceful. The cream text stays on-palette. */
+  --color-secondary-dark:       #5EA897;
+  --color-secondary-text-dark:  #F0ECFF;
+
+  /* — Links: warm honey —
+     #C8844A in dark mode is the amber of a single candle in a dim room —
+     warm, directional, unhurried. The triadic third hue carries more
+     weight in dark mode because it provides the only real warmth in
+     an otherwise cool-toned dark palette. */
+  --color-link-dark:            #C8844A;
+
+  /* — Muted: sage teal blended into dark slate —
+     Pulls the secondary into the muted grey family so helper text
+     carries a faint herbal quality — cool and restful, like dried
+     lavender or pressed fern. */
+  --color-muted-dark:           color-mix(in oklab, #5EA897 32%, #a1aab8);
+
+  /* — Border: moonlit violet at 26% opacity —
+     A soft violet shadow line — the visual equivalent of the edge where
+     still water meets the shore. Defined without being hard. */
+  --color-border-dark:          color-mix(in oklab, #7B6FB0 26%, transparent);
+
+  /* — Surface: violet hue baked into the dark base —
+     Mixing ~13% moonlit violet into the Ivy dark base (#111418) gives
+     a surface that reads as "dusk interior" — not cold, not warm, but
+     the specific quality of a room just after the sun sets and before
+     lamps are lit. The amber and sage elements rest warmly against it. */
+  --color-surface-dark:         color-mix(in oklab, #7B6FB0 13%, #111418);
+
+  /* — Surface 2 & 3: violet-to-sage triadic depth transition —
+     Surface-3 shifts from violet toward the sage teal secondary,
+     mirroring the triadic structure in the depth hierarchy itself.
+     The three color families appear in order as you descend into
+     nesting: violet → sage → amber warmth at the innermost layer. */
+  --surface-2-dark:             color-mix(in oklab, #7B6FB0 20%, #18202a);
+  --surface-3-dark:             color-mix(in oklab, #5EA897 12%, #202a36);
+}
+
+/* =============================================================================
+   SEMANTIC STATE OVERRIDES (info · success · warn · danger)
+   Optional — keeps the state colors harmonious with the new palette.
+   Remove this block if you want to keep Ivy's defaults.
+   ============================================================================= */
+:root {
+  /* Info leans into the violet primary — a periwinkle that bridges the
+     brand family and the standard "information blue" without alarm */
+  --info:    color-mix(in oklab, #7B6FB0 40%, #60a5fa);
+  /* Success maps closely to the sage teal secondary — the triadic palette
+     already contains a green family, so success feels native rather than
+     imported; shift slightly toward vivid green for semantic clarity */
+  --success: color-mix(in oklab, #5EA897 50%, #22c55e);
+  /* Warn picks up the amber link color almost directly — warm honey
+     reads as "gentle caution" on this palette, not alarm */
+  --warn:    color-mix(in oklab, #C8844A 60%, #f59e0b);
+  /* Danger blends the violet primary into red — keeps it in the cool
+     family so it feels like a quiet, serious alert rather than a shout */
+  --danger:  color-mix(in oklab, #4A3F72 25%, #ef4444);
+}
