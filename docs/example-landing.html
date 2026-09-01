@@ -40,6 +40,14 @@
   </ul>
 </nav>
 
+<div class="content-toolbar">
+  <p class="eyebrow" style="margin:0">Rendered page vs. raw HTML</p>
+  <div class="btn-group" role="group" aria-label="Show preview or source">
+    <button id="btn-preview" type="button" data-size="sm" data-variant="primary" aria-pressed="true">Preview</button>
+    <button id="btn-source" type="button" data-size="sm" data-variant="ghost" aria-pressed="false">Source</button>
+  </div>
+</div>
+
 <main id="content">
   <section>
     <p class="kicker">Example · Landing page</p>
@@ -180,5 +188,8 @@ button { border-radius: 999px; }</code></pre>
 
 <script type="module" src="dark-mode-toggle.min.js"></script>
 <script src="site.js"></script>
+<script>
+  initSourceToggle({ contentId: 'content', previewBtnId: 'btn-preview', sourceBtnId: 'btn-source' });
+</script>
 </body>
 </html>

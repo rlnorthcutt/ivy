@@ -40,6 +40,14 @@
   </ul>
 </nav>
 
+<div class="content-toolbar">
+  <p class="eyebrow" style="margin:0">Rendered page vs. raw HTML</p>
+  <div class="btn-group" role="group" aria-label="Show preview or source">
+    <button id="btn-preview" type="button" data-size="sm" data-variant="primary" aria-pressed="true">Preview</button>
+    <button id="btn-source" type="button" data-size="sm" data-variant="ghost" aria-pressed="false">Source</button>
+  </div>
+</div>
+
 <main id="content">
   <nav aria-label="breadcrumb">
     <ol>
@@ -262,6 +270,8 @@
     el.addEventListener('input', update);
   }
   document.querySelectorAll('input[type=range]').forEach(initRange);
+
+  initSourceToggle({ contentId: 'content', previewBtnId: 'btn-preview', sourceBtnId: 'btn-source' });
 
   // Live "rows per page" value display
   const rowsRange = document.getElementById('a-rows');

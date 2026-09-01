@@ -40,6 +40,14 @@
   </ul>
 </nav>
 
+<div class="content-toolbar measure">
+  <p class="eyebrow" style="margin:0">Rendered page vs. raw HTML</p>
+  <div class="btn-group" role="group" aria-label="Show preview or source">
+    <button id="btn-preview" type="button" data-size="sm" data-variant="primary" aria-pressed="true">Preview</button>
+    <button id="btn-source" type="button" data-size="sm" data-variant="ghost" aria-pressed="false">Source</button>
+  </div>
+</div>
+
 <article id="content">
   <nav aria-label="breadcrumb">
     <ol>
@@ -140,6 +148,9 @@ p { margin: 0 0 var(--m); }</code></pre>
 
 <script type="module" src="dark-mode-toggle.min.js"></script>
 <script src="site.js"></script>
+<script>
+  initSourceToggle({ contentId: 'content', previewBtnId: 'btn-preview', sourceBtnId: 'btn-source' });
+</script>
 <footer>
   <div class="container d-flex justify-between items-center gap-3" style="flex-wrap:wrap">
     <p class="muted" style="margin:0">Ivy CSS v1.2.0 — MIT License</p>

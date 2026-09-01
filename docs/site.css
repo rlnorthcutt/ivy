@@ -21,6 +21,11 @@ main { max-width: 76rem; }
 .page-title h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 0 var(--m); }
 .page-title .lede { font-size: 1.2rem; color: var(--color-muted); max-width: 42rem; }
 
+/* Preview/Source toolbar above example-page content — same width as the
+   content element that follows it, but kept outside that element */
+.content-toolbar { max-width: 76rem; margin: 0 auto; padding: var(--space-sm) var(--m); display: flex; align-items: center; justify-content: space-between; gap: var(--m); flex-wrap: wrap; }
+.content-toolbar.measure { max-width: var(--measure); }
+
 /* Examples sub-nav: inset from the header nav, outside the content container */
 .subnav { margin: 0 auto; padding: var(--space-sm) calc(var(--m) * 2.5) var(--space-sm) var(--m); }
 .subnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--m); font-size: var(--fs-sm); }
